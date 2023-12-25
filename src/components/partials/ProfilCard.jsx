@@ -5,18 +5,26 @@ import { ChevronDownIcon,FireIcon,PowerIcon,UserCircleIcon,UserIcon } from '@her
 
  import {useNavigate} from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
+import useUser from '../../hooks/useUser'
  
 export default function ProfilCard() { 
     const router=useNavigate()
-    const {logout,loadLogout:load}=useAuth() 
+    const {logout}=useAuth() 
+    const user=useUser()
+    console.log(user); 
   return (
     <div className="fixed z-50  right-4 top-0  text-right">
       <Menu as="div" className="relative z-50 inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center  m bg-opacity-20  items-center text-sm font-medium  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          <div className="flex items-center w-full rounded-md  group">
-            <div className="  flex">
-            <UserCircleIcon className='w-14  text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>   
+          <Menu.Button className="inline-flex  mt-2 w-full justify-center  m bg-opacity-20  items-center text-sm font-medium  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <div className="flex items-center  w-full rounded-md  group">
+            <div className="items-center  flex">
+              {
+                user?.profil?.picture ?
+                <img src={user?.profil?.picture} className='w-10 h-10 border object-cover rounded-full' alt="" />
+                :
+                <UserCircleIcon className='w-10  text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>   
+              }
 
               
             </div>
@@ -39,7 +47,7 @@ export default function ProfilCard() {
             <div className="px-1 py-1 ">
               <Menu.Item>
                <div className="text-center text-sm py-2 font-bold text-gray-600">
-                    <span>Blaise</span>
+                    <span>{user?.user?.names}</span>
                 </div>   
               </Menu.Item>
               <Menu.Item>

@@ -1,19 +1,20 @@
 
 import { EnvelopeIcon, EyeIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 import React,{useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import Logo from '../../../assets/full_gaci_logo.png' 
 import useAuth from '../../../hooks/useAuth'
 const Connexion = () => {
    
-  
+  const navigate=useNavigate()
   const {login,load,error}=useAuth() 
   const [visiblePass,setVisiblePass]=useState(false) 
   const [email,setEmail]=useState('') 
   const [password,setPassword]=useState('')
+  const userData=localStorage.getItem('accessToken')
   useEffect(() => {
-     
-  },[])
+    userData ? navigate('/'):null
+  },[userData])
   
   const handleLogin= async ()=>{ 
       
