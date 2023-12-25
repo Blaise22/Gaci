@@ -3,11 +3,11 @@ import { EnvelopeIcon, EyeIcon, LockClosedIcon } from '@heroicons/react/24/outli
 import React,{useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import Logo from '../../../assets/full_gaci_logo.png' 
-import useLogin from '../../../hooks/useLogin'
+import useAuth from '../../../hooks/useAuth'
 const Connexion = () => {
    
   
-  const {login,load,error}=useLogin() 
+  const {login,load,error}=useAuth() 
   const [visiblePass,setVisiblePass]=useState(false) 
   const [email,setEmail]=useState('') 
   const [password,setPassword]=useState('')

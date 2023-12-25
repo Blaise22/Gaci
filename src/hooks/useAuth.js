@@ -3,8 +3,8 @@ import AxiosInstance from '../axios/AxiosInstance'
 import { Link, useNavigate } from 'react-router-dom'; 
 import { jwtDecode } from 'jwt-decode'; 
 import { AuthContext } from '../context/auth/AuthContext';
-const useLogin = () => {
-    const [load,setLoad]=useState(false)
+const useAuth = () => {
+    const [load,setLoad]=useState(false) 
     const [error,setError]=useState(false) 
     const navigate=useNavigate()
     const {setUser}=useContext(AuthContext)
@@ -32,7 +32,18 @@ const useLogin = () => {
             }, 5000);
         })
     }
-  return { login,load,error }
+    const logout=()=>{ 
+        try {
+            localStorage.removeItem('accessToken')
+            localStorage.removeItem('refreshToken')
+            setUser(null)
+        } catch (error) {  }
+        finally {
+            navigate('/connexion')
+             
+        }
+    }
+  return { login,logout,load,error }
 }
 
-export default useLogin
+export default useAuth

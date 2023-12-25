@@ -4,10 +4,11 @@ import { Fragment, useContext, useEffect, useRef, useState } from 'react'
 import { ChevronDownIcon,FireIcon,PowerIcon,UserCircleIcon,UserIcon } from '@heroicons/react/20/solid'
 
  import {useNavigate} from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
  
 export default function ProfilCard() { 
     const router=useNavigate()
-    
+    const {logout,loadLogout:load}=useAuth() 
   return (
     <div className="fixed z-50  right-4 top-0  text-right">
       <Menu as="div" className="relative z-50 inline-block text-left">
@@ -53,7 +54,7 @@ export default function ProfilCard() {
               <Menu.Item>
                 {({ active }) => (
                   
-                  <button onClick={()=>{signOut()}} className={`${ active ? 'bg-gray-300 text-white' : 'text-gray-700' } transition-colors duration-300 group gap-2 flex w-full items-center rounded-md px-2 py-2 text-sm`}>
+                  <button onClick={logout} className={`${ active ? 'bg-gray-300 text-white' : 'text-gray-700' } transition-colors duration-300 group gap-2 flex w-full items-center rounded-md px-2 py-2 text-sm`}>
                     <PowerIcon className='w-8 group-hover:text-red-600' />
                     Log out
                   </button>

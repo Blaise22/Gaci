@@ -8,6 +8,7 @@ import Classroom from './pages/classroom/Classroom'
 import Forum from './pages/forum/Forum'
 import Profil from './pages/profil/Profil'
 import Publications from './pages/publication/Publications'
+import ProtectedRoutes from './protected/ProtectedRoutes'
 function App() { 
   return (
     <>
@@ -16,10 +17,12 @@ function App() {
             <Route path='/connexion' element={<Connexion/>}/> 
             <Route path='/inscription' element={<Inscription/>}/> 
             <Route path='/' element={<Home/>}/> 
-            <Route path='/classroom' element={<Classroom/>}/> 
-            <Route path='/forum' element={<Forum/>}/> 
-            <Route path='/profil' element={<Profil/>}/> 
-            <Route path='/publications' element={<Publications/>}/> 
+
+            <Route element={<ProtectedRoutes/>}> 
+              <Route path='/forum' element={<Forum/>}/> 
+              <Route path='/profil' element={<Profil/>}/> 
+              <Route path='/publications' element={<Publications/>}/> 
+            </Route>
              
           </Routes>
         </BrowserRouter>
