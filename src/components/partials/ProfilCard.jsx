@@ -43,7 +43,7 @@ export default function ProfilCard() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0  w-56 origin-top-right divide-y  divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0  w-44 origin-top-right divide-y  divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item>
                <div className="text-center text-sm py-2 font-bold text-gray-600">
@@ -55,9 +55,9 @@ export default function ProfilCard() {
               <Menu.Item>
                 {({ active }) => (
                   
-                  <button onClick={logout} className={`${ active ? 'bg-gray-300 text-white' : 'text-gray-700' } transition-colors duration-300 group gap-2 flex w-full items-center rounded-md px-2 py-2 text-sm`}>
+                  <button onClick={logout} className={`${ active ? 'bg-gray-300 text-white' : 'text-gray-700' } transition-colors duration-300 group gap-2 flex w-full items-center justify-center rounded-md px-2 py-2 text-sm`}>
                     <PowerIcon className='w-8 group-hover:text-red-600' />
-                    Log out
+                    Déconnexion
                   </button>
                 )}
               </Menu.Item>
