@@ -50,14 +50,7 @@ export default function ProfilCard() {
                     <span>{user?.user?.names}</span>
                 </div>   
               </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <button onClick={()=>{router('/profil')}} className={`${ active ? 'bg-gray-300 text-white' : 'text-gray-700' } transition-colors duration-300 group gap-2 flex w-full items-center rounded-md px-2 py-2 text-sm`}>
-                    <UserCircleIcon className='w-8 ' />
-                    Profil
-                  </button>
-                )}
-              </Menu.Item>
+               
                
               <Menu.Item>
                 {({ active }) => (

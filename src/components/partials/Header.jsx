@@ -19,18 +19,18 @@ const Header =  () => {
                 user ?
                 <div className="w-full  flex justify-end"> 
                 <div className="flex w-full justify-end gap-4 pr-14   items-center">  
-                         <div className="flex gap-1">
+                         <div className="flex gap-1 ">
                          <Link to={'/publications'}>
-                        <div className="flex md:flex-row flex-col group hover:bg-blue-600 tran hover:text-white p-1 rounded-lg cursor-pointer md:gap-2 items-center">
-                            <InboxIcon className='w-8 group-hover:text-white text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>
+                        <div className="flex md:flex-row w-20 flex-col group hover:bg-blue-600 tran hover:text-white p-1 rounded-lg cursor-pointer md:gap-2 items-center">
+                            <InboxIcon className='w-6 group-hover:text-white text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>
                             <span className='group-hover:text-link text-secondary group-hover:text-white '>
                                 Publications
                             </span>
                         </div>
                         </Link>
                         <Link to={'/forum'}>
-                        <div className="flex md:flex-row flex-col group hover:bg-blue-600 tran hover:text-white p-1 rounded-lg cursor-pointer md:gap-2 items-center">
-                            <ChatBubbleBottomCenterIcon className='w-8 group-hover:text-white text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>
+                        <div className="flex md:flex-row w-20 flex-col group hover:bg-blue-600 tran hover:text-white p-1 rounded-lg cursor-pointer md:gap-2 items-center">
+                            <ChatBubbleBottomCenterIcon className='w-6 group-hover:text-white text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>
                             <span className='group-hover:text-link text-secondary group-hover:text-white '>
                                 Forum
                             </span>
