@@ -1,9 +1,12 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../../components/partials/Header'
 import FrontImage from '../../components/containers/FrontImage'
 import ArticleList from '../../components/containers/ArticleList'
+import { AuthContext } from '../../context/auth/AuthContext'
 const Home = () => {
+  const {user}=useContext(AuthContext)
+  console.log(user);
   return (
     <>
         <Header/> 

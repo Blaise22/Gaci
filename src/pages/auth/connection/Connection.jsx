@@ -3,10 +3,11 @@ import { EnvelopeIcon, EyeIcon, LockClosedIcon } from '@heroicons/react/24/outli
 import React,{useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import Logo from '../../../assets/full_gaci_logo.png' 
+import useLogin from '../../../hooks/useLogin'
 const Connexion = () => {
    
-  const [loading,setLoading]=useState(false) 
-  const [error,setError]=useState(false) 
+  
+  const {login,load,error}=useLogin() 
   const [visiblePass,setVisiblePass]=useState(false) 
   const [email,setEmail]=useState('') 
   const [password,setPassword]=useState('')
@@ -16,6 +17,12 @@ const Connexion = () => {
   
   const handleLogin= async ()=>{ 
       
+      const credentials={
+        email:email,
+        password:password
+      }
+      login(credentials)
+       
   }
   return (
     <>
@@ -49,7 +56,11 @@ const Connexion = () => {
                         </div>
                     </div>
                     <div className="mt-8 flex items-center">
-                         <button className={'w-full  btn-primary'} onClick={handleLogin}>Connexion</button>
+                        {
+                            !load ? 
+                            <button className={'w-full  btn-primary'} onClick={handleLogin}>Connexion</button>:
+                            <button className={'w-full  btn-primary'}>Connexion ...</button>
+                        }
                     </div>
                     <div className="mt-8 text-center">
                          <span className='text-link font-semibold'>Mot de passe oublié ? </span>

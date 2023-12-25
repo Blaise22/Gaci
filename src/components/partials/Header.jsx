@@ -9,7 +9,7 @@ const Header =  () => {
     
     const session={
         user:{
-            name:'Blaise'
+            name:null
         }
     }
     
