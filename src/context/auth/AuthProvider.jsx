@@ -20,9 +20,7 @@ export  const AuthProvider = ({ children }) => {
         }).catch(err=>{}).finally(()=>{
           setUser(data);
         })
-      }
-    
-       
+      } 
     }, [access,user])
     
     

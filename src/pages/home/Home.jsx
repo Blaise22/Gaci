@@ -2,10 +2,10 @@
 import React, { useContext } from 'react'
 import Header from '../../components/partials/Header'
 import FrontImage from '../../components/containers/FrontImage'
-import ArticleList from '../../components/containers/ArticleList'
-import { AuthContext } from '../../context/auth/AuthContext'
+import ArticleList from '../../components/containers/ArticleList' 
+import useUser from '../../hooks/useUser'
 const Home = () => {
-  const {user}=useContext(AuthContext)
+  const user=useUser()
   console.log(user);
   return (
     <>
