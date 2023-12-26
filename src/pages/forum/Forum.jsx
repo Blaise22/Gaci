@@ -23,7 +23,7 @@ const Forum = () => {
                     <MainModal
                         modalTitle={'Poser une question'}
                         mainButton={
-                            <button className='flex gap-1 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
+                            <button className='flex  text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
                             <PlusIcon className='w-6 text-gray-700' />
                             Poser une question
                             </button>
