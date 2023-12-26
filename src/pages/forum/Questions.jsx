@@ -9,10 +9,11 @@ import MainModal from '../../components/modals/MainModal'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import Spinner from '../../components/extra/Spinner'
 import DataInfo from '../../components/extra/DataInfo'
+import NavigationPageCard from '../../components/cards/NavigationPageCard' 
 
 const Questions = () => {
     const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/question-list-create/`)
-    console.log(data);
+    
     return (
     <>
         <Header/>
@@ -40,11 +41,17 @@ const Questions = () => {
               <div className="flex gap-4 flex-col">
                 { !load && 
                   data?.map((item,index)=>(
-                    <QuestionCard 
-                      authUserIsOwner={false}
-                      data={null}
-                      refresh={()=>{}}
+                    <QuestionCard  
                       key={index}
+                      refresh={()=>{}}
+                      pk={item.pk}
+                      owner={item.user}
+                      message={item.wording}
+                      image={item.image}
+                      doc={item.doc}
+                      dateUpdate={item.date_update}
+                      dateAdd={item.date_add}
+
                       
                     /> 
                       ))
@@ -58,10 +65,16 @@ const Questions = () => {
                     len={data?.length} 
                     load={load}
                 />
+                <NavigationPageCard
+                  load={load}
+                  count={count} 
+                  next={next}
+                  prev={prev}
+                  nextPage={nextPage}
+                  prevPage={prevPage}
+                />
 
-              </div>
-
-
+              </div> 
              </MainCard>
           </div>
         </div>

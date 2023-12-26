@@ -1,6 +1,4 @@
-import React from 'react'
-import nombresInferieurs from '../../utils/getData/nombresInferieurs'
-import arrondirDecimalExce from '../../utils/getData/arrondirDecimalExce'
+import React from 'react' 
 
 const NavigationPageCard = ({load,prevPage,nextPage,count,next,prev}) => {
   return (

@@ -2,9 +2,8 @@ import React from 'react'
 import {useNavigate} from 'react-router-dom'
 import {EyeIcon, QuestionMarkCircleIcon} from '@heroicons/react/24/outline' 
 
-const QuestionCard = ({refresh,authUserIsOwner,data}) => {
-    const navigate=useNavigate()
-     
+const QuestionCard = ({refresh,owner,message,dateAdd,dateUpdate,image,doc,pk}) => {
+    const navigate=useNavigate() 
     return (
     <div className='border  p-2 md:p-4 rounded-lg'>
         <div className="flex flex-col   gap-1">
