@@ -1,6 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
-import {  QuestionMarkCircleIcon} from '@heroicons/react/24/outline' 
+import {EyeIcon, QuestionMarkCircleIcon} from '@heroicons/react/24/outline' 
 
 const QuestionCard = ({refresh,authUserIsOwner,data}) => {
     const navigate=useNavigate()
@@ -23,7 +23,10 @@ const QuestionCard = ({refresh,authUserIsOwner,data}) => {
                     <span className='text-blue-600 font-bold'>5 reponses </span>
                     <span className='text-xs text-gray-600 '>Publiée il ya 20 min</span>
                 </div>
-                <button onClick={()=>{navigate('/forum/question/'+10+'/reponses/')}} className='btn-primary'>Afficher</button>
+                <button onClick={()=>{navigate('/forum/question/'+10+'/reponses/')}} className='btn-primary flex items-center gap-2'>
+                    <EyeIcon className='text-white w-5' />
+                    Afficher
+                </button>
                 
             </div>
     </div>

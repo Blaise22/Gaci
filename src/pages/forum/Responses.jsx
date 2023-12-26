@@ -13,10 +13,14 @@ const Responses = () => {
                 <span className="text-blue-700 font-semibold">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat quae illum nobis a, dolorum, quaerat sint sed, cum commodi obcaecati corrupti nulla corporis consectetur dolores esse fuga ea deserunt non?
                 </span>
-                <p className="text-gray-700 text-xs block mt-2">
+               <div className="flex mt-2 justify-between">
+                    500 epose 
+                    <p className="text-gray-700 text-xs block ">
                     Publiéil ya 20 min
 
-                </p>
+                     </p>
+
+               </div>
              <MainCard
                 className={'bg-white rounded-lg w-full'}
                 mainIcon={<QuestionMarkCircleIcon className='w-8 text-gray-700' />}
