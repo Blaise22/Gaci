@@ -11,7 +11,7 @@ const MainCard = ({children,className, mainTitle, mainIcon,sideHeaderContent}) =
             </div>
             {sideHeaderContent}
          </div>
-         <div className="p-4 flex flex-col gap-4">
+         <div className="py-4 flex flex-col gap-4">
             {children}
          </div>
       </div>
