@@ -5,6 +5,7 @@ import ForumSidebar from '../../components/partials/ForumSidebar'
 import MainCard from '../../components/cards/MainCard'
 import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid'
 import QuestionCard from '../../components/cards/QuestionCard'
+import MainModal from '../../components/modals/MainModal'
 
 const Forum = () => {
   return (
@@ -14,10 +15,18 @@ const Forum = () => {
         <div className=' pt-12 px-6 text-xs md:text-sm text-gray-700  w-full'>
           <div className="md:pl-64 py-2  ">
               <div className="p-4 flex justify-center md:justify-end">
-                <button className='flex gap-1 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
-                  <PlusIcon className='w-6 text-gray-700' />
-                  Poser une question
-                </button>
+                <MainModal
+                  modalTitle={'Poser une question'}
+                  mainButton={
+                    <button className='flex gap-1 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
+                      <PlusIcon className='w-6 text-gray-700' />
+                      Poser une question
+                    </button>
+                  } 
+                >
+
+                </MainModal>
+                
               </div>
              <MainCard
                 className={'bg-white rounded-lg w-full'}

@@ -10,8 +10,7 @@ import useUser from '../../hooks/useUser'
 export default function ProfilCard() { 
     const router=useNavigate()
     const {logout}=useAuth() 
-    const user=useUser()
-    console.log(user); 
+    const user=useUser()  
   return (
     <div className=" z-50 right-4 top-0  text-right">
       <Menu as="div" className="relative z-50 inline-block text-left">
