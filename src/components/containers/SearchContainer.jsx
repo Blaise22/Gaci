@@ -8,7 +8,7 @@ const SearchContainer = () => {
     <>
         <div onClick={()=>{setIsOpen(true)}} className="w-full cursor-pointer bg-gray-100 rounded-xl p-1 flex items-center tran hover:shadow-lg text-gray-600 ">
             <MagnifyingGlassIcon className='w-10'/>
-            <span >Rechercher ici ....</span>
+            <span >Recherche ...</span>
         </div> 
         <SearchBar isOpen={isOpen} onClose={()=>{setIsOpen(false)}} />
     </>

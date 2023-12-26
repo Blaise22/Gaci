@@ -8,6 +8,7 @@ import ProfilCard from './ProfilCard'
 import useUser from '../../hooks/useUser'
 import MainLinks from './MainLinks'
 import MainLinksCard from './MainLinksCard'
+import HeaderSearchBar from './HeaderSearchBar'
 const Header =  () => { 
     const user=localStorage.getItem('accessToken') 
     return (
@@ -21,6 +22,7 @@ const Header =  () => {
                 user ?
                 <div className="w-full  flex justify-end"> 
                 <div className="flex  w-full justify-end    items-center">  
+                        <HeaderSearchBar />
                         <div className="md:block hidden px-2">
                             <MainLinks /> 
                         </div>
