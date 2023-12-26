@@ -23,7 +23,7 @@ const QuestionCard = ({refresh,authUserIsOwner,data}) => {
                     <span className='text-blue-600 font-bold'>5 reponses </span>
                     <span className='text-xs text-gray-600 '>Publiée il ya 20 min</span>
                 </div>
-                <button onClick={()=>{navigate('/question/'+data?.id)}} className='btn-primary'>Afficher</button>
+                <button onClick={()=>{navigate('/forum/question/'+10+'/reponses/')}} className='btn-primary'>Afficher</button>
                 
             </div>
     </div>

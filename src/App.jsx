@@ -9,6 +9,7 @@ import Forum from './pages/forum/Forum'
 import Profil from './pages/profil/Profil'
 import Publications from './pages/publication/Publications'
 import Questions from './pages/forum/Questions'
+import Responses from './pages/forum/Responses'
 function App() { 
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
             <Route element={<ProtectedRoutes/>}> 
               <Route path='/forum' element={<Forum/>}/> 
               <Route path='/forum/questions' element={<Questions/>}/> 
+              <Route path='/forum/question/:id/reponses' element={<Responses/>}/> 
 
               <Route path='/profil' element={<Profil/>}/> 
               <Route path='/publications' element={<Publications/>}/> 
