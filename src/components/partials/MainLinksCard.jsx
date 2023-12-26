@@ -1,30 +1,22 @@
 
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useContext, useEffect, useRef, useState } from 'react'
-import { ChevronDownIcon,FireIcon,PowerIcon,UserCircleIcon,UserIcon } from '@heroicons/react/20/solid'
-
- import {useNavigate} from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
-import useUser from '../../hooks/useUser'
+import { Fragment } from 'react'
+import {Bars3Icon} from '@heroicons/react/20/solid'
+import { BookOpenIcon, ChatBubbleBottomCenterIcon, InboxIcon } from '@heroicons/react/24/outline'
+import {useNavigate} from 'react-router-dom'
  
-export default function ProfilCard() { 
-    const router=useNavigate()
-    const {logout}=useAuth() 
-    const user=useUser()
-    console.log(user); 
-  return (
+export default function MainLinksCard() { 
+      const nav=useNavigate()
+    return (
     <div className=" z-50 right-4 top-0  text-right">
       <Menu as="div" className="relative z-50 inline-block text-left">
         <div>
           <Menu.Button className="inline-flex  mt-2 w-full justify-center   bg-opacity-20  items-center text-sm font-medium  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
           <div className="flex items-center  w-full rounded-md  group">
             <div className="items-center  flex">
-              {
-                user?.profil?.picture ?
-                <img src={user?.profil?.picture} className='w-10 hover:shadow-lg active:border-blue-300 h-10 border object-cover rounded-full' alt="" />
-                :
-                <UserCircleIcon className='w-10  text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>   
-              }
+               
+                <Bars3Icon className='icon-primary'/>   
+              
 
               
             </div>
@@ -44,23 +36,32 @@ export default function ProfilCard() {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-0  w-44 origin-top-right divide-y  divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="px-1 py-1 ">
+            <div className="px-1 py-1  w-full ">
               <Menu.Item>
-               <div className="text-center text-sm py-2 font-bold text-gray-600">
-                    <span>{user?.user?.names}</span>
-                </div>   
-              </Menu.Item>
-               
-               
-              <Menu.Item>
-                {({ active }) => (
+              {({ active }) => (
                   
-                  <button onClick={logout} className={`${ active ? 'bg-gray-300 text-white' : 'text-gray-700' } transition-colors duration-300 group gap-2 flex w-full items-center justify-center rounded-md px-2 py-2 text-sm`}>
-                    <PowerIcon className='w-8 group-hover:text-red-600' />
-                    Déconnexion
+                  <button className='w-full group rounded-lg flex py-3 hover:bg-blue-600 tran hover:text-white p-1 items-center gap-2' onClick={()=>{nav('/publications')}} >
+                      <InboxIcon className='w-6 group-hover:text-white text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>
+                      <span className='group-hover:text-link text-secondary group-hover:text-white '>
+                        Publications
+                      </span>
                   </button>
                 )}
               </Menu.Item>
+              <Menu.Item>
+              {({ active }) => (
+                  
+                  <button className='w-full group rounded-lg flex py-3 hover:bg-blue-600 tran hover:text-white p-1 items-center gap-2' onClick={()=>{nav('/forum')}} >
+                      <ChatBubbleBottomCenterIcon className='w-6 group-hover:text-white text-gray-600 hover:scale-110 tran active:text-blue-600 p-0'/>
+                      <span className='group-hover:text-link text-secondary group-hover:text-white '>
+                         Forum
+                      </span>
+                  </button>
+                )}
+              </Menu.Item>
+               
+               
+               
                
             </div>
              
