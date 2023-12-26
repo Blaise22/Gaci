@@ -18,7 +18,7 @@ export default function ProfilCard() {
         <div>
           <Menu.Button className="inline-flex  mt-2 w-full justify-center   bg-opacity-20  items-center text-sm font-medium  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
           <div className="flex items-center  w-full rounded-md  group">
-            <div className="items-center  flex">
+            <div className="items-center w-10 flex">
               {
                 user?.profil?.picture ?
                 <img src={user?.profil?.picture} className='w-10 hover:shadow-lg active:border-blue-300 h-10 border object-cover rounded-full' alt="" />

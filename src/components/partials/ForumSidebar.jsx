@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import {ChevronRightIcon,XMarkIcon,QuestionMarkCircleIcon} from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
+import abbreviateNumber from '../../helpers/utils/abbreviateNumber'
 const ForumSidebar = () => {
     const [isOpen,setIsOpen]=useState(false)
     return (
         <>
             {
-                !isOpen && <ChevronRightIcon onClick={()=>{setIsOpen(true)}} className={'icon-primary fixed left-4 top-16'}/>
+                !isOpen && <ChevronRightIcon onClick={()=>{setIsOpen(true)}} className={'w-8 p-1 rounded-full hover:bg-blue-400 tran bg-blue-600 text-white  fixed left-8 top-20'}/>
             }
             <div className={`w-64 border-r bg-white h-full bottom-0 p-2 fixed z-50 lelft-0 top-14 ${!isOpen?'left-[-100%] tran':'left-0 tran'}`}>
                 <div className="flex justify-end">
@@ -21,7 +22,7 @@ const ForumSidebar = () => {
                         </span>
                     </Link>
                     <span className="text-blue-600 text-sm p-4">
-                    4000 Questions posees   
+                    {abbreviateNumber(4000)} Questions posees   
                     </span>
 
                 </div>

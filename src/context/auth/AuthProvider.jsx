@@ -13,9 +13,9 @@ export  const AuthProvider = ({ children }) => {
             user:null,
             profil:{user: null, kind: null, bio: '', adress: '', picture: null}
           }
-          AxiosInstance.get(`/auth/user-detail/${1}/`).then(resUser=>{
+          AxiosInstance.get(`/auth/user-detail/${userId}/`).then(resUser=>{
             data.user=resUser.data;
-            AxiosInstance.get(`/auth/profile-user-id-detail/${1}/`).then(profRes=>{
+            AxiosInstance.get(`/auth/profile-user-id-detail/${userId}/`).then(profRes=>{
               data.profil=profRes.data?.user?profRes.data:null  
             }).catch(errProf=>{ })
           }).catch(err=>{}).finally(()=>{

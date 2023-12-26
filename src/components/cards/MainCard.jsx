@@ -7,7 +7,7 @@ const MainCard = ({children,className, mainTitle, mainIcon,sideHeaderContent}) =
          <div className="p-2 flex justify-between border-b">
             <div className="flex gap-2 items-center">
                 {mainIcon}
-                <span className="text-secondary-4 font-bold"> {mainTitle}</span>
+                <span className="text-lg font-bold"> {mainTitle}</span>
             </div>
             {sideHeaderContent}
          </div>
