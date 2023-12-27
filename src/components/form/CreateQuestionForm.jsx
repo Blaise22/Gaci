@@ -3,20 +3,20 @@ import Input from './Input'
 import Button from './Button'
 import PopUp from './PopUp'
 import useCreate from '../../hooks/useCreate'
-const CreateQuestionForm = ({refresh,onClose}) => {
+import {useNavigate} from 'react-router-dom'
+const CreateQuestionForm = ({onClose}) => {
   const [formError,setFormError]=useState(null)
   const [quest,setQuestion]=useState(null)
   const [image,setImage]=useState(null)
   const [doc,setDoc]=useState(null)
-  const {create, load, error, success}=useCreate()
+  const {create,res,load, error, success}=useCreate()
+  const navigate=useNavigate()
   useEffect(() => {
-    if(error || success){
-      refresh()
-    }
+    res?.pk && navigate('/forum/question/'+res?.pk+'/reponses/')
     if(success){
       onClose()
     }
-  }, [error, success]) 
+  }, [error, success,res]) 
   
   const handleImageChange = (event) => {
     const file = event.target.files[0];

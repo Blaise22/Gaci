@@ -34,11 +34,7 @@ const Questions = () => {
                             Créer 
                             </button>
                         } 
-                        refresh={
-                          ()=>{
-                            getData(`/forum/question-list-create/`)
-                          }
-                        }
+                         
                         >
                               
                         </MainModal>
@@ -49,7 +45,7 @@ const Questions = () => {
                   data?.map((item,index)=>(
                     <QuestionCard  
                       key={index}
-                      refresh={()=>{}}
+                       
                       pk={item.pk}
                       owner={item.user}
                       message={item.wording}

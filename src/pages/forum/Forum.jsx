@@ -15,7 +15,6 @@ import NavigationPageCard from '../../components/cards/NavigationPageCard'
 
 const Forum = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list/`)
-  console.log(data);
   return (
     <>
         <Header/>
@@ -27,24 +26,7 @@ const Forum = () => {
                 className={'bg-white rounded-lg w-full'}
                 mainIcon={<QuestionMarkCircleIcon className='w-4 text-white' />}
                 mainTitle={'Reponses aux questions'}
-                 sideHeaderContent={
-                    <QuestionModal
-                        modalTitle={'Question'}
-                        mainButton={
-                            <button className='flex  text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
-                            <PlusIcon className='w-6 text-gray-700' />
-                            Créer
-                            </button>
-                        } 
-                        refresh={
-                          ()=>{
-                            getData(`/forum/question-list-create/`)
-                          }
-                        }
-                        >
-                                 
-                        </QuestionModal>
-                        }
+                  
              >
               <div className="flex gap-4 flex-col">
                 {

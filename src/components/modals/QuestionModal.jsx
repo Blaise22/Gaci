@@ -5,7 +5,7 @@ import MainCard from '../cards/MainCard'
 import {XMarkIcon} from '@heroicons/react/20/solid'
 import CreateQuestionForm from '../form/CreateQuestionForm'
 
-export default function QuestionModal({mainButton,modalTitle,refresh}) {
+export default function QuestionModal({mainButton,modalTitle}) {
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -60,7 +60,7 @@ export default function QuestionModal({mainButton,modalTitle,refresh}) {
                         <XMarkIcon onClick={closeModal} className='icon-danger' />
                        } >
                       <div className="px-4">
-                      <CreateQuestionForm refresh={()=>{refresh()}} onClose={closeModal}  />
+                      <CreateQuestionForm  onClose={closeModal}  />
                       </div>
 
                    </MainCard>

@@ -3,20 +3,44 @@ import Header from '../../components/partials/Header'
 import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid'
 import MainCard from '../../components/cards/MainCard'
 import CardDiscussion from '../../components/cards/CardDiscussion'
-
+import {useParams} from 'react-router-dom'
+import useFetch from '../../hooks/useFetch'
+import Spinner from '../../components/extra/Spinner'
+import getPeriode from '../../helpers/utils/getPeriode'
 const Responses = () => {
+  const {id}=useParams()
+  const {data:question,load,error}=useFetch(`/forum/question-detail/${id}/`)
+  console.log(question);
   return (
     <>
         <Header/>
         <div className="pt-16 px-6 text-xs md:text-sm text-gray-700  w-full">
         <div className=" py-2 md:px-14 lg:px-24 "> 
-                <span className="text-blue-700 font-semibold">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat quae illum nobis a, dolorum, quaerat sint sed, cum commodi obcaecati corrupti nulla corporis consectetur dolores esse fuga ea deserunt non?
-                </span>
+                
+                    { question?.wording ?
+                      <span className="text-blue-700 block w-full bg-blue-100 p-2 rounded-lg font-semibold">
+                        {question?.wording} 
+                      </span>
+                    : <p className='block text-center w-full'>En attente de la question</p> }
+                
+                <Spinner load={load}  className={'spinner mt-2'}/>
+                <div className="flex justify-between mt-1 gap-2">
+                        {
+                            question?.doc &&
+                            <button className='p-1 rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200'>Lire le document</button>
+                        }
+                        {
+                            question?.image &&
+                            <button className='p-1 rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200'>Voir l'image</button>
+                        }
+                    </div> 
                <div className="flex mt-2 justify-between">
                     500 epose 
                     <p className="text-gray-700 text-xs block ">
-                    Publiéil ya 20 min
+                      {
+                        question?.date_add &&
+                        <span>Publié il ya {getPeriode(question?.date_add)}</span>
+                      }
 
                      </p>
 
