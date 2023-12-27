@@ -2,7 +2,7 @@ import React from 'react'
 import { XMarkIcon,CheckIcon } from '@heroicons/react/24/outline'
 const PopUp = ({successMessage,errorMessage,load}) => {
   return (
-    <div className={`fixed flex justify-center items-center left-0 z-50 right-0 ${successMessage || errorMessage ?'top-2 trans':'top-[-200%] trans'} `} >
+    <div className={`fixed flex justify-center items-center bottom-0  z-50  ${successMessage || errorMessage ?'right-2 tran':' right-[-200%] tran'} `} >
         <div className="shadow flex items-center  gap-2 border p-4 bg-white rounded-lg w-64">
             {
                  successMessage &&

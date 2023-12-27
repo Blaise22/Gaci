@@ -11,6 +11,7 @@ const DeleteItem = ({url,refresh}) => {
             setSuccess(true)
             refresh()
         }).catch(err=>{
+            refresh()
             setError(true)
             setOpenDelete(false)
         }).finally(()=>{
@@ -18,14 +19,14 @@ const DeleteItem = ({url,refresh}) => {
                 setError(false)
                 setSuccess(false)
                 
-            }, 4000);
+            }, 3000);
         })
     }
   return (
     <>
         <PopUp 
 
-            errorMessage={error?'Erreur de suppression':null}
+            errorMessage={error?'Cette ':null}
             successMessage={success ?'Réponse retirée avec succès':null}
         />
         {
