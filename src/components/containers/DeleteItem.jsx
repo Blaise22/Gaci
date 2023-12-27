@@ -37,7 +37,7 @@ const DeleteItem = ({url,refresh}) => {
                 <button onClick={()=>{setOpenDelete(false)}} className='text-gray-600 p-1 rounded-lg bg-gray-100'>Annuler</button>
             </div>
             :
-            <button onClick={()=>{setOpenDelete(true)}} className='text-red-600 p-1 rounded-lg bg-red-100'>Retirer</button>
+            <button onClick={()=>{setOpenDelete(true)}} className='text-red-600 p-1 w-28 rounded-lg bg-red-100'> Rétirer ma réponse</button>
         }
     </>
   )

@@ -10,6 +10,7 @@ import getPeriode from '../../helpers/utils/getPeriode'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import DataInfo from '../../components/extra/DataInfo'
+import CreateResponseForm from '../../components/form/CreateResponseForm'
 const Responses = () => {
   const {id}=useParams()
   const {data:question,load:questionLoad,error:questionError}=useFetch(`/forum/question-detail/${id}/`)
@@ -93,9 +94,7 @@ const Responses = () => {
 
             </MainCard>
         </div>
-        <div className="fixed w-full py-2 md:px-14 lg:px-24 px-6 bg-white h-20 border-t bottom-0 right-0 left-0">
-            hello
-        </div>
+          <CreateResponseForm question={question?.pk} />
         </div>
     </>
   )
