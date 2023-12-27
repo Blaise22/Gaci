@@ -11,7 +11,7 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
      const user=useUser()
      const {data:profil}=useFetch(`auth/profile-user-id-detail/${owner?.pk}/`)  
   return (
-    <div className="block md:text-sm w-auto mt-1 border-b pb-3 text-xs">
+    <div className="block shadow-md p-2 md:p-4 rounded-lg md:text-sm w-auto mt-1 border-b pb-3 text-xs">
                 <div className="flex group ">
                     <div className="flex w-full items-center gap-2">
                         {
