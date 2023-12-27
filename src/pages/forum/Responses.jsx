@@ -38,7 +38,7 @@ const Responses = () => {
                         }
                     </div> 
                <div className="flex mt-2 justify-between">
-                    500 epose 
+                    {count} réponse{count>1?'s':''} 
                     <p className="text-gray-700 text-xs block ">
                       {
                         question?.date_add &&
