@@ -12,7 +12,7 @@ import HeaderSearchBar from './HeaderSearchBar'
 const Header =  () => { 
     const user=localStorage.getItem('accessToken') 
     return (
-    <div className='h-14 z-50 right-0 left-0 bg-white border-b w-full fixed flex px-4 md:px-12 lg:px-16 top-0 '>
+    <div className='h-14  right-0 left-0 bg-white border-b w-full fixed flex px-4 md:px-12 lg:px-16 top-0 '>
         <div className="w-96   flex items-center ">
         <Link to={'/'}>
             <img src={Logo} className='h-10 md:h-12 w-auto' alt="logo" />
