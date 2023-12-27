@@ -20,10 +20,7 @@ const QuestionCard = ({refresh,owner,message,dateAdd,dateUpdate,image,doc,pk}) =
             </div>
             
             </div>
-            <div className={`flex gap-2 items-center justify-between  pt-2 mt-2 `}>
-                 
-                
-
+            <div className={`flex gap-2 items-center justify-between  pt-2 mt-2 `}> 
                 <div className='flex flex-col'>
                     <span className='text-blue-600 font-bold'>{data?.count} reponses </span>
                     <span className='text-xs text-gray-600 '>Publiée il ya {getPeriod(dateAdd)}</span>

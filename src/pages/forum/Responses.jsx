@@ -7,10 +7,13 @@ import {useParams} from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Spinner from '../../components/extra/Spinner'
 import getPeriode from '../../helpers/utils/getPeriode'
+import useFetchPaginate from '../../hooks/useFetchPaginate'
+import NavigationPageCard from '../../components/cards/NavigationPageCard'
+import DataInfo from '../../components/extra/DataInfo'
 const Responses = () => {
   const {id}=useParams()
-  const {data:question,load,error}=useFetch(`/forum/question-detail/${id}/`)
-  console.log(question);
+  const {data:question,load:questionLoad,error:questionError}=useFetch(`/forum/question-detail/${id}/`)
+  const {data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list/`)
   return (
     <>
         <Header/>
@@ -23,7 +26,7 @@ const Responses = () => {
                       </span>
                     : <p className='block text-center w-full'>En attente de la question</p> }
                 
-                <Spinner load={load}  className={'spinner mt-2'}/>
+                <Spinner load={questionLoad}  className={'spinner mt-2'}/>
                 <div className="flex justify-between mt-1 gap-2">
                         {
                             question?.doc &&
@@ -51,23 +54,39 @@ const Responses = () => {
                 mainTitle={'Reponses'}
              >
               <div className="flex pb-16 gap-4 flex-col">
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
-                <CardDiscussion  />
+              {
+                    data?.map((item,index)=>(
+                      <CardDiscussion
+                        key={index}
+                        message={item?.wording}
+                        date={item?.date_add}
+                        doc={item?.doc}
+                        image={item?.image}
+                        owner={item?.user}
+                        question={item?.question}
+                        refresh={()=>{getData(`/forum/reply-list/`)}}
+                        pk={item.pk}
+                        status={item.status}
+                      />
+                    ))
+                }
+
+
+               
+                <DataInfo 
+                    errorStatus={error}
+                    len={data?.length} 
+                    load={load}
+                />
+                <NavigationPageCard
+                  load={load}
+                  count={count} 
+                  next={next}
+                  prev={prev}
+                  nextPage={nextPage}
+                  prevPage={prevPage}
+                />
+                 
 
               </div>
 
