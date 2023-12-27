@@ -11,7 +11,7 @@ const QuestionCard = ({refresh,owner,message,dateAdd,dateUpdate,image,doc,pk}) =
     const {data,load}=useFetch(`forum/reply-list/`)
      
     return (
-    <div className='border  p-2 md:p-4 rounded-lg'>
+    <div className='shadow-md  p-2 md:p-4 rounded-lg'>
         <div className="flex flex-col   gap-1">
             <div className="flex flex-col items-start gap-2">
                 <p className='text-gray-600 font-bold'>Publiée par  {  owner?.names }</p>

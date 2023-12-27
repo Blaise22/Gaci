@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {ChevronRightIcon,XMarkIcon,QuestionMarkCircleIcon} from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
 import abbreviateNumber from '../../helpers/utils/abbreviateNumber'
 const ForumSidebar = () => {
-    const [isOpen,setIsOpen]=useState(false)
+    const [isOpen,setIsOpen]=useState(window.innerWidth>=768?true:false)
     return (
         <>
             {

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../components/partials/Header'
-import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid'
+import {QuestionMarkCircleIcon,EllipsisHorizontalIcon} from '@heroicons/react/20/solid'
 import MainCard from '../../components/cards/MainCard'
 import CardDiscussion from '../../components/cards/CardDiscussion'
 import {useParams} from 'react-router-dom'
@@ -11,6 +11,7 @@ import useFetchPaginate from '../../hooks/useFetchPaginate'
 import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import DataInfo from '../../components/extra/DataInfo'
 import CreateResponseForm from '../../components/form/CreateResponseForm'
+import ForumSidebar from '../../components/partials/ForumSidebar'
 const Responses = () => {
   const {id}=useParams()
   const {data:question,load:questionLoad,error:questionError}=useFetch(`/forum/question-detail/${id}/`)
@@ -18,11 +19,28 @@ const Responses = () => {
   return (
     <>
         <Header/>
+        <ForumSidebar />
         <div className="pt-16 px-6 text-xs md:text-sm text-gray-700  w-full">
-        <div className=" py-2 md:px-14 lg:px-24 "> 
-                
+        <div className="md:pl-64  ">
+        <div className=" py-2  "> 
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <QuestionMarkCircleIcon className='w-8 text-white' />
+                          <span className="text-lg text-blue-600">Question</span>
+                        </div>
+                        <div className="relative group py-2">
+                          <div className="flex p-2 rounded-lg hover:bg-gray-100 items-center gap-1">
+                          <EllipsisHorizontalIcon className='w-5 text-gray-600' />
+                            
+                          </div>
+                          <div className="absolute hidden group-hover:block bg-white  shadow-md p-4 rounded-lg right-0 w-44">
+                                Hello
+                          </div>
+                        </div>
+                    </div>
+                    <span className='font-bold py-2 block text-md'>Posée par { question?.user?.names }</span>
                     { question?.wording ?
-                      <span className="text-blue-700 block w-full bg-blue-100 p-2 rounded-lg font-semibold">
+                      <span className="text-blue-600 block w-full bg-blue-100 p-2 rounded-lg font-semibold">
                         {question?.wording} 
                       </span>
                     : <p className='block text-center w-full'>En attente de la question</p> }
@@ -68,6 +86,7 @@ const Responses = () => {
                         refresh={()=>{getData(`/forum/reply-list/`)}}
                         pk={item.pk}
                         status={item.status}
+                        isResPage={true}
                       />
                     ))
                 }
@@ -95,6 +114,7 @@ const Responses = () => {
             </MainCard>
         </div>
           <CreateResponseForm question={question?.pk} />
+        </div>
         </div>
     </>
   )

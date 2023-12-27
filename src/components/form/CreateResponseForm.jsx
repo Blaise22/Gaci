@@ -59,8 +59,8 @@ const CreateResponseForm = ({questionId}) => {
             Repondre
         </button> 
         }
-        <div className={`fixed w-full z-50  md:px-14 lg:px-24 px-6   bottom-0 right-0 left-0 ${!isExtended?'bottom-[-200%] tran ':' tran bottom-0'} `}>
-            <div className="bg-white rounded-t-lg h-full w-full border-t border-l border-r">
+        <div className={`fixed w-full z-40  md:px-14 lg:px-24 md:pl-64  px-2  border-t bg-white  bottom-0 right-0 left-0 ${!isExtended?'bottom-[-200%] tran ':' tran bottom-0'} `}>
+            <div className=" rounded-t-lg h-full w-full md:pl-4 ">
                 <div className="flex  items-center p-1 justify-between text-md text-gray-700">
                     <span className="px-1 font-bold">Repondre à cette question</span>
                     {isExtended && <XMarkIcon onClick={()=>{setIsextended(false)}} className='icon-danger' />}

@@ -42,6 +42,7 @@ const Forum = () => {
                         refresh={()=>{getData(`/forum/reply-list/`)}}
                         pk={item.pk}
                         status={item.status}
+                        isResPage={false}
                       />
                     ))
                 }
