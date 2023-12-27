@@ -52,7 +52,7 @@ const Forum = () => {
                       <CardDiscussion
                         key={index}
                         message={item?.wording}
-                        date={item?.dte}
+                        date={item?.date_add}
                         doc={item?.doc}
                         image={item?.image}
                         owner={item?.user}
