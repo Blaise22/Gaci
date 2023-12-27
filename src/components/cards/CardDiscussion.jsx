@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import {  QuestionMarkCircleIcon,ChatBubbleBottomCenterIcon,TrashIcon} from '@heroicons/react/24/outline'
 import { UserCircleIcon} from '@heroicons/react/24/solid' 
-const CardDiscussion = ({message,date,owner,id,refresh}) => {
+const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status}) => {
      
  
      

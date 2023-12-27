@@ -5,13 +5,17 @@ import ForumSidebar from '../../components/partials/ForumSidebar'
 import MainCard from '../../components/cards/MainCard'
 import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid'
 import QuestionCard from '../../components/cards/QuestionCard'
-import QuestionModal from '../../components/modals/QuestionModal'
+import QuestionModal from '../../components/modals/QuestionModal' 
+import useFetch from '../../hooks/useFetch'
+import CardDiscussion from '../../components/cards/CardDiscussion'
+import Spinner from '../../components/extra/Spinner'
+import DataInfo from '../../components/extra/DataInfo'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
-import CreateQuestionForm from '../../components/form/CreateQuestionForm'
+import NavigationPageCard from '../../components/cards/NavigationPageCard'
 
 const Forum = () => {
-  const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/question-list-create/`)
-  
+  const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list/`)
+  console.log(data);
   return (
     <>
         <Header/>
@@ -22,7 +26,7 @@ const Forum = () => {
              <MainCard
                 className={'bg-white rounded-lg w-full'}
                 mainIcon={<QuestionMarkCircleIcon className='w-4 text-white' />}
-                mainTitle={'Questions recentes'}
+                mainTitle={'Reponses aux questions'}
                  sideHeaderContent={
                     <QuestionModal
                         modalTitle={'Question'}
@@ -43,7 +47,41 @@ const Forum = () => {
                         }
              >
               <div className="flex gap-4 flex-col">
-                 
+                {
+                    data?.map((item,index)=>(
+                      <CardDiscussion
+                        key={index}
+                        message={item?.wording}
+                        date={item?.dte}
+                        doc={item?.doc}
+                        image={item?.image}
+                        owner={item?.user}
+                        question={item?.question}
+                        refresh={()=>{getData(`/forum/reply-list/`)}}
+                        pk={item.pk}
+                        status={item.status}
+                      />
+                    ))
+                }
+
+
+              <Spinner 
+                  load={load} 
+                  className='w-14 h-14 lg:w-20 lg:w-24' 
+                />
+                <DataInfo 
+                    errorStatus={error}
+                    len={data?.length} 
+                    load={load}
+                />
+                <NavigationPageCard
+                  load={load}
+                  count={count} 
+                  next={next}
+                  prev={prev}
+                  nextPage={nextPage}
+                  prevPage={prevPage}
+                />
                  
                 
                  
