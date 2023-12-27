@@ -13,10 +13,8 @@ const useFetchPaginate = (url) => {
      
   }, [url]);
   const getData = async (url) => { 
-    try {
-       
-      const res = await AxiosInstance.get(url);
-       
+    try { 
+      const res = await AxiosInstance.get(url); 
       setCount(res.data.count)
       setNext(res.data.next)
       setPrev(res.data.previous)

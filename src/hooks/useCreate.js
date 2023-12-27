@@ -18,8 +18,8 @@ const useCreate =  () => {
                 setError(true)
             }
         }); 
+        setLoad(false)
         setTimeout(() => {
-            setLoad(false)
             setSuccess(false)
             setError(false)
         }, 4000);

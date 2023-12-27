@@ -3,8 +3,9 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import MainCard from '../cards/MainCard'
 import {XMarkIcon} from '@heroicons/react/20/solid'
+import CreateQuestionForm from '../form/CreateQuestionForm'
 
-export default function MainModal({mainButton,modalTitle,children}) {
+export default function QuestionModal({mainButton,modalTitle,refresh}) {
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -58,7 +59,9 @@ export default function MainModal({mainButton,modalTitle,children}) {
                       sideHeaderContent={ 
                         <XMarkIcon onClick={closeModal} className='icon-danger' />
                        } >
-                      {children}
+                      <div className="px-4">
+                      <CreateQuestionForm refresh={()=>{refresh()}} onClose={closeModal}  />
+                      </div>
 
                    </MainCard>
 

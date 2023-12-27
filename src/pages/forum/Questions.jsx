@@ -5,11 +5,12 @@ import ForumSidebar from '../../components/partials/ForumSidebar'
 import MainCard from '../../components/cards/MainCard'
 import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid'
 import QuestionCard from '../../components/cards/QuestionCard'
-import MainModal from '../../components/modals/MainModal'
+import MainModal from '../../components/modals/QuestionModal'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import Spinner from '../../components/extra/Spinner'
 import DataInfo from '../../components/extra/DataInfo'
 import NavigationPageCard from '../../components/cards/NavigationPageCard' 
+import CreateQuestionForm from '../../components/form/CreateQuestionForm'
 
 const Questions = () => {
     const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/question-list-create/`)
@@ -33,8 +34,13 @@ const Questions = () => {
                             Créer 
                             </button>
                         } 
+                        refresh={
+                          ()=>{
+                            getData(`/forum/question-list-create/`)
+                          }
+                        }
                         >
-                                H
+                              
                         </MainModal>
                         }
              >

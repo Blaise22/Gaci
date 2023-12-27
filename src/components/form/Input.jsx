@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Input = ({type,value,label,onChange,name,placeholder}) => {
+    
     const handleInput=(type,value,name,placeholder)=>{
         if(type=='text'){
             return <input type='text'name={name?name:''} placeholder={placeholder?placeholder:''}  onChange={(e)=>{onChange(e.target.value)}} className='form-control w-full' value={value?value:undefined} />
@@ -26,7 +27,7 @@ const Input = ({type,value,label,onChange,name,placeholder}) => {
             return <input type='password'name={name?name:''} placeholder={placeholder?placeholder:''}  onChange={(e)=>{onChange(e.target.value)}} className='form-control w-full' value={value?value:undefined} />
         }
         else if(type=='textarea'){
-            return <textarea defaultValue={placeholder} placeholder={placeholder?placeholder:''} type='password'name={name?name:''}  onChange={(e)=>{onChange(e.target.value)}} className='form-control-textarea w-full' value={value?value:undefined} >
+            return <textarea defaultValue={value?value:undefined} placeholder={placeholder?placeholder:''} type='password'name={name?name:''}  onChange={(e)=>{onChange(e.target.value)}} className='form-control-textarea w-full' value={value?value:undefined} >
                     </textarea>
         }
          

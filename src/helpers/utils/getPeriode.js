@@ -1,7 +1,6 @@
-import dayjs from "dayjs";
-
 
 export default function getPeriode(value)  {
+   
     function roundUp(number) {
         // Obtenir la partie entière du nombre
         const integer = Math.floor(number);

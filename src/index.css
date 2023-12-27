@@ -54,6 +54,18 @@
 .btn-danger{
   @apply h-9 rounded-lg px-2  bg-red-600 text-white hover:bg-red-500 transition-all duration-300  active:bg-red-400 active:shadow-lg
 } 
+.btn-primary-light { 
+  @apply  py-1 px-2 h-10 text-white bg-blue-200 rounded-lg  transition-colors duration-200 
+}
+.btn-secondary-light {
+  @apply  py-1 px-2 h-10 text-white bg-gray-400 rounded-lg  transition-colors duration-200
+}
+.btn-danger-light {
+  @apply  py-1 px-2 h-10 text-white bg-red-200 rounded-lg  transition-colors duration-200
+}
+.btn-warning-light {
+  @apply  py-1 px-2 h-10 text-white bg-yellow-200 rounded-lg  transition-colors duration-200
+}
 .icon-primary {
   @apply  p-2 hover:bg-gray-200 text-gray-500 hover:text-blue-600 transition-all duration-200 w-10 h-9 rounded-lg 
 }
@@ -67,7 +79,10 @@
   @apply  p-2 hover:bg-gray-200 text-gray-500 hover:text-yellow-600 transition-all duration-200 w-10 h-9 rounded-lg 
 } 
 .form-control{
-  @apply w-full border px-2 outline-none ring-0  h-9 rounded-lg
+  @apply w-full text-sm border px-2 outline-none ring-0  h-9 rounded-lg
+}
+.form-control-textarea {
+  @apply h-24 text-sm outline-none focus:ring-blue-700 hover:ring-blue-700 focus:ring-1 border rounded px-2 hover:transition-all 
 }
 .form-control-x{
   @apply w-full bg-gray-100 px-2 outline-none ring-0  h-9 rounded-lg

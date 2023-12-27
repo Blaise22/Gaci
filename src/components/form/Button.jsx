@@ -1,18 +1,15 @@
 import React from 'react' 
-import PopUp from './PopUp'
-const Button = ({errorMessage,successMessage,click,className,text,loadingMessage,icon}) => {
+import Spinner from '../extra/Spinner'
+const Button = ({click,className,icon,load,title}) => {
    
   return (
     <>  
+        
         {
-            
-            <PopUp  successMessage={successMessage}  errorMessage={errorMessage} />
-        }
-        {
-            !loadingMessage ?
-            <button onClick={click} className={className+' flex justify-center items-center gap-2'}>{icon} {text}</button>
+            !load ?
+            <button onClick={click} className={className+' flex justify-center items-center gap-2'}>{icon} {title}</button>
             :
-            <button  className={className+'-light '+' cursor-not-allowed flex justify-center items-center gap-2'}> {icon} {loadingMessage}</button>
+            <button  className={className+'-light '+' cursor-not-allowed flex justify-center items-center gap-2'}><Spinner load={load} className={'w-6 h-6'} />  {title}</button>
         }
     </>
   )
