@@ -8,8 +8,8 @@ const Projects = () => {
     <>
         <Header/>
         <PubSidebar />
-        <div className='px-4 md:pl-64  md:pr-12 pt-20 lg:pr-16 w-full'>
-          <div className="grid px-4 lg:grid-cols-2  gap-4">
+        <div className='px-4 md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
+          <div className="grid md:px-4 pt-2 lg:grid-cols-2  gap-4">
               Projects
           </div>
         </div>

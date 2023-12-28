@@ -18,8 +18,8 @@ const Questions = () => {
     return (
     <>
         <Header/>
-        <div className=' pt-12 px-6 text-xs md:text-sm text-gray-700  w-full'>
-          <div className=" py-2 md:px-14 lg:px-24 ">
+        <div className='px-4  md:pr-12 pt-16 lg:pr-16 w-full'>
+          <div className="grid md:px-16 pt-2 lg:grid-cols-2  gap-4">
                
              <MainCard
                 className={'bg-white rounded-lg w-full'}

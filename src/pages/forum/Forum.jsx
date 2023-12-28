@@ -19,8 +19,8 @@ const Forum = () => {
     <>
         <Header/>
         <ForumSidebar />
-        <div className=' pt-12 px-6 text-xs md:text-sm text-gray-700  w-full'>
-          <div className="md:pl-64 py-2  ">
+        <div className='px-4 md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
+          <div className="grid md:px-4 pt-2 lg:grid-cols-2  gap-4">
                
              <MainCard
                 className={'bg-white rounded-lg w-full'}
