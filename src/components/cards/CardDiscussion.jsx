@@ -60,7 +60,7 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
                              :'' }
                              
                      </div>
-                    <span className="text-gray-700 text-xs">Publié il y'a {getPeriode(date)}</span> 
+                    <span className="text-gray-700 text-xs">Publié {getPeriode(date)}</span> 
                 </div>
             </div>
   )

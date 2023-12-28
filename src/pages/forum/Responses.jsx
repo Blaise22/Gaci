@@ -12,6 +12,7 @@ import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import DataInfo from '../../components/extra/DataInfo'
 import CreateResponseForm from '../../components/form/CreateResponseForm'
 import ForumSidebar from '../../components/partials/ForumSidebar'
+import DeletModale from '../../components/modals/DeletModale'
 const Responses = () => {
   const {id}=useParams()
   const {data:question,load:questionLoad,error:questionError}=useFetch(`/forum/question-detail/${id}/`)
@@ -20,7 +21,7 @@ const Responses = () => {
     <>
         <Header/>
         <ForumSidebar />
-        <div className='px-4 md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
+        <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
           <div className="grid md:px-4 pt-2 lg:grid-cols-2  gap-4">
         <div className=" py-2  "> 
                     <div className="flex items-center justify-between">
@@ -33,8 +34,10 @@ const Responses = () => {
                           <EllipsisHorizontalIcon className='w-5 text-gray-600' />
                             
                           </div>
-                          <div className="absolute hidden group-hover:block bg-white  shadow-md p-4 rounded-lg right-0 w-44">
-                                Hello
+                          <div className="absolute hidden group-hover:block bg-white text-right shadow-md p-4 rounded-lg right-0 w-44">
+                              <DeletModale 
+                                buttonContent={ <span className='text-red-600 p-1 hover:bg-red-100 rounded-lg'>Supprimer</span> }
+                               />
                           </div>
                         </div>
                     </div>
@@ -61,7 +64,7 @@ const Responses = () => {
                     <p className="text-gray-700 text-xs block ">
                       {
                         question?.date_add &&
-                        <span>Publié il ya {getPeriode(question?.date_add)}</span>
+                        <span>Publié {getPeriode(question?.date_add)}</span>
                       }
 
                      </p>
