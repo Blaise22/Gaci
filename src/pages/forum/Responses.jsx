@@ -114,7 +114,10 @@ const Responses = () => {
 
             </MainCard>
         </div>
-          <CreateResponseForm question={question?.pk} />
+          <CreateResponseForm 
+            questionId={question?.pk} 
+            refresh={()=>{getData('/forum/reply-list/')}}
+          />
         </div>
         </div>
     </>
