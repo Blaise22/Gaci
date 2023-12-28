@@ -35,16 +35,20 @@ const CreateQuestionForm = ({onClose}) => {
 
     reader.onload = () => {
         setDoc(reader.result);
-    }; 
+    };
+
     reader.readAsDataURL(file);
   };
   const submit=()=>{
+    //console.log(doc);
+    //console.log(image);
     const formData={
       wording:quest,
       dte:'2023-12-05',
       image64:image, 
       doc64:doc
     }
+     
     if(quest){
       create(`forum/question-list-create/`,formData)
     }else{
