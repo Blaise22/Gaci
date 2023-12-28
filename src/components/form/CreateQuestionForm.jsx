@@ -4,6 +4,7 @@ import Button from './Button'
 import PopUp from './PopUp'
 import useCreate from '../../hooks/useCreate'
 import {useNavigate} from 'react-router-dom'
+import {BookOpenIcon,CameraIcon} from '@heroicons/react/24/outline'
 const CreateQuestionForm = ({onClose}) => {
   const [formError,setFormError]=useState(null)
   const [quest,setQuestion]=useState(null)
@@ -34,8 +35,7 @@ const CreateQuestionForm = ({onClose}) => {
 
     reader.onload = () => {
         setDoc(reader.result);
-    };
-
+    }; 
     reader.readAsDataURL(file);
   };
   const submit=()=>{
@@ -72,38 +72,35 @@ const CreateQuestionForm = ({onClose}) => {
         value={quest}
 
       />
-       <div className="flex flex-col w-full">
+       
+
+
+      <div className="flex mt-2 items-center justify-between">
+        <div className="flex gap-2">
+        <div className="flex flex-col w-full">
                 <label htmlFor="" className='text-xs'>Image</label>
-                <input onChange={handleImageChange}
-                    type="file"
-                    name='picture'
-                    className="block w-full text-sm text-blue-500
-                    file:mr-4 file:py-2 file:px-4 file:rounded-md
-                        file:border-0 file:text-sm file:font-semibold
-                        file:bg-blue-50 file:text-blue-700
-                        hover:file:bg-blue-100"
-                />
+                <div className={`rounded-md border border-blue-500 bg-gray-50 p-1 hover:bg-blue-200 tran w-10 ${image && 'bg-blue-200'}`}>
+                  <label htmlFor="upload" className="flex flex-col items-center gap-2 cursor-pointer">
+                    <CameraIcon className='w-6 text-blue-600' /> 
+                  </label>
+                  <input id="upload" type="file" onChange={handleImageChange} className="hidden" />
+              </div>
+
             </div>
             <div className="flex flex-col w-full">
                 <label htmlFor="" className='text-xs'>Document</label>
-                <input onChange={handleDocChange}
-                    type="file"
-                    
-                    className="block w-full text-sm text-blue-500
-                    file:mr-4 file:py-2 file:px-4 file:rounded-md
-                        file:border-0 file:text-sm file:font-semibold
-                        file:bg-blue-50 file:text-blue-700
-                        hover:file:bg-blue-100"
-                />
+                <div className={`rounded-md border border-blue-500 bg-gray-50 p-1 hover:bg-blue-200 tran w-10 ${doc && 'bg-blue-200'}`}>
+                  <label htmlFor="uploadDoc" className="flex flex-col items-center gap-2 cursor-pointer">
+                    <BookOpenIcon className='w-6 text-blue-600' />
+                     
+                  </label>
+                  <input id="uploadDoc" type="file" onChange={handleDocChange} className="hidden" />
+              </div>
+                 
             </div>
-
-
-      <div className="flex mt-2 justify-between">
-        <div className="flex gap-2">
-
         </div>
         <Button
-        className={'btn-primary '}
+        className={'btn-primary mt-4'}
         click={submit}
         icon={null}
         load={load}

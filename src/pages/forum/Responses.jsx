@@ -73,6 +73,7 @@ const Responses = () => {
                 mainTitle={'Reponses'}
              >
               <div className="flex pb-16 gap-4 flex-col">
+                
               {
                     data?.map((item,index)=>(
                       <CardDiscussion
