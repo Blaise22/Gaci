@@ -4,12 +4,13 @@ import { FireIcon, QuestionMarkCircleIcon, TrashIcon } from '@heroicons/react/20
 import { Fragment, useState } from 'react'
 import AxiosInstance from '../../axios/AxiosInstance' 
 import PopUp from '../form/PopUp'
-export default function DeletModale({url,title,refresh,buttonContent}) {
+import {useNavigate} from 'react-router-dom'
+export default function DeletModale({url,title,refresh,buttonContent,redirectUrl}) {
   let [isOpen, setIsOpen] = useState(false)   
   let [loading, setLoading] = useState(false)  
   let [deleting, setDeleting] = useState(false)  
   let [success, setsuccess] = useState(false)  
-
+  const navigate=useNavigate()
   function closeModal() {
     setIsOpen(false)
   }
@@ -18,17 +19,17 @@ export default function DeletModale({url,title,refresh,buttonContent}) {
     setIsOpen(true)
   }
   const deletItem=()=>{
-    setDeleting(true)
+    setDeleting(true) 
     AxiosInstance.delete(url).then(res=>{
-      refresh()
       setsuccess(true)
+      
       setTimeout(() => {
         setsuccess(false)
       }, 4000);
        
     }).catch(err=>{}).finally(()=>{ 
       setDeleting(false)
-      refresh()
+      redirectUrl && navigate(redirectUrl)
       closeModal()
 
      })
@@ -42,12 +43,12 @@ export default function DeletModale({url,title,refresh,buttonContent}) {
         successMessage={success ?'Suppresson resussie.':null}
         errorMessage={null}  
        />
-        <div type="button" className='text-right' onClick={openModal} >
+        <div  className='text-left w-full' onClick={openModal} >
             {buttonContent}
         </div>
       </div> 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-50" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
