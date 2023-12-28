@@ -58,11 +58,11 @@ const Responses = () => {
                 <div className="flex justify-between mt-1 gap-2">
                         {
                             question?.doc &&
-                            <button className='p-1 rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200'>Lire le document</button>
+                            <button className='p-1 rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200'>Lire le document</button>
                         }
                         {
                             question?.image &&
-                            <button className='p-1 rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200'>Voir l'image</button>
+                            <button className='p-1 rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200'>Voir l'image</button>
                         }
                     </div> 
                <div className="flex mt-2 justify-between">
