@@ -1,13 +1,15 @@
 import ArticleCard from '../../components/cards/ArticleCard'
 import Header from '../../components/partials/Header'
 import React from 'react'
+import PubSidebar from '../../components/partials/PubSidebar'
 
 const Publications = () => {
   return (
     <>
         <Header/>
-        <div className='px-4 md:px-12 pt-20 lg:px-16 w-full'>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3  gap-4">
+        <PubSidebar />
+        <div className='px-4 md:pl-64  md:pr-12 pt-20 lg:pr-16 w-full'>
+          <div className="grid px-4 lg:grid-cols-2  gap-4">
               <ArticleCard data={''} />
               <ArticleCard data={''} />
               <ArticleCard data={''} />
