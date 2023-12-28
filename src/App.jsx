@@ -10,6 +10,7 @@ import Profil from './pages/profil/Profil'
 import Publications from './pages/publication/Publications'
 import Questions from './pages/forum/Questions'
 import Responses from './pages/forum/Responses'
+import Projects from './pages/publication/Projects'
 function App() { 
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
 
               <Route path='/profil' element={<Profil/>}/> 
               <Route path='/publications' element={<Publications/>}/> 
+              <Route path='/projets' element={<Projects/>}/> 
             </Route>
              
           </Routes>
