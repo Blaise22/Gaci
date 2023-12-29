@@ -12,6 +12,7 @@ import DataInfo from '../../components/extra/DataInfo'
 import NavigationPageCard from '../../components/cards/NavigationPageCard' 
 import PubSidebar from '../../components/partials/PubSidebar'
 import ArticleCard from '../../components/cards/ArticleCard'
+import PublicationModal from '../../components/modals/PublicationModal'
 
 const Publications = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-published-list`)
@@ -28,8 +29,8 @@ const Publications = () => {
                 mainIcon={null}
                 mainTitle={'Publications'}
                 sideHeaderContent={
-                    <MainModal
-                        modalTitle={'Question'}
+                    <PublicationModal
+                        modalTitle={'Puplication'}
                         mainButton={
                             <button className='flex gap-0 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
                             <PlusIcon className='w-6 text-gray-700' />
@@ -39,7 +40,7 @@ const Publications = () => {
                          
                         >
                               
-                        </MainModal>
+                        </PublicationModal>
                         }
              >
               <div className="flex gap-4 flex-col">

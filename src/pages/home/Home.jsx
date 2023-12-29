@@ -9,7 +9,6 @@ import useFetchPaginate from '../../hooks/useFetchPaginate'
 const Home = () => {
   const user=useUser()
   const {data,load,error}=useFetchPaginate(`/pub/project-list`)
-   
   return (
     <>
         <Header/> 

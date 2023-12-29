@@ -4,8 +4,9 @@ import { Fragment, useState } from 'react'
 import MainCard from '../cards/MainCard'
 import {XMarkIcon} from '@heroicons/react/20/solid'
 import CreateQuestionForm from '../form/CreateQuestionForm'
+import CreatePubForm from '../form/CreatePubForm'
 
-export default function QuestionModal({mainButton,modalTitle}) {
+export default function PublicationModal({mainButton,modalTitle}) {
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -60,7 +61,7 @@ export default function QuestionModal({mainButton,modalTitle}) {
                         <XMarkIcon onClick={closeModal} className='icon-danger' />
                        } >
                       <div className="px-4">
-                      <CreateQuestionForm  onClose={closeModal}  />
+                      <CreatePubForm  onClose={closeModal}  />
                       </div>
 
                    </MainCard>

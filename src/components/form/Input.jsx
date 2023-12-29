@@ -4,9 +4,9 @@ const Input = ({type,value,label,onChange,name,placeholder}) => {
     
     const handleInput=(type,value,name,placeholder)=>{
         if(type=='text'){
-            return <input type='text'name={name?name:''} placeholder={placeholder?placeholder:''}  onChange={(e)=>{onChange(e.target.value)}} className='form-control w-full' value={value?value:undefined} />
+            return <input type='text'name={name?name:''} placeholder={placeholder?placeholder:''}  onChange={(e)=>{onChange(e.target.value)}} className='form-control w-full' value={value?value:''} />
         }else if(type=='date'){
-            return <input type='date'name={name?name:''} placeholder={placeholder?placeholder:''}  onChange={(e)=>{onChange(e.target.value)}} className='form-control w-full' value={value?value:undefined} />
+            return <input type='date'name={name?name:''} placeholder={placeholder?placeholder:''}  onChange={(e)=>{onChange(e.target.value)}} className='form-control w-full' value={value?value:''} />
         }
         else if(type=='file'){
             return <input type='file'name={name?name:''} placeholder={placeholder?placeholder:''}  onChange={(e)=>{onChange(e.target.files[0])}} className='form-control w-full' value={value?value:undefined} />
