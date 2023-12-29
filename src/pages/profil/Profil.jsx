@@ -12,6 +12,7 @@ import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import PubSidebar from '../../components/partials/PubSidebar'
 import ArticleCard from '../../components/cards/ArticleCard'
 import PublicationModal from '../../components/modals/PublicationModal'
+import MyProfil from './MyProfil'
 
 const Profil = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-list-create/`)
@@ -21,7 +22,13 @@ const Profil = () => {
         <PubSidebar />
         <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
           <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  pt-6  gap-4">
-               
+              <MainCard 
+                  className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
+                  mainIcon={null}
+                  mainTitle={'Mon profil'}
+              >
+                <MyProfil />
+              </MainCard>
              <MainCard
                 className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
                 mainIcon={null}
@@ -53,6 +60,7 @@ const Profil = () => {
                       title={item.title}
                       user={item.user.names}
                       userPk={item.user.pk}
+                      refresh={()=>{ getData(`/pub/post-list-create/`) }}
                     />
                   ))
                 }

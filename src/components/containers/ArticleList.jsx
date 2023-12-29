@@ -8,8 +8,10 @@ const ArticleList = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-published-list`)
   return (
     <>
-        <span className="text-lg font-bold text-blue-600">Publications recentes</span>
-        <div className="grid grid-cols-1 mt-4 gap-4">
+    
+        <div className='flex flex-col items-center w-full'>
+        <span className="text-lg text-left block w-full  md:w-96 lg:w-[80%] font-bold text-blue-600">Publications recentes</span>
+        <div className="grid grid-cols-1 w-full md:w-96 lg:w-[80%] mt-4 gap-4">
         { !load && 
                   data?.slice(0,6).map((item,index)=>(
                     <ArticleCard 
@@ -34,6 +36,7 @@ const ArticleList = () => {
                     load={load}
                 />
         </div>  
+    </div>
     </>
   )
 }

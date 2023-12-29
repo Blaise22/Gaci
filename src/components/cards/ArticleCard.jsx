@@ -6,8 +6,9 @@ import {QuestionMarkCircleIcon,EllipsisHorizontalIcon} from '@heroicons/react/20
 import DeletModale from '../modals/DeletModale'
 import useUser from '../../hooks/useUser'
 import { Link } from 'react-router-dom'
-const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk}) => {
+const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) => {
   const user=useUser()
+  console.log(user);
   return (
    <>
         <div className="w-full flex shadow-md rounded-lg flex-col">
@@ -29,12 +30,13 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk}) => {
                           </div>
                           <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-44">
                               {
-                                user?.user.pk==userPk &&
+                                user?.user?.pk==userPk &&
                                 <DeletModale 
                                   buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-2 hover:bg-red-100 rounded-lg'>Supprimer</span> }
                                   redirectUrl={null}
                                   title={'Supprimer une publication'}
-                                  url={`/forum/question-delete/${pk}/`}
+                                  url={`/pub/post-delete/${pk}/`}
+                                  refresh={refresh}
 
                                 />
                               }

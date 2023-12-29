@@ -9,11 +9,13 @@ import useFetchPaginate from '../../hooks/useFetchPaginate'
 const Home = () => {
   const user=useUser()
   const {data,load,error}=useFetchPaginate(`/pub/project-list`)
+  console.log(user);
   return (
     <>
         <Header/> 
         <div className='px-4 text-xs md:text-sm md:px-12 pt-14 lg:px-16 w-full'>
           <FrontImage/> 
+          
           <ArticleList/> 
         </div>
       </> 

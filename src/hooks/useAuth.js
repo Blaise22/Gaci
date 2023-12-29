@@ -1,29 +1,24 @@
 import React, { useContext, useState } from 'react'
 import AxiosInstance from '../axios/AxiosInstance'
 import { Link, useNavigate } from 'react-router-dom'; 
-import { jwtDecode } from 'jwt-decode'; 
-import { AuthContext } from '../context/auth/AuthContext';
+import { jwtDecode } from 'jwt-decode';  
 const useAuth = () => {
     const [load,setLoad]=useState(false) 
     const [error,setError]=useState(false) 
-    const navigate=useNavigate()
-    const {setUser}=useContext(AuthContext)
+    const navigate=useNavigate() 
     async function login(credentials){
         setLoad(true) 
         AxiosInstance.post(`/auth/login/`,credentials).then((result) => {
             if(result?.data){
                 localStorage.setItem('accessToken',result?.data.token.access); 
                 localStorage.setItem('refreshToken',result?.data.token.refresh); 
-                setUser({
-                    user:result?.data.data.user_auth,
-                    profil:result?.data.data.user_profile
-                })
+                localStorage.setItem('user',JSON.stringify(result?.data.data.user_auth))
+                localStorage.setItem('profil',JSON.stringify(result?.data.data.user_profile))
                 navigate('/')
             }
         }).catch((err) => {
             if(err){
-                setError(true)
-                console.log(err);
+                setError(true) 
             }
         }).finally(()=>{
             setLoad(false)
@@ -36,7 +31,9 @@ const useAuth = () => {
         try {
             localStorage.removeItem('accessToken')
             localStorage.removeItem('refreshToken')
-            setUser(null)
+            localStorage.removeItem('user')
+            localStorage.removeItem('profil')
+             
         } catch (error) {  }
         finally {
             navigate('/connexion')

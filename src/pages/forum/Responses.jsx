@@ -13,12 +13,13 @@ import DataInfo from '../../components/extra/DataInfo'
 import CreateResponseForm from '../../components/form/CreateResponseForm'
 import ForumSidebar from '../../components/partials/ForumSidebar'
 import DeletModale from '../../components/modals/DeletModale'
+import useUser from '../../hooks/useUser'
 const Responses = () => {
   const {id}=useParams()
   const nav=useNavigate()
   const {data:question,load:questionLoad,error:questionError,getData:getQuestionsData}=useFetch(`/forum/question-detail/${id}/`)
   const {data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list/`)
-  
+  const user=useUser()
   return (
     <>
         <Header/>
@@ -37,13 +38,16 @@ const Responses = () => {
                             
                           </div>
                           <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-44">
-                              <DeletModale 
-                                buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-2 hover:bg-red-100 rounded-lg'>Supprimer ma question</span> }
-                                redirectUrl={'/forum/questions'}
-                                title={'Supprimer une question'}
-                                url={`/forum/question-delete/${id}/`}
-
-                              />
+                              {
+                                user?.user.pk==question?.user.pk &&
+                                <DeletModale 
+                                  buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-2 hover:bg-red-100 rounded-md'>Supprimer ma question</span> }
+                                  redirectUrl={'/forum/questions'}
+                                  title={'Supprimer une question'}
+                                  url={`/forum/question-delete/${id}/`}
+                                  refresh={()=>{}}
+                                />
+                              }
                           </div>
                         </div>
                     </div>

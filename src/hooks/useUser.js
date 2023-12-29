@@ -1,8 +1,12 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../context/auth/AuthContext'
 
 const useUser = () => {
-    const {user}=useContext(AuthContext)
+    const userData= JSON.parse(localStorage.getItem('user'))
+    const profilData= JSON.parse(localStorage.getItem('profil'))
+    const user={
+        user:userData,
+        profil:profilData
+    }
     return user
 }
 

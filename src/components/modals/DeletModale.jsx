@@ -31,6 +31,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
       setDeleting(false)
       redirectUrl && navigate(redirectUrl)
       closeModal()
+      refresh()
 
      })
   } 
