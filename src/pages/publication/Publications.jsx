@@ -10,12 +10,11 @@ import useFetchPaginate from '../../hooks/useFetchPaginate'
 import Spinner from '../../components/extra/Spinner'
 import DataInfo from '../../components/extra/DataInfo'
 import NavigationPageCard from '../../components/cards/NavigationPageCard' 
-import CreateQuestionForm from '../../components/form/CreateQuestionForm'
 import PubSidebar from '../../components/partials/PubSidebar'
 import ArticleCard from '../../components/cards/ArticleCard'
 
 const Publications = () => {
-  const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-list-create/`)
+  const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-published-list`)
     console.log(error);
     return (
     <>
@@ -46,7 +45,16 @@ const Publications = () => {
               <div className="flex gap-4 flex-col">
                 { !load && 
                   data?.map((item,index)=>(
-                    <ArticleCard data={''} />
+                    <ArticleCard 
+                      key={index}
+                      pk={item.pk}
+                      date={item.date_add}
+                      image={item.image}
+                      synthesis={item.synthesis}
+                      title={item.title}
+                      user={item.user.names}
+                      userPk={item.user.pk}
+                    />
                   ))
                 }
                 <Spinner 
