@@ -7,8 +7,7 @@ import DeletModale from '../modals/DeletModale'
 import useUser from '../../hooks/useUser'
 import { Link } from 'react-router-dom'
 const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) => {
-  const user=useUser()
-  console.log(user);
+  const user=useUser() 
   return (
    <>
         <div className="w-full flex shadow-md rounded-lg flex-col">
@@ -45,7 +44,7 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                 </div>
                 <Link to={'/publication/'+pk}>
                   <h1 className='text-blue-600 text-lg font-semibold'>{title}</h1>
-                  <h1 className='text-sm'>{synthesis}</h1>
+                  <h1 className='text-sm text-gray-600'>{synthesis}</h1>
                   <span className="text-xs block flex justify-end">publié {getPeriode(date)}</span>
                 </Link>
             </div>
