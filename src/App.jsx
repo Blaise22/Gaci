@@ -21,6 +21,8 @@ function App() {
             <Route path='/' element={<Home/>}/> 
 
             <Route element={<ProtectedRoutes/>}> 
+              <Route path='/profil' element={<Profil/>}/> 
+
               <Route path='/forum' element={<Forum/>}/> 
               <Route path='/forum/questions' element={<Questions/>}/> 
               <Route path='/forum/question/:id/reponses' element={<Responses/>}/> 

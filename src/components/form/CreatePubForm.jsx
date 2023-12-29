@@ -15,7 +15,7 @@ const CreatePubForm = ({onClose}) => {
   const {create,res,load, error, success}=useCreate()
   const navigate=useNavigate()
   useEffect(() => {
-     
+    res?.pk && navigate('/publications')
     if(success){
       onClose()
     }
@@ -73,7 +73,7 @@ const CreatePubForm = ({onClose}) => {
         onChange={settitle}
         value={title}
         label={'Titre'}
-
+        
 
       />
       <Input 

@@ -8,7 +8,7 @@ import useAuth from '../../hooks/useAuth'
 import useUser from '../../hooks/useUser'
  
 export default function ProfilCard() { 
-    const router=useNavigate()
+    const navigate=useNavigate()
     const {logout}=useAuth() 
     const user=useUser()  
   return (
@@ -51,6 +51,15 @@ export default function ProfilCard() {
               </Menu.Item>
                
                
+              <Menu.Item>
+                {({ active }) => (
+                  
+                  <button onClick={()=>{navigate('/profil')}} className={`${ active ? 'bg-gray-300 text-white' : 'text-gray-700' } transition-colors duration-300 group gap-2 flex w-full items-center justify-center rounded-md px-2 py-2 text-sm`}>
+                    <UserCircleIcon className='w-8' />
+                    Mon compte
+                  </button>
+                )}
+              </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
                   

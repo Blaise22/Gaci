@@ -25,23 +25,10 @@ const Publications = () => {
           <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  pt-6  gap-4">
                
              <MainCard
-                className={'bg-white rounded-lg w-full'}
+                className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
                 mainIcon={null}
                 mainTitle={'Publications'}
-                sideHeaderContent={
-                    <PublicationModal
-                        modalTitle={'Puplication'}
-                        mainButton={
-                            <button className='flex gap-0 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
-                            <PlusIcon className='w-6 text-gray-700' />
-                            Créer 
-                            </button>
-                        } 
-                         
-                        >
-                              
-                        </PublicationModal>
-                        }
+                sideHeaderContent={  null }
              >
               <div className="flex gap-4 flex-col">
                 { !load && 
