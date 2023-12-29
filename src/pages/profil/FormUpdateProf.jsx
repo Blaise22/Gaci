@@ -2,8 +2,10 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import React, { useState } from 'react'
 import AxiosInstance from '../../axios/AxiosInstance' 
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../../components/extra/Spinner';
 const FormUpdateProf = ({close,updatingData}) => {
     const nav=useNavigate()
+    const [error,setError]=useState(null)
     const [image,setImage]=useState()
     const [loading, setLoading]=useState(false)
     const [data,setData]=useState({
@@ -27,34 +29,40 @@ const FormUpdateProf = ({close,updatingData}) => {
     
         reader.readAsDataURL(file);
       };
-      const create=()=>{ 
-        if(image){
-            const mainShop=JSON.parse(localStorage.getItem('mainShop'))
-            const mainShopId=mainShop.pk
-            const formData= new FormData()
-            formData.append('kind',data?.kind)
-            formData.append('bio' ,data?.bio)
-            formData.append('adress',data?.adress,)
-            formData.append('picture64',image)
-            setLoading(true)
+      const create=()=>{  
+            const formData= {
+                kind:data?.kind,
+                bio:data?.bio,
+                adress:data?.adress,
+                picture64:image
+            } 
+            if(image){
+                setLoading(true)
+
+            
             AxiosInstance.put(`auth/profile-update/${updatingData.pk}/`,formData).then(res=>{
-                const profil= {user: res.data.user, kind: res.data.kind, bio: res.data.bio, adress: res.data.adress, picture: res.data.picture}
-                localStorage.setItem('profil', JSON.stringify(profil))
-                 
+                localStorage.setItem('profil',JSON.stringify(
+                    {
+                        adress:res.data.adress,
+                        bio:res.data.bio,
+                        kind:res.data.kind,
+                        picture:res.data.picture,
+                        user:res.data.user,          
+                    }
+                ))
                 
             }).catch(err=>{
-                 
+                
             }).finally(()=>{
                 setTimeout(() => {
-                    setLoading(false)
-                    close()
-                    nav('/configuration/')
-                }, 1500);
+                   setLoading(false)
+                   close()
+                   nav('/publications')
+               }, 1500);
+                
             })
         }else{
-            toast.error("Selectionner une photo !", {
-                position: toast.POSITION.TOP_RIGHT
-            });
+            setError('Veuillez choisir une image')
         }
       } 
   return (
@@ -66,6 +74,7 @@ const FormUpdateProf = ({close,updatingData}) => {
             <XMarkIcon className='icon-danger z-0' onClick={close} />
         </div>
         <div className="mt-2">
+            <span className="text-red-600">{error?error:''}</span>
             <div className="flex flex-col w-full">
                 <label htmlFor="" className='text-xs'>Genre</label>
                 <select  onChange={handleChange} name="kind" id="" className='form-control'>
@@ -80,7 +89,7 @@ const FormUpdateProf = ({close,updatingData}) => {
             </div>
             <div className="flex flex-col w-full">
                 <label htmlFor="" className='text-xs'>Bio</label>
-                <textarea onChange={handleChange} value={data.bio} name="bio" id="" className='w-full border px-2 outline-none ring-0  h-16 rounded-lg focus:ring-1 focus:ring-green-500' >
+                <textarea onChange={handleChange} value={data.bio} name="bio" id="" className='w-full border px-2 outline-none ring-0  h-16 rounded-lg focus:ring-1 focus:ring-blue-500' >
                 </textarea>
             </div>
             <div className="flex flex-col w-full">
@@ -88,20 +97,23 @@ const FormUpdateProf = ({close,updatingData}) => {
                 <input onChange={handleImageChange}
                     type="file"
                     name='picture'
-                    className="block w-full text-sm text-green-500
+                    className="block w-full text-sm text-blue-500
                     file:mr-4 file:py-2 file:px-4 file:rounded-md
                         file:border-0 file:text-sm file:font-semibold
-                        file:bg-green-50 file:text-green-700
-                        hover:file:bg-green-100"
+                        file:bg-blue-50 file:text-blue-700
+                        hover:file:bg-blue-100"
                 />
             </div>
             <div className="flex justify-end w-full">
                 
                 {
                 !loading ?
-                <button onClick={create} className='btn-primary'>Enregistrer</button>
+                    <button onClick={create} className='btn-primary'>Enregistrer</button>
                         :
-                    <span className='bg-green-500 rounded-md px-2 text-white py-1.5 flex items-center'>Enregistrement en cours ...</span>
+                    <span className='bg-blue-500 block gap-2 rounded-md px-2 text-white py-1.5 flex items-center flex items-center'>
+                        <Spinner load={loading} className={'w-5 h-5'} />
+                        Enregistrer
+                    </span>
                 }
             </div>
         </div>

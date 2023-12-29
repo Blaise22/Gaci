@@ -21,13 +21,11 @@ const MyProfil = () => {
   const profil= user?.profil  
   return (
     <div className=" w-[100%] flex items-center justify-center">
-      <div className="bg-white w-full rounded-lg  p-4">
-        <div className="flex  justify-between">
-          <h2 className="text-xl text-gray-700 font-bold mb-4">Mon compte</h2>
-          
-        </div>
+      <div className="bg-white w-full rounded-lg  px-4">
+         
         <div className="mb-4">
-          <div className="flex z-0 relative items-center">
+          <div className="flex  z-0 relative items-center">
+             
             {
                
               profil?.picture ?
@@ -71,11 +69,11 @@ const MyProfil = () => {
             {
                 openUpdateProf ? 
                      profil &&
-                    <FormUpdateProf updatingData={profil} close={()=>{setOpenUpdateProf(!openUpdateProf)}} />
+                    <FormUpdateProf updatingData={authUserProfil} close={()=>{setOpenUpdateProf(!openUpdateProf)}} />
                 :null
             }  
           </div>
-          <p className="text-secondary">{data?.email}</p>
+          <p className="text-lg text-gray-700 font-bold">{data?.names}</p>
         </div>
         {/* Bouton pour ouvrir le modal */}
         {/* Modal */}
@@ -93,9 +91,9 @@ const MyProfil = () => {
               <>
                 {/* Contenu du modal */}
                 <Disclosure.Panel>
-                  <div className="bg-white rounded-lg mt-4 mb-4">
+                  <div className="bg-white text-md rounded-lg mt-4 mb-4">
                     
-                    <p>Nom: {data?.names}</p>
+                     
                     <p>Email: {data?.email}</p>
                     <p>Téléphone: {data?.phone_number}</p>
                     <p>Staff: {data?.staff ? "Oui":"Non"} </p>
