@@ -51,14 +51,13 @@ const FormUpdateProf = ({close,updatingData}) => {
                     }
                 ))
                 
+                setLoading(false)
+                close()
+                nav('/publications')
             }).catch(err=>{
                 
             }).finally(()=>{
-                setTimeout(() => {
-                   setLoading(false)
-                   close()
-                   nav('/publications')
-               }, 1500);
+                
                 
             })
         }else{

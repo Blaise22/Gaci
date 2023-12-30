@@ -3,6 +3,7 @@ import React from 'react'
 import Thumbail from '../../assets/img.jpg' 
 import getPeriode from '../../helpers/utils/getPeriode'
 import {QuestionMarkCircleIcon,EllipsisHorizontalIcon} from '@heroicons/react/20/solid'
+import {EyeIcon} from '@heroicons/react/24/outline'
 import DeletModale from '../modals/DeletModale'
 import useUser from '../../hooks/useUser'
 import { Link } from 'react-router-dom'
@@ -11,15 +12,15 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
   return (
    <>
         <div className="w-full flex shadow-md rounded-lg flex-col">
-          <Link to={'/publication/'+pk} className='block w-full'>
+          
             {
               image ?
               <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
               <img src={Thumbail} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
 
             }
-             </Link>
-            <div className="flex px-2 pb-2 flex-col">
+             
+            <div className="flex px-4 pb-4 flex-col">
                 <div className="flex items-center justify-between">
                   <h1 className='text-gray-700 text-md font-semibold'>Publié par {names}</h1>
                   <div className="relative group py-2">
@@ -42,11 +43,19 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                           </div>
                         </div>
                 </div>
-                <Link to={'/publication/'+pk}>
                   <h1 className='text-blue-600 text-lg font-semibold'>{title}</h1>
                   <h1 className='text-sm text-gray-600'>{synthesis}</h1>
-                  <span className="text-xs block flex justify-end">publié {getPeriode(date)}</span>
-                </Link>
+                  <div className="flex w-full items-center mt-2 justify-between">
+                    <div className="flex gap-2 items-center">
+                      {
+                        user?.user?.staff &&
+                        <Link to={'/publication/'+pk}>
+                            <EyeIcon className='icon-primary' />
+                        </Link>
+                      }
+                    </div>
+                    <span className="text-xs block flex justify-end">publié {getPeriode(date)}</span>
+                  </div>
             </div>
 
         </div>

@@ -46,11 +46,10 @@ const FormCreateProf = ({close}) => {
                     user:res.data.user,          
                 }
             ))
-            setTimeout(() => {
-                setLoading(false)
-                close()
-                nav('/publications')
-            }, 1500);
+            setLoading(false)
+            close()
+            nav('/publications')
+             
             
         }).catch(err=>{
             setLoading(false)
