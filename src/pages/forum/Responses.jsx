@@ -101,6 +101,7 @@ const Responses = () => {
                         pk={item.pk}
                         status={item.status}
                         isResPage={true}
+                        deleteUrl={`/forum/reply-delete/${item.pk}/`}
                       />
                     ))
                 }

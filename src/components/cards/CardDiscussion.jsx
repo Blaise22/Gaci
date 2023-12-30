@@ -7,7 +7,7 @@ import useFetch from '../../hooks/useFetch'
 import sliceString from '../../helpers/utils/sliceString'
 import { Link } from 'react-router-dom'
 import getPeriode from '../../helpers/utils/getPeriode'
-const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status,isResPage}) => {
+const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status,isResPage,deleteUrl}) => {
      const user=useUser()
      const {data:profil}=useFetch(`auth/profile-user-id-detail/${owner?.pk}/`)  
   return (
@@ -58,7 +58,7 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
                 <div className="flex mt-2 items-center justify-between gap-2">
                     <div className=" gap-2 items-center z-0 cursor-pointer w-10 justify-center rounded-md"> 
                              { user?.user?.pk==owner?.pk ? 
-                                <DeleteItem url={`/forum/reply-delete/${pk}/`} refresh={refresh} />
+                                <DeleteItem url={deleteUrl} refresh={refresh} />
                              
                              :'' }
                              

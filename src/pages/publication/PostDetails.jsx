@@ -11,7 +11,7 @@ import useFetchPaginate from '../../hooks/useFetchPaginate'
 import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import DataInfo from '../../components/extra/DataInfo'
 import CardDiscussion from '../../components/cards/CardDiscussion'
-import CreateCommentForm from '../../components/form/CreateCommentForm'
+import CreateCommentForm from '../../components/form/CreateCommentForm' 
 
 const PostDetails = () => {
     const {id}=useParams()
@@ -46,7 +46,7 @@ const PostDetails = () => {
                   load={load} 
                   className='w-14 h-14 lg:w-20 lg:w-24' 
                 />
-                <span className="text-lg font-bold block">Commentaires</span>
+                <span className="text-lg font-bold block">Commentaires {!loadComments &&`- ${count}`}</span>
                 <div className="mt-2">
                     {
                         comments?.map((item,index)=>(
@@ -62,6 +62,7 @@ const PostDetails = () => {
                             pk={item.pk}
                             status={item.status}
                             isResPage={false}
+                            deleteUrl={`/pub/coment-delete/${item.pk}/`}
                             />
                         ))
                     }

@@ -43,6 +43,7 @@ const Forum = () => {
                         pk={item.pk}
                         status={item.status}
                         isResPage={false}
+                        deleteUrl={`/forum/reply-delete/${item.pk}/`}
                       />
                     ))
                 }
