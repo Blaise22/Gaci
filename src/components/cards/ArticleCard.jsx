@@ -3,7 +3,7 @@ import React from 'react'
 import Thumbail from '../../assets/img.jpg' 
 import getPeriode from '../../helpers/utils/getPeriode'
 import {QuestionMarkCircleIcon,EllipsisHorizontalIcon} from '@heroicons/react/20/solid'
-import {EyeIcon} from '@heroicons/react/24/outline'
+import {ChatBubbleLeftIcon} from '@heroicons/react/24/outline'
 import DeletModale from '../modals/DeletModale'
 import useUser from '../../hooks/useUser'
 import { Link } from 'react-router-dom'
@@ -46,13 +46,11 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                   <h1 className='text-blue-600 text-lg font-semibold'>{title}</h1>
                   <h1 className='text-sm text-gray-600'>{synthesis}</h1>
                   <div className="flex w-full items-center mt-2 justify-between">
-                    <div className="flex gap-2 items-center">
-                      {
-                        user?.user?.staff &&
+                    <div className="flex gap-2 items-center"> 
                         <Link to={'/publication/'+pk}>
-                            <EyeIcon className='icon-primary' />
+                            <ChatBubbleLeftIcon className='icon-primary' />
                         </Link>
-                      }
+                      
                     </div>
                     <span className="text-xs block flex justify-end">publié {getPeriode(date)}</span>
                   </div>

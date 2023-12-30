@@ -1,22 +1,23 @@
 
 import React from 'react'
-import Header from '../../components/partials/Header'
-import ForumSidebar from '../../components/partials/ForumSidebar'
+import Header from '../../components/partials/Header' 
 import MainCard from '../../components/cards/MainCard'
-import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid'
-import QuestionCard from '../../components/cards/QuestionCard'
-import MainModal from '../../components/modals/QuestionModal'
+import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid' 
+import Spinner from '../../components/extra/Spinner' 
+import PubSidebar from '../../components/partials/PubSidebar' 
+import useFetch from '../../hooks/useFetch'
+import {useParams} from 'react-router-dom'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
-import Spinner from '../../components/extra/Spinner'
+import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import DataInfo from '../../components/extra/DataInfo'
-import NavigationPageCard from '../../components/cards/NavigationPageCard' 
-import PubSidebar from '../../components/partials/PubSidebar'
-import ArticleCard from '../../components/cards/ArticleCard'
-import PublicationModal from '../../components/modals/PublicationModal'
+import CardDiscussion from '../../components/cards/CardDiscussion'
+import CreateCommentForm from '../../components/form/CreateCommentForm'
 
 const PostDetails = () => {
-  const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-published-list`)
-    console.log(error);
+    const {id}=useParams()
+    const { data,load,error}=useFetch(`/pub/post-staff-detail/${id}`)
+    const { data:comments,load:loadComments,count,prev,next, error:commentErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/coment-post-list/${id}/`)
+    console.log(comments);
     return (
     <>
         <Header/>
@@ -30,28 +31,64 @@ const PostDetails = () => {
                 mainTitle={'Publication'}
                 sideHeaderContent={  null }
              >
-              <div className="flex gap-4 flex-col">
+              <div className="flex gap-4 flex-col text-gray-700">
+                {
+                    // for only staff (post details)
+                    data && 
+                    <div className="block">
+                        <span className="text-lg font-bold ">{data?.title}</span>
+
+                    </div>
+                }
+
                  
                 <Spinner 
                   load={load} 
                   className='w-14 h-14 lg:w-20 lg:w-24' 
                 />
+                <span className="text-lg font-bold block">Commentaires</span>
+                <div className="mt-2">
+                    {
+                        comments?.map((item,index)=>(
+                            <CardDiscussion 
+                            key={index}
+                            message={item?.message}
+                            date={item?.date_add}
+                            doc={null}
+                            image={null}
+                            owner={item?.user}
+                            question={null}
+                            refresh={()=>{getData(`/pub/coment-post-list/${id}/`)}}
+                            pk={item.pk}
+                            status={item.status}
+                            isResPage={false}
+                            />
+                        ))
+                    }
+                </div>
                 <DataInfo 
-                    errorStatus={error}
-                    len={data?.length} 
-                    load={load}
+                    errorStatus={commentErrors}
+                    len={comments?.length} 
+                    load={loadComments}
                 />
                 <NavigationPageCard
-                  load={load}
+                  load={loadComments}
                   count={count} 
                   next={next}
                   prev={prev}
                   nextPage={nextPage}
                   prevPage={prevPage}
                 />
+                 
+                 
 
               </div> 
              </MainCard>
+                <CreateCommentForm 
+                    postId={id}
+                    refresh={()=>{getData(`/pub/coment-post-list/${id}/`)}}
+
+                />
           </div>
         </div>
     </>

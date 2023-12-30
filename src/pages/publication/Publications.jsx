@@ -16,7 +16,7 @@ import PublicationModal from '../../components/modals/PublicationModal'
 
 const Publications = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-published-list`)
-    console.log(error);
+    
     return (
     <>
         <Header/>

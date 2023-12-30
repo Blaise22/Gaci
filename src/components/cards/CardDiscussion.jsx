@@ -29,19 +29,22 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
                      
                 </div>
                 <div className={"text-gray-700 p-1 border-b mt-1 "}>
-                    {message}    
+                    <div className={`block w-auto my-2 p-2 rounded-lg ${user?.user?.pk==owner?.pk ?'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-600'}`}>
+                        {message} 
+                    </div>   
                     <div className="flex justify-between mt-1 gap-2">
                         {
                             doc &&
-                            <button className='p-1 rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200'>Lire le document</button>
+                            <button className='p-1 rounded-md text-blue-600  hover:bg-blue-200'>Lire le document</button>
                         }
                         {
                             image &&
-                            <button className='p-1 rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200'>Voir l'image</button>
+                            <button className='p-1 rounded-md text-blue-600  hover:bg-blue-200'>Voir l'image</button>
                         }
                     </div>                  
                 </div>
                 {
+                    question &&
                     !isResPage &&
                     <div className="w-full flex flex-col mt-1 gap-1">
                         <span className='text-blue-600'>Question</span>
