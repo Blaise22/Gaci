@@ -9,11 +9,13 @@ const useAuth = () => {
     async function login(credentials){
         setLoad(true) 
         AxiosInstance.post(`/auth/login/`,credentials).then((result) => {
-            if(result?.data){
+            if(result?.data){ 
                 localStorage.setItem('accessToken',result?.data.token.access); 
                 localStorage.setItem('refreshToken',result?.data.token.refresh); 
                 localStorage.setItem('user',JSON.stringify(result?.data.data.user_auth))
-                localStorage.setItem('profil',JSON.stringify(result?.data.data.user_profile))
+                AxiosInstance.get(`/auth/profile-user-id-detail/${result?.data.data.user_auth.pk}/`).then(profilResult=>{  profilResult.data && localStorage.setItem('profil',JSON.stringify(profilResult.data)) })
+                
+                
                 navigate('/')
             }
         }).catch((err) => {

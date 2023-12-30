@@ -41,7 +41,7 @@ const CreateCommentForm = ({postId,refresh}) => {
     return (
         <>
         {!isExtended && 
-        <button onClick={()=>{setIsextended(true)}} className=' fixed bottom-4 right-4 flex font-bold   p-2 bg-blue-600 text-lg group text-white rounded-lg gap-2 items-center'>
+        <button onClick={()=>{setIsextended(true)}} className=' fixed bottom-4 right-4 flex font-bold z-40  p-2 bg-blue-600 text-lg group text-white rounded-lg gap-2 items-center'>
             <ChatBubbleLeftIcon  className='w-7' />
             Commenter
         </button> 

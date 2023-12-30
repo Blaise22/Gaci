@@ -17,6 +17,7 @@ import useUser from '../../hooks/useUser'
 import Thumbail from '../../assets/img.jpg'
 import getPeriode from '../../helpers/utils/getPeriode'
 import DeletModale from '../../components/modals/DeletModale'
+import ArticleSidebar from '../../components/partials/ArticleSidebar'
 const PostDetails = () => {
     const {id}=useParams()
     const navigate=useNavigate()
@@ -31,10 +32,11 @@ const PostDetails = () => {
         <Header/>
         <PubSidebar />
         <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
-          <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  pt-6  gap-4">
+          <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  ">
+            <ArticleSidebar />
                
              <MainCard
-                className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
+                className={'bg-white rounded-lg mt-8 w-full md:w-96 lg:w-[80%]'}
                 mainIcon={<InboxIcon className='w-8 text-gray-700' />}
                 mainTitle={'Publication'}
                 sideHeaderContent={  
