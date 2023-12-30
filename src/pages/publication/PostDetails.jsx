@@ -1,8 +1,9 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../components/partials/Header' 
 import MainCard from '../../components/cards/MainCard'
-import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid' 
+import {QuestionMarkCircleIcon,PlusIcon,UserCircleIcon,ChevronUpIcon,ChevronDownIcon,BookmarkIcon} from '@heroicons/react/20/solid' 
+import {InboxIcon} from '@heroicons/react/24/outline' 
 import Spinner from '../../components/extra/Spinner' 
 import PubSidebar from '../../components/partials/PubSidebar' 
 import useFetch from '../../hooks/useFetch'
@@ -12,12 +13,17 @@ import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import DataInfo from '../../components/extra/DataInfo'
 import CardDiscussion from '../../components/cards/CardDiscussion'
 import CreateCommentForm from '../../components/form/CreateCommentForm' 
-
+import useUser from '../../hooks/useUser'
+import Thumbail from '../../assets/img.jpg'
+import getPeriode from '../../helpers/utils/getPeriode'
 const PostDetails = () => {
     const {id}=useParams()
-    const { data,load,error}=useFetch(`/pub/post-staff-detail/${id}`)
+    const [showDetails,setShowDetails]=useState(false)
+    const user=useUser()
+    const isStaff=user?.user?.staff; 
+    const { data,load,error}=useFetch(!isStaff?`/pub/post-no-staff-detail/${id}`:`/pub/post-no-staff-detail/${id}`)
     const { data:comments,load:loadComments,count,prev,next, error:commentErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/coment-post-list/${id}/`)
-    console.log(comments);
+    const {data:profil}=useFetch(`auth/profile-user-id-detail/${data?.user?.pk}/`) 
     return (
     <>
         <Header/>
@@ -27,7 +33,7 @@ const PostDetails = () => {
                
              <MainCard
                 className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
-                mainIcon={null}
+                mainIcon={<InboxIcon className='w-8 text-gray-700' />}
                 mainTitle={'Publication'}
                 sideHeaderContent={  null }
              >
@@ -37,6 +43,69 @@ const PostDetails = () => {
                     data && 
                     <div className="block">
                         <span className="text-lg font-bold ">{data?.title}</span>
+                        {
+                        data?.image ?
+                        <img src={data?.image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
+                        <img src={Thumbail} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+
+                        }
+                        <div className="flex items-center justify-between mt-2">
+                        <div className="flex w-full items-center gap-2">
+                        {
+                            profil ? 
+                            <div className='w-10  h-10'>
+                                <img src={profil?.picture} className='w-10 h-10 object-cover border rounded-full' alt="" />
+                            </div>
+                            :
+                            <UserCircleIcon className='w-10 text-gray-600' />
+                        }
+ 
+                        
+                        <span className="text-secondary-2 font-bold capitalize">{data?.user?.names} </span>
+                    </div>
+                            <span className="block w-full flex justify-end">
+                                Publié { getPeriode(data?.date_add) }
+                            </span>
+                        </div>
+                        <div className="flex flex-col mt-2">
+                            <div onClick={()=>{setShowDetails(!showDetails)}} className="flex hover:rounded-lg cursor-pointer items-center p-2 tran hover:bg-gray-200 active:bg-gray-200 gap-2 w-full border-b">
+                                {
+                                    !showDetails ? <ChevronDownIcon className='w-7 text-gray-600' /> :<ChevronUpIcon className='w-7 text-gray-600' />
+                                }
+                                {
+                                    !showDetails ? "Afficher les details" : "Cacher les details" 
+                                } 
+                            </div>
+                            {
+                                showDetails &&
+                                <div className="mt-4 flex flex-col gap-4">
+                                    <div className="flex flex-col gap-2">
+                                        <span className='text-md font-bold text-blue-600 flex gap-2 items-center'> 
+                                            <BookmarkIcon className='w-4' /> 
+                                            Synthèse
+                                        </span> 
+                                        <p>{data?.synthesis}</p>
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <span className='text-md font-bold text-blue-600 flex gap-2 items-center'> 
+                                            <BookmarkIcon className='w-4' /> 
+                                            Contenu 
+                                        </span> 
+                                        <p>{data?.text}</p>
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <span className='text-md font-bold text-blue-600 flex gap-2 items-center'> 
+                                            <BookmarkIcon className='w-4' /> 
+                                            Conclusion 
+                                        </span> 
+                                        <p>{data?.conclusion}</p>
+                                    </div>
+                                     
+                                    
+                                </div>
+                            }
+
+                        </div>
 
                     </div>
                 }
