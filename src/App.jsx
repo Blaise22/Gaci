@@ -12,6 +12,7 @@ import Questions from './pages/forum/Questions'
 import Responses from './pages/forum/Responses'
 import Projects from './pages/publication/Projects'
 import PostDetails from './pages/publication/PostDetails'
+import Favorites from './pages/publication/Favorites'
 function App() { 
   return (
     <>
@@ -30,6 +31,7 @@ function App() {
 
               <Route path='/profil' element={<Profil/>}/> 
               <Route path='/publications' element={<Publications/>}/> 
+              <Route path='/favoris' element={<Favorites/>}/> 
               <Route path='/publication/:id' element={<PostDetails/>}/> 
               <Route path='/projets' element={<Projects/>}/> 
             </Route>

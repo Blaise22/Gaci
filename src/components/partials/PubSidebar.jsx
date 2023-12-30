@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {ChevronRightIcon,ChevronLeftIcon,BookmarkIcon,HomeIcon} from '@heroicons/react/24/outline'
+import {ChevronRightIcon,ChevronLeftIcon,BookmarkIcon,HomeIcon,StarIcon} from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import abbreviateNumber from '../../helpers/utils/abbreviateNumber'
 const PubSidebar = () => {
@@ -19,6 +19,12 @@ const PubSidebar = () => {
                         <span className="text-md text-gray-700 font-bold group-hover:bg-blue-600 group-hover:text-white tran p-2 rounded-lg flex gap-1 items-center block">
                             <HomeIcon className='w-8'/>
                             Accueil
+                        </span>
+                    </Link>
+                    <Link to={'/favoris'} className='group' >
+                        <span className="text-md text-gray-700 font-bold group-hover:bg-blue-600 group-hover:text-white tran p-2 rounded-lg flex gap-1 items-center block">
+                            <StarIcon className='w-8'/>
+                            Favoris
                         </span>
                     </Link>
                     <Link to={'/projets'} className='group' >
