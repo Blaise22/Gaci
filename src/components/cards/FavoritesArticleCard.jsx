@@ -9,7 +9,7 @@ import useUser from '../../hooks/useUser'
 import { Link,useNavigate } from 'react-router-dom'
 import useCreate from '../../hooks/useCreate'
 import PopUp from '../form/PopUp'
-const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) => {
+const FavoritesArticleCard = ({date,synthesis,title,user:names,userPk,pk,postPk,refresh}) => {
   const user=useUser() 
   const navigate=useNavigate()
   const {create,res,load, error,success:favoritesCreated }=useCreate()
@@ -20,7 +20,7 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
       }, 1500);
   }, [favoritesCreated])
   
-  const addToFavorites=(pk)=>{
+  const deleteToFavorites=(pk)=>{
     const dataFavorite={
       post_id:pk,
       status:true
@@ -35,12 +35,7 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
         />
         <div className="w-full flex shadow-md rounded-lg flex-col">
           
-            {
-              image ?
-              <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
-              <img src={Thumbail} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
-
-            }
+             
              
             <div className="flex px-4 pb-4 flex-col">
                 <div className="flex items-center pt-4 justify-between">
@@ -51,14 +46,14 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                             
                           </div>
                           <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-44">
-                          <span onClick={()=>{addToFavorites(pk)}} className='text-gray-600 cursor-pointer block w-full text-xs font-bold p-3 hover:bg-gray-100 rounded-lg'>Ajouter aux favrories</span>
+                           
                             {
                               user?.user?.pk==userPk &&
                                 <DeletModale 
                                   buttonContent={ <span className='text-red-600 text-xs font-bold cursor-pointer block w-full p-3 hover:bg-red-100 rounded-lg'>Supprimer</span> }
                                   redirectUrl={null}
-                                  title={'Supprimer une publication'}
-                                  url={`/pub/post-delete/${pk}/`}
+                                  title={'Supprimer'}
+                                  url={`/pub/favorite-delete/${pk}/`}
                                   refresh={refresh}
 
                                 />
@@ -71,9 +66,9 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                   <h1 className='text-sm text-gray-600'>{synthesis}</h1>
                   <div className="flex w-full items-center mt-2 justify-between">
                     <div className="flex gap-2 items-center"> 
-                        <Link to={'/publication/'+pk} className='hover:bg-blue-100 rounded-lg tran hover:text-blue-600 p-1.5 text-gray-700 group flex items-center gap-2'>
+                        <Link to={'/publication/'+postPk} className='hover:bg-blue-100 rounded-lg tran hover:text-blue-600 p-1.5 text-gray-700 group flex items-center gap-2'>
                             <EyeIcon className='w-6' />
-                            <span>Voir plus</span>
+                            <span>Voir la publication</span>
                         </Link>
                       
                     </div>
@@ -86,4 +81,4 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
   )
 }
 
-export default ArticleCard
+export default FavoritesArticleCard

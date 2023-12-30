@@ -1,22 +1,18 @@
 
 import React from 'react'
-import Header from '../../components/partials/Header'
-import ForumSidebar from '../../components/partials/ForumSidebar'
+import Header from '../../components/partials/Header' 
 import MainCard from '../../components/cards/MainCard'
-import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid'
-import QuestionCard from '../../components/cards/QuestionCard'
-import MainModal from '../../components/modals/QuestionModal'
+import {StarIcon} from '@heroicons/react/24/outline' 
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import Spinner from '../../components/extra/Spinner'
 import DataInfo from '../../components/extra/DataInfo'
 import NavigationPageCard from '../../components/cards/NavigationPageCard' 
-import PubSidebar from '../../components/partials/PubSidebar'
-import ArticleCard from '../../components/cards/ArticleCard'
-import PublicationModal from '../../components/modals/PublicationModal'
+import PubSidebar from '../../components/partials/PubSidebar' 
+import FavoritesArticleCard from '../../components/cards/FavoritesArticleCard'
 
 const Favorites = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/favorite-list-create/`)
-    
+     
     return (
     <>
         <Header/>
@@ -26,23 +22,23 @@ const Favorites = () => {
                
              <MainCard
                 className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
-                mainIcon={null}
+                mainIcon={<StarIcon className='w-8 text-gray-700' />}
                 mainTitle={'Favories'}
                 sideHeaderContent={  null }
              >
               <div className="flex gap-4 flex-col">
                 { !load && 
                   data?.map((item,index)=>(
-                    <ArticleCard 
+                    <FavoritesArticleCard 
                       key={index}
                       pk={item.pk}
                       date={item.date_add}
-                      image={item.image}
-                      synthesis={item.synthesis}
-                      title={item.title}
+                      synthesis={item.post.synthesis}
+                      title={item.post.title}
                       user={item.user.names}
                       userPk={item.user.pk}
-                      refresh={()=>{getData('/pub/post-published-list')}}
+                      postPk={item.post.pk}
+                      refresh={()=>{getData('/pub/favorite-list-create/')}}
                     />
                   ))
                 }
