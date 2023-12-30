@@ -42,6 +42,7 @@ const Publications = () => {
                       title={item.title}
                       user={item.user.names}
                       userPk={item.user.pk}
+                      refresh={()=>{getData('/pub/post-published-list')}}
                     />
                   ))
                 }

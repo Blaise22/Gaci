@@ -10,6 +10,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
   let [loading, setLoading] = useState(false)  
   let [deleting, setDeleting] = useState(false)  
   let [success, setsuccess] = useState(false)  
+  let [error, setError] = useState(false)  
   const navigate=useNavigate()
   function closeModal() {
     setIsOpen(false)
@@ -26,12 +27,20 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
       setTimeout(() => {
         setsuccess(false)
       }, 4000);
+      refresh()
        
-    }).catch(err=>{}).finally(()=>{ 
+    }).catch(err=>{ 
+      setError(true)  
+      setTimeout(() => {
+        setError(false)  
+        closeModal()
+        refresh()
+      }, 3000);
+    
+    }).finally(()=>{ 
       setDeleting(false)
       redirectUrl && navigate(redirectUrl)
-      closeModal()
-      refresh()
+      
 
      })
   } 
@@ -39,11 +48,11 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
     <>
       
       {/** End Loading component */}
-      <div className=" inset-0 flex z-50 items-center justify-center  group">
        <PopUp
-        successMessage={success ?'Suppresson resussie.':null}
-        errorMessage={null}  
+        successMessage={success ?'Suppresson reussie.':null}
+        errorMessage={error?'Erreur de suppression':null}  
        />
+      <div className=" inset-0 flex z-50 items-center justify-center  group">
         <div  className='text-left w-full' onClick={openModal} >
             {buttonContent}
         </div>
@@ -85,6 +94,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
                     </div>
                   </Dialog.Title>
                   <div className="mt-2">
+                    { <p className='text-red-600'>{error?'Une erreur est survenue lors de la suppression':''}</p> }
                     <p className="text-sm text-gray-500">
                        Voulez-vous vraiment supprimer cet element ? il vous sera impossible de le recuperer.
                     </p>

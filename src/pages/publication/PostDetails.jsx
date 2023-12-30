@@ -2,12 +2,12 @@
 import React, { useState } from 'react'
 import Header from '../../components/partials/Header' 
 import MainCard from '../../components/cards/MainCard'
-import {QuestionMarkCircleIcon,PlusIcon,UserCircleIcon,ChevronUpIcon,ChevronDownIcon,BookmarkIcon} from '@heroicons/react/20/solid' 
+import {QuestionMarkCircleIcon,PlusIcon,EllipsisHorizontalIcon,UserCircleIcon,ChevronUpIcon,ChevronDownIcon,BookmarkIcon} from '@heroicons/react/20/solid' 
 import {InboxIcon} from '@heroicons/react/24/outline' 
 import Spinner from '../../components/extra/Spinner' 
 import PubSidebar from '../../components/partials/PubSidebar' 
 import useFetch from '../../hooks/useFetch'
-import {useParams} from 'react-router-dom'
+import {useParams,useNavigate} from 'react-router-dom'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import DataInfo from '../../components/extra/DataInfo'
@@ -16,8 +16,10 @@ import CreateCommentForm from '../../components/form/CreateCommentForm'
 import useUser from '../../hooks/useUser'
 import Thumbail from '../../assets/img.jpg'
 import getPeriode from '../../helpers/utils/getPeriode'
+import DeletModale from '../../components/modals/DeletModale'
 const PostDetails = () => {
     const {id}=useParams()
+    const navigate=useNavigate()
     const [showDetails,setShowDetails]=useState(false)
     const user=useUser()
     const isStaff=user?.user?.staff; 
@@ -35,7 +37,30 @@ const PostDetails = () => {
                 className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
                 mainIcon={<InboxIcon className='w-8 text-gray-700' />}
                 mainTitle={'Publication'}
-                sideHeaderContent={  null }
+                sideHeaderContent={  
+                    <>
+                        {
+                        user?.user?.pk==data?.user.pk &&
+                        <div className="relative group py-2">
+                          <div className="flex p-2 rounded-lg hover:bg-gray-100 items-center gap-1">
+                          <EllipsisHorizontalIcon className='w-5 text-gray-600' />
+                            
+                          </div>
+                          <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-44">
+                                <DeletModale 
+                                  buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-2 hover:bg-red-100 rounded-lg'>Supprimer</span> }
+                                  redirectUrl={null}
+                                  title={'Supprimer une publication'}
+                                  url={`/pub/post-delete/${data?.pk}/`}
+                                  refresh={()=>{navigate('/publications')}}
+
+                                />
+                              
+                          </div>
+                        </div>
+                        }
+                    </>
+                 }
              >
               <div className="flex gap-4 flex-col text-gray-700">
                 {

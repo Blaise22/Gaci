@@ -25,7 +25,7 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                   <h1 className='text-gray-700 block text-md font-semibold'>Publié par {names}</h1>
                     {
                         user?.user?.pk==userPk &&
-                  <div className="relative group py-2">
+                  <div className="relative z-0 group py-2">
                           <div className="flex p-2 rounded-lg hover:bg-gray-100 items-center gap-1">
                           <EllipsisHorizontalIcon className='w-5 text-gray-600' />
                             
