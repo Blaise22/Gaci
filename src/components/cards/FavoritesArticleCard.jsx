@@ -39,7 +39,7 @@ const FavoritesArticleCard = ({date,synthesis,title,user:names,userPk,pk,postPk,
              
             <div className="flex px-4 pb-4 flex-col">
                 <div className="flex items-center pt-4 justify-between">
-                  <h1 className='text-gray-700 block text-md font-semibold'>Publié par {names}</h1>
+                  <h1 className='text-gray-700 block text-md font-semibold'>Ajouté par {names}</h1>
                   <div className="relative z-0 group py-2">
                           <div className="flex p-2 rounded-lg hover:bg-gray-100 items-center gap-1">
                           <EllipsisHorizontalIcon className='w-5 text-gray-600' />

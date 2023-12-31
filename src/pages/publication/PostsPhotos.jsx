@@ -21,16 +21,17 @@ import DeletModale from '../../components/modals/DeletModale'
 import ArticleSidebar from '../../components/partials/ArticleSidebar'
 import DocumentModal from '../../components/modals/DocumentModal'
 import CardDocument from '../../components/cards/CardDocument'
-const PostsDocuments = () => {
+import ImageModal from '../../components/modals/ImageModal'
+const PostsPhotos = () => {
     const {id}=useParams()
     const navigate=useNavigate()
     const [showDetails,setShowDetails]=useState(false)
     const user=useUser()
     const isStaff=user?.user?.staff; 
     const { data,load,error}=useFetch(!isStaff?`/pub/post-no-staff-detail/${id}`:`/pub/post-no-staff-detail/${id}`)
-    const { data:documents,load:loadDocuments,count,prev,next, error:documentsErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-docs-post-list/${id}/`)
+    const { data:pictures,load:loadPictures,count,prev,next, error:picturesErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-images-post-list/${id}/`)
     const {data:profil}=useFetch(`auth/profile-user-id-detail/${data?.user?.pk}/`) 
-    console.log(documents);
+    console.log(pictures);
     return (
     <>
         <Header/>
@@ -42,13 +43,13 @@ const PostsDocuments = () => {
              <MainCard
                 className={'bg-white rounded-lg mt-10  w-full md:w-96 lg:w-[80%]'}
                 mainIcon={<DocumentIcon className='w-8 text-gray-700' />}
-                mainTitle={'Documents de la publication'}
+                mainTitle={'Photos de la publication'}
                 sideHeaderContent={
                     user?.user.pk==data?.user.pk ?
-                    <DocumentModal
-                        onCreate={()=>{getData(`/pub/post-docs-post-list/${id}/`)}} 
+                    <ImageModal
+                        onCreate={()=>{getData(`/pub/post-images-post-list/${id}/`)}} 
                         postId={id}
-                        modalTitle={'Document'}
+                        modalTitle={'Photo'}
                         mainButton={
                             <button className='flex gap-0 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
                             <PlusIcon className='w-6 text-gray-700' />
@@ -58,7 +59,7 @@ const PostsDocuments = () => {
                          
                         >
                               
-                        </DocumentModal>:null
+                        </ImageModal>:null
                         }
              >
               <div className="flex gap-4 flex-col text-gray-700">
@@ -139,29 +140,21 @@ const PostsDocuments = () => {
                   load={load} 
                   className='w-14 h-14 lg:w-20 lg:w-24' 
                 />
-                <span className="text-lg font-bold block">Documents {!loadDocuments &&`- ${count}`}</span>
+                <span className="text-lg font-bold block">Photo {!loadPictures &&`- ${count}`}</span>
                 <div className="mt-2 flex flex-col gap-4">
                     {
-                        documents?.map((item,index)=>(
-                            <CardDocument 
-                                key={index}
-                                date={item.date_add}
-                                doc={item.docs}
-                                pk={item.pk}
-                                user={item.user}
-                                wording={item.wording}
-                                refresh={()=>{getData(`/pub/post-docs-post-list/${id}/`)}}
-                            />
+                        pictures?.map((item,index)=>(
+                             'picyure'
                         ))
                     }
                 </div>
                 <DataInfo 
-                    errorStatus={documentsErrors}
-                    len={documents?.length} 
-                    load={loadDocuments}
+                    errorStatus={picturesErrors}
+                    len={pictures?.length} 
+                    load={loadPictures}
                 />
                 <NavigationPageCard
-                  load={loadDocuments}
+                  load={loadPictures}
                   count={count} 
                   next={next}
                   prev={prev}
@@ -180,4 +173,4 @@ const PostsDocuments = () => {
   )
 }
 
-export default PostsDocuments
+export default PostsPhotos

@@ -23,11 +23,10 @@ const CardDocument = ({refresh,date,wording,user:owner,doc,pk}) => {
                     <Link to={doc} className='font-semibold cursor-pointer group-hover:text-blue-800'>Cliquer pour lire</Link>
                 </div>
             </div>
-                    <div className="flex mt-2 pb-2 justify-between">
+                    <div className={`flex mt-2 pb-2  ${user?.user.pk==owner?.pk?'justify-between':'justify-end'}`}>
                     {
                         user?.user.pk==owner?.pk ?
-                            <DeletModale 
-                            
+                            <DeletModale  
                             buttonContent={<span className='text-red-600 cursor-pointer p-1 w-24 rounded-lg bg-red-100'>Supprimer</span>} url={`/pub/post-docs-delete/${pk}`} refresh={refresh} title={'Supprimer un document'} />
                         :null
                     }
