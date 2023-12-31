@@ -137,7 +137,7 @@ const Profil = () => {
                  <DataInfo 
                      errorStatus={errorProject}
                      len={projects?.length} 
-                     load={load}
+                     load={loadProject}
                  />
                  <NavigationPageCard
                    load={loadProject}
