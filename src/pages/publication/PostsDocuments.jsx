@@ -1,9 +1,10 @@
 
+
 import React, { useState } from 'react'
 import Header from '../../components/partials/Header' 
 import MainCard from '../../components/cards/MainCard'
-import {QuestionMarkCircleIcon,PlusIcon,EllipsisHorizontalIcon,UserCircleIcon,ChevronUpIcon,ChevronDownIcon,BookmarkIcon} from '@heroicons/react/20/solid' 
-import {InboxIcon} from '@heroicons/react/24/outline' 
+import {QuestionMarkCircleIcon,PlusIcon,UserCircleIcon,ChevronUpIcon,ChevronDownIcon,BookmarkIcon} from '@heroicons/react/20/solid' 
+import {DocumentIcon} from '@heroicons/react/24/outline' 
 import Spinner from '../../components/extra/Spinner' 
 import PubSidebar from '../../components/partials/PubSidebar' 
 import useFetch from '../../hooks/useFetch'
@@ -18,14 +19,14 @@ import Thumbail from '../../assets/img.jpg'
 import getPeriode from '../../helpers/utils/getPeriode'
 import DeletModale from '../../components/modals/DeletModale'
 import ArticleSidebar from '../../components/partials/ArticleSidebar'
-const PostDetails = () => {
+const PostsDocuments = () => {
     const {id}=useParams()
     const navigate=useNavigate()
     const [showDetails,setShowDetails]=useState(false)
     const user=useUser()
     const isStaff=user?.user?.staff; 
     const { data,load,error}=useFetch(!isStaff?`/pub/post-no-staff-detail/${id}`:`/pub/post-no-staff-detail/${id}`)
-    const { data:comments,load:loadComments,count,prev,next, error:commentErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/coment-post-list/${id}/`)
+    const { data:documents,load:loadDocuments,count,prev,next, error:documentsErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-docs-post-list/${id}/`)
     const {data:profil}=useFetch(`auth/profile-user-id-detail/${data?.user?.pk}/`) 
     return (
     <>
@@ -37,32 +38,9 @@ const PostDetails = () => {
                
              <MainCard
                 className={'bg-white rounded-lg mt-8 w-full md:w-96 lg:w-[80%]'}
-                mainIcon={<InboxIcon className='w-8 text-gray-700' />}
-                mainTitle={'Publication'}
-                sideHeaderContent={  
-                    <>
-                        {
-                        user?.user?.pk==data?.user.pk &&
-                        <div className="relative group py-2">
-                          <div className="flex p-2 rounded-lg hover:bg-gray-100 items-center gap-1">
-                          <EllipsisHorizontalIcon className='w-5 text-gray-600' />
-                            
-                          </div>
-                          <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-44">
-                                <DeletModale 
-                                  buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-2 hover:bg-red-100 rounded-lg'>Supprimer</span> }
-                                  redirectUrl={null}
-                                  title={'Supprimer une publication'}
-                                  url={`/pub/post-delete/${data?.pk}/`}
-                                  refresh={()=>{navigate('/publications')}}
-
-                                />
-                              
-                          </div>
-                        </div>
-                        }
-                    </>
-                 }
+                mainIcon={<DocumentIcon className='w-8 text-gray-700' />}
+                mainTitle={'Documents de la publication'}
+                sideHeaderContent={null}
              >
               <div className="flex gap-4 flex-col text-gray-700">
                 {
@@ -142,34 +120,17 @@ const PostDetails = () => {
                   load={load} 
                   className='w-14 h-14 lg:w-20 lg:w-24' 
                 />
-                <span className="text-lg font-bold block">Commentaires {!loadComments &&`- ${count}`}</span>
+                <span className="text-lg font-bold block">Documents {!loadDocuments &&`- ${count}`}</span>
                 <div className="mt-2">
-                    {
-                        comments?.map((item,index)=>(
-                            <CardDiscussion 
-                            key={index}
-                            message={item?.message}
-                            date={item?.date_add}
-                            doc={null}
-                            image={null}
-                            owner={item?.user}
-                            question={null}
-                            refresh={()=>{getData(`/pub/coment-post-list/${id}/`)}}
-                            pk={item.pk}
-                            status={item.status}
-                            isResPage={false}
-                            deleteUrl={`/pub/coment-delete/${item.pk}/`}
-                            />
-                        ))
-                    }
+                     
                 </div>
                 <DataInfo 
-                    errorStatus={commentErrors}
-                    len={comments?.length} 
-                    load={loadComments}
+                    errorStatus={documentsErrors}
+                    len={documents?.length} 
+                    load={loadDocuments}
                 />
                 <NavigationPageCard
-                  load={loadComments}
+                  load={loadDocuments}
                   count={count} 
                   next={next}
                   prev={prev}
@@ -181,15 +142,11 @@ const PostDetails = () => {
 
               </div> 
              </MainCard>
-                <CreateCommentForm 
-                    postId={id}
-                    refresh={()=>{getData(`/pub/coment-post-list/${id}/`)}}
-
-                />
+                 
           </div>
         </div>
     </>
   )
 }
 
-export default PostDetails
+export default PostsDocuments

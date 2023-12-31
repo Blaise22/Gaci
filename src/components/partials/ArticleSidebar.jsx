@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import {PlayCircleIcon,PhotoIcon,XMarkIcon,FolderOpenIcon,DocumentIcon} from '@heroicons/react/24/outline'
+import { useParams,useNavigate } from 'react-router-dom'
+
 const ArticleSidebar = () => {
     const [isOpen,setIsOpen]=useState(window.innerWidth>=768?true:false)
+    const {id}=useParams()
+    const navigate=useNavigate()
   return (
     <>
     {
@@ -21,7 +25,7 @@ const ArticleSidebar = () => {
                 <PhotoIcon className='w-8' /> 
                 <span className='text-md font-bold'>Photos</span>
             </div>
-            <div className="flex cursor-pointer items-center p-3 hover:bg-gray-100 tran text-gray-700 rounded-md gap-2">
+            <div onClick={()=>{navigate(`/publication/${id}/documents`)}} className="flex cursor-pointer items-center p-3 hover:bg-gray-100 tran text-gray-700 rounded-md gap-2">
                 <DocumentIcon className='w-8' /> 
                 <span className='text-md font-bold'>Documents</span>
             </div>

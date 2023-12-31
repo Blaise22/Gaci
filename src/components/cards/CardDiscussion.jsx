@@ -29,7 +29,7 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
                      
                 </div>
                 <div className={"text-gray-700 p-1 border-b mt-1 "}>
-                    <div className={`block w-auto my-2 p-2 rounded-lg ${user?.user?.pk==owner?.pk ?'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-600'}`}>
+                    <div className={`block w-auto  my-2 p-2 rounded-lg ${user?.user?.pk==owner?.pk ?'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-600'}`}>
                         {message} 
                     </div>   
                     <div className="flex justify-between mt-1 gap-2">
