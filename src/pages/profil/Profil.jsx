@@ -11,6 +11,7 @@ import ArticleCard from '../../components/cards/ArticleCard'
 import PublicationModal from '../../components/modals/PublicationModal'
 import MyProfil from './MyProfil'
 import ProjectModal from '../../components/modals/ProjectModal'
+import CardProject from '../../components/cards/CardProject'
 
 const Profil = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-list-create/`)
@@ -113,7 +114,20 @@ const Profil = () => {
                <div className="flex gap-4 flex-col">
                  { !loadProject && 
                    projects?.map((item,index)=>(
-                     'projet'
+                     <CardProject 
+                        date={item.date_add}
+                        description={item.descriptionProject}
+                        designation={item.designationProject}
+                        dev={item.devInfos}
+                        doc={item.doc}
+                        image={item.image}
+                        pk={item.pk}
+                        pu={item.pu}
+                        pub={item.pub}
+                        user={item.user}
+                        key={index}
+                        refresh={()=>{getProjects(`/pub/project-list-create/`)}}
+                     />
                    ))
                  }
                  <Spinner 

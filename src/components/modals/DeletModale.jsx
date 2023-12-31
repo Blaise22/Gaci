@@ -31,6 +31,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
       refresh()
        
     }).catch(err=>{ 
+      console.log(err);
       setError(true)  
       setTimeout(() => {
         setError(false)  
