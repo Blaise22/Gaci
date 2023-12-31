@@ -20,6 +20,7 @@ import getPeriode from '../../helpers/utils/getPeriode'
 import DeletModale from '../../components/modals/DeletModale'
 import ArticleSidebar from '../../components/partials/ArticleSidebar'
 import DocumentModal from '../../components/modals/DocumentModal'
+import CardDocument from '../../components/cards/CardDocument'
 const PostsDocuments = () => {
     const {id}=useParams()
     const navigate=useNavigate()
@@ -139,7 +140,19 @@ const PostsDocuments = () => {
                 />
                 <span className="text-lg font-bold block">Documents {!loadDocuments &&`- ${count}`}</span>
                 <div className="mt-2">
-                     
+                    {
+                        documents?.map((item,index)=>(
+                            <CardDocument 
+                                key={index}
+                                date={item.date_add}
+                                doc={item.docs}
+                                pk={item.pk}
+                                user={item.user}
+                                wording={item.wording}
+                                refresh={()=>{getData(`/pub/post-docs-post-list/${id}/`)}}
+                            />
+                        ))
+                    }
                 </div>
                 <DataInfo 
                     errorStatus={documentsErrors}
