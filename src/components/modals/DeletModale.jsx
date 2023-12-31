@@ -27,6 +27,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
       setTimeout(() => {
         setsuccess(false)
       }, 4000);
+      closeModal()
       refresh()
        
     }).catch(err=>{ 

@@ -26,7 +26,9 @@ const CardDocument = ({refresh,date,wording,user:owner,doc,pk}) => {
                     <div className="flex mt-2 pb-2 justify-between">
                     {
                         user?.user.pk==owner?.pk ?
-                            <DeletModale buttonContent={<span className='text-red-600 cursor-pointer p-1 w-24 rounded-lg bg-red-100'>Supprimer</span>} url={`courses/ebooks/${pk}`} refresh={refresh} title={'Supprimer un document'} />
+                            <DeletModale 
+                            
+                            buttonContent={<span className='text-red-600 cursor-pointer p-1 w-24 rounded-lg bg-red-100'>Supprimer</span>} url={`/pub/post-docs-delete/${pk}`} refresh={refresh} title={'Supprimer un document'} />
                         :null
                     }
                         <h1 className='text-xs text-gray-600'>Publié {getPeriode(date)}</h1>
