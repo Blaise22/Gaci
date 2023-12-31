@@ -1,10 +1,7 @@
-import React from 'react'
-import Header from '../../components/partials/Header'
-import ForumSidebar from '../../components/partials/ForumSidebar'
+import React, { useState } from 'react'
+import Header from '../../components/partials/Header' 
 import MainCard from '../../components/cards/MainCard'
-import {QuestionMarkCircleIcon,PlusIcon} from '@heroicons/react/20/solid'
-import QuestionCard from '../../components/cards/QuestionCard'
-import MainModal from '../../components/modals/QuestionModal'
+import {PlusIcon} from '@heroicons/react/20/solid' 
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import Spinner from '../../components/extra/Spinner'
 import DataInfo from '../../components/extra/DataInfo'
@@ -13,9 +10,13 @@ import PubSidebar from '../../components/partials/PubSidebar'
 import ArticleCard from '../../components/cards/ArticleCard'
 import PublicationModal from '../../components/modals/PublicationModal'
 import MyProfil from './MyProfil'
+import ProjectModal from '../../components/modals/ProjectModal'
 
 const Profil = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-list-create/`)
+  const { data:projects,load:loadProject,count:countProjects,prev:prevProject,next:nextProject, error:errorProject,getData:getProjects,nextPage:nextPageProject,prevPage:prevPageProject}=useFetchPaginate(`/pub/project-list-create/`)
+  const [showPub,setShowPub]=useState(true)
+  console.log(projects);
   return (
     <>
         <Header/>
@@ -29,13 +30,19 @@ const Profil = () => {
               >
                 <MyProfil />
               </MainCard>
-             <MainCard
+              <div className="flex gap-2">
+                <button onClick={()=>{setShowPub(true)}} className={`p-3  font-bold rounded-full hover:text-blue-600 hover:bg-blue-100 tran ${showPub?'bg-blue-100 text-blue-600':'bg-blue-600 text-white'}`}>Publications</button>
+                <button onClick={()=>{setShowPub(false)}} className={`p-3  font-bold rounded-full hover:text-blue-600 hover:bg-blue-100 tran ${!showPub?'bg-blue-100 text-blue-600':'bg-blue-600 text-white'}`}>Projets</button>
+              </div>
+              {
+                showPub ?
+                <MainCard
                 className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
                 mainIcon={null}
                 mainTitle={'Mes publications'}
                 sideHeaderContent={
                     <PublicationModal
-                        modalTitle={'Puplication'}
+                        modalTitle={'Publication'}
                         mainButton={
                             <button className='flex gap-0 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
                             <PlusIcon className='w-6 text-gray-700' />
@@ -83,7 +90,54 @@ const Profil = () => {
                 />
 
               </div> 
-             </MainCard>
+             </MainCard>:
+                 <MainCard
+                 className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
+                 mainIcon={null}
+                 mainTitle={'Projets'}
+                 sideHeaderContent={
+                     <ProjectModal
+                         modalTitle={'Projet'}
+                         mainButton={
+                             <button className='flex gap-0 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
+                             <PlusIcon className='w-6 text-gray-700' />
+                             Créer 
+                             </button>
+                         } 
+                          
+                         >
+                               
+                         </ProjectModal>
+                         }
+              >
+               <div className="flex gap-4 flex-col">
+                 { !loadProject && 
+                   projects?.map((item,index)=>(
+                     'projet'
+                   ))
+                 }
+                 <Spinner 
+                   load={loadProject} 
+                   className='w-14 h-14 lg:w-20 lg:w-24' 
+                 />
+                 <DataInfo 
+                     errorStatus={errorProject}
+                     len={projects?.length} 
+                     load={load}
+                 />
+                 <NavigationPageCard
+                   load={loadProject}
+                   count={countProjects} 
+                   next={nextProject}
+                   prev={prevProject}
+                   nextPage={nextPageProject}
+                   prevPage={prevPageProject}
+                 />
+ 
+               </div> 
+              </MainCard>
+              }
+             
           </div>
         </div>
     </>

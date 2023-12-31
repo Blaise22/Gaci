@@ -22,6 +22,7 @@ import ArticleSidebar from '../../components/partials/ArticleSidebar'
 import DocumentModal from '../../components/modals/DocumentModal'
 import CardDocument from '../../components/cards/CardDocument'
 import ImageModal from '../../components/modals/ImageModal'
+import CardPicture from '../../components/cards/CardPicture'
 const PostsPhotos = () => {
     const {id}=useParams()
     const navigate=useNavigate()
@@ -144,7 +145,17 @@ const PostsPhotos = () => {
                 <div className="mt-2 flex flex-col gap-4">
                     {
                         pictures?.map((item,index)=>(
-                             'picyure'
+                             <CardPicture 
+                                key={index}
+                                image={item.images}
+                                date={item.date_add}
+                                pk={item.pk}
+                                user={item.user}
+                                wording={item.wording}
+                                refresh={()=>{getData(`/pub/post-images-post-list/${id}/`)}}
+
+                             
+                             />
                         ))
                     }
                 </div>

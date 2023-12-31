@@ -5,43 +5,49 @@ import PopUp from './PopUp'
 import useCreate from '../../hooks/useCreate'
 import {useNavigate} from 'react-router-dom'
 import {BookOpenIcon,CameraIcon} from '@heroicons/react/24/outline'
-const CreateImageForm = ({onClose,postId,onCreate}) => {
+const CreateProjectForm = ({onClose}) => {
   const [formError,setFormError]=useState(null)
-  const [wording,setWording]=useState(null) 
-  const [image,setImage]=useState(null)
-  const [filename,setFilename]=useState(null)
+  const [title,settitle]=useState(null)
+  const [synthesis,setsynthesis]=useState(null)
+  const [text,settext]=useState(null)
+  const [conclusion,setconclusion]=useState(null)
+  const [image,setImage]=useState(null) 
   const {create,res,load, error, success}=useCreate()
   const navigate=useNavigate()
   useEffect(() => {
-    success && onCreate()
+    res?.pk && navigate('/publications')
     if(success){
       onClose()
     }
   }, [error, success,res]) 
   
-   
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-    setFilename(file.name);
+
     reader.onload = () => {
         setImage(reader.result);
     };
 
     reader.readAsDataURL(file);
   };
+   
+ 
   const submit=()=>{ 
-    //console.log(image);
     const formData={
-      wording:wording, 
-      post_id:postId, 
-      images64:image
+      title:title,
+      synthesis:synthesis,
+      image64:image, 
+      text:text,
+      conclusion:conclusion,
+      repost:false,
+      status: true
     }
      
-    if(image){
-      create(`/pub/post-images-list-create/`,formData)
+    if(title){
+      create(`pub/post-list-create/`,formData)
     }else{
-      setFormError('Veuillez selectionner une image')
+      setFormError('Veuillez decrire votre publication')
       setTimeout(() => {
         setFormError(null)
       }, 4000);
@@ -53,25 +59,50 @@ const CreateImageForm = ({onClose,postId,onCreate}) => {
     <div className='flex flex-col'>
       <PopUp
         load={load}
-        errorMessage={error?'Veuillez decrire la photo':null}
-        successMessage={success?'Le document a été posté':null}
+        errorMessage={error?'Cette question a deja été posté':null}
+        successMessage={success?'La question a été posté':null}
        />
-       <div className="text-red-600 text-sm">{formError}</div>
+       <div className="text-red-600 text-sm">{formError}</div> 
+      
+       
+       
       <Input 
-        type={'text'} 
-        name={'worfing'}
-        onChange={setWording}
-        value={wording}
-        label={'Description'}
+        type={'text'}
+        placeholder={''}
+        name={'title'}
+        onChange={settitle}
+        value={title}
+        label={'Titre'}
+        
 
+      />
+      <Input 
+        type={'textarea'}
+        placeholder={'Entrez la synthese de la publication ...'}
+        name={'synthesis'}
+        onChange={setsynthesis}
+        value={synthesis}
+      />
+      <Input 
+        type={'textarea'}
+        placeholder={'Entrez les details de la publication ...'}
+        name={'text'}
+        onChange={settext}
+        value={text}
+      />
+      <Input 
+        type={'textarea'}
+        placeholder={'Entrez la conclusion de la publication ...'}
+        name={'conclusion'}
+        onChange={setconclusion}
+        value={conclusion}
       />
        
 
 
       <div className="flex mt-2 items-center justify-between">
-        <div className="flex gap-2"> 
-            <div className="flex flex-col w-full">
-                <label htmlFor="" className='text-xs text-blue-600'>{filename}</label>
+        <div className="flex gap-2">
+        <div className="flex flex-col w-full">
                 <label htmlFor="" className='text-xs'>Image</label>
                 <div className={`rounded-md border border-blue-500 bg-gray-50 p-1 hover:bg-blue-200 tran w-10 ${image && 'bg-blue-200'}`}>
                   <label htmlFor="upload" className="flex flex-col items-center gap-2 cursor-pointer">
@@ -79,8 +110,9 @@ const CreateImageForm = ({onClose,postId,onCreate}) => {
                   </label>
                   <input id="upload" type="file" onChange={handleImageChange} className="hidden" />
               </div>
-                 
+
             </div>
+             
         </div>
         <Button
         className={'btn-primary mt-4'}
@@ -96,4 +128,4 @@ const CreateImageForm = ({onClose,postId,onCreate}) => {
   )
 }
 
-export default CreateImageForm
+export default CreateProjectForm
