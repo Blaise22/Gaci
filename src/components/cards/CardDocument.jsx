@@ -12,10 +12,10 @@ const CardDocument = ({refresh,date,wording,user:owner,doc,pk}) => {
     return (
     <>  
          
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 p-2">
 
-        <div className='p-1 rounded shadow-md'> 
-            <div className="flex gap-2 group items-center hover:bg-gray-100 transition-all duration-150 p-2 rounded-md">
+        <div className=' p-2  rounded shadow-md'> 
+            <div className="flex gap-2 hover:bg-gray-100 transition-all duration-150 p-4 group items-center  rounded-md">
                 <BookOpenIcon  className='w-10 text-blue-700'/> 
 
                 <div className="flex w-full  flex-col">
@@ -23,7 +23,7 @@ const CardDocument = ({refresh,date,wording,user:owner,doc,pk}) => {
                     <Link to={doc} className='font-semibold cursor-pointer group-hover:text-blue-800'>Cliquer pour lire</Link>
                 </div>
             </div>
-                    <div className="flex pb-2 px-2 justify-between">
+                    <div className="flex mt-2 pb-2 justify-between">
                     {
                         user?.user.pk==owner?.pk ?
                             <DeletModale buttonContent={<span className='text-red-600 cursor-pointer p-1 w-24 rounded-lg bg-red-100'>Supprimer</span>} url={`courses/ebooks/${pk}`} refresh={refresh} title={'Supprimer un document'} />
