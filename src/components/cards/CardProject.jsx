@@ -9,25 +9,30 @@ import useCreate from '../../hooks/useCreate'
 import useFetch from '../../hooks/useFetch'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import abbreviateNumber from '../../helpers/utils/abbreviateNumber'
+import useDelete from '../../hooks/useDelete'
 const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:owner,refresh}) => {
     const {data:likes,load,error,getData:getLikes}=useFetchPaginate(`/pub/like-project-project-list/${pk}`)
-    const {create,res,success,error:errorCreateLik}=useCreate()
+    const {create:likeProject,res,success,error:errorCreateLik}=useCreate()
+    const {del:disLikeProject, load:deleteLoading, error:deleteError, success:deleteSucess}=useDelete()
     const user=useUser()
     
     
     const handleLike=(pk)=>{
         if(likes.filter(item=> item.user.pk==user?.user.pk)?.length>0){
             // delete
-            console.log('delete ',pk);
+            const likeId=likes.filter(item=> item.user.pk==user?.user.pk)[0]?.pk;
+            disLikeProject(`/pub/like-project-delete/${likeId}/`);
+            getLikes(`/pub/like-project-project-list/${pk}`)
         }else{
             //create
             const formData={
                 project_id:!load ? pk : null,
                 status:true
             }
-            create('/pub/like-project-list-create/',formData)
+            likeProject('/pub/like-project-list-create/',formData)
+            getLikes(`/pub/like-project-project-list/${pk}`)
         }
-        getLikes(`/pub/like-project-project-list/${pk}`)
+        
     }
     return (
     <>
