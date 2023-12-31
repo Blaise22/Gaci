@@ -14,7 +14,7 @@ const CardDocument = ({refresh,date,wording,user:owner,doc,pk}) => {
          
         <div className="flex flex-col gap-1">
 
-        <div className='p-1 rounded border'> 
+        <div className='p-1 rounded shadow-md'> 
             <div className="flex gap-2 group items-center hover:bg-gray-100 transition-all duration-150 p-2 rounded-md">
                 <BookOpenIcon  className='w-10 text-blue-700'/> 
 

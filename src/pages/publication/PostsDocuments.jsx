@@ -139,7 +139,7 @@ const PostsDocuments = () => {
                   className='w-14 h-14 lg:w-20 lg:w-24' 
                 />
                 <span className="text-lg font-bold block">Documents {!loadDocuments &&`- ${count}`}</span>
-                <div className="mt-2">
+                <div className="mt-2 flex flex-col gap-4">
                     {
                         documents?.map((item,index)=>(
                             <CardDocument 
