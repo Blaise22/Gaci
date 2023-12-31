@@ -19,6 +19,7 @@ import Thumbail from '../../assets/img.jpg'
 import getPeriode from '../../helpers/utils/getPeriode'
 import DeletModale from '../../components/modals/DeletModale'
 import ArticleSidebar from '../../components/partials/ArticleSidebar'
+import DocumentModal from '../../components/modals/DocumentModal'
 const PostsDocuments = () => {
     const {id}=useParams()
     const navigate=useNavigate()
@@ -28,6 +29,7 @@ const PostsDocuments = () => {
     const { data,load,error}=useFetch(!isStaff?`/pub/post-no-staff-detail/${id}`:`/pub/post-no-staff-detail/${id}`)
     const { data:documents,load:loadDocuments,count,prev,next, error:documentsErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-docs-post-list/${id}/`)
     const {data:profil}=useFetch(`auth/profile-user-id-detail/${data?.user?.pk}/`) 
+    console.log(documents);
     return (
     <>
         <Header/>
@@ -37,10 +39,25 @@ const PostsDocuments = () => {
             <ArticleSidebar postId={id} />
                
              <MainCard
-                className={'bg-white rounded-lg mt-8 w-full md:w-96 lg:w-[80%]'}
+                className={'bg-white rounded-lg mt-10  w-full md:w-96 lg:w-[80%]'}
                 mainIcon={<DocumentIcon className='w-8 text-gray-700' />}
                 mainTitle={'Documents de la publication'}
-                sideHeaderContent={null}
+                sideHeaderContent={
+                    <DocumentModal
+                        onCreate={()=>{getData(`/pub/post-docs-post-list/${id}/`)}} 
+                        postId={id}
+                        modalTitle={'Document'}
+                        mainButton={
+                            <button className='flex gap-0 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
+                            <PlusIcon className='w-6 text-gray-700' />
+                            Créer 
+                            </button>
+                        } 
+                         
+                        >
+                              
+                        </DocumentModal>
+                        }
              >
               <div className="flex gap-4 flex-col text-gray-700">
                 {

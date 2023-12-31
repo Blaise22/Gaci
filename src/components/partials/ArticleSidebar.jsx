@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import {PlayCircleIcon,PhotoIcon,XMarkIcon,FolderOpenIcon,DocumentIcon} from '@heroicons/react/24/outline'
 import { useParams,useNavigate } from 'react-router-dom'
 
-const ArticleSidebar = () => {
+const ArticleSidebar = ({postId}) => {
     const [isOpen,setIsOpen]=useState(window.innerWidth>=768?true:false)
-    const {id}=useParams()
+    
     const navigate=useNavigate()
+    const changePage= async(url)=>{
+        await setIsOpen(false)
+        navigate(url)
+    }
   return (
     <>
     {
@@ -16,16 +20,16 @@ const ArticleSidebar = () => {
                 <XMarkIcon onClick={()=>{ setIsOpen(false) }} className='icon-danger bg-white' />    
             </div>
             <div className='w-44 p-4  top-28 lg:top-20 z-40 rounded-lg right-4 bg-white border lg:border-none'>
-            <div className="flex cursor-pointer items-center  p-3 hover:bg-gray-100 tran text-gray-700 rounded-md gap-2">
+            <div onClick={()=>{changePage(`/publication/${postId}/videos`)}} className="flex cursor-pointer items-center  p-3 hover:bg-gray-100 tran text-gray-700 rounded-md gap-2">
                 
                 <PlayCircleIcon className='w-8' /> 
                 <span className='text-md font-bold'>Videos</span>
             </div>
-            <div className="flex cursor-pointer items-center p-3 hover:bg-gray-100 tran text-gray-700 rounded-md gap-2">
+            <div onClick={()=>{changePage(`/publication/${postId}/photos`)}} className="flex cursor-pointer items-center p-3 hover:bg-gray-100 tran text-gray-700 rounded-md gap-2">
                 <PhotoIcon className='w-8' /> 
                 <span className='text-md font-bold'>Photos</span>
             </div>
-            <div onClick={()=>{navigate(`/publication/${id}/documents`)}} className="flex cursor-pointer items-center p-3 hover:bg-gray-100 tran text-gray-700 rounded-md gap-2">
+            <div onClick={()=>{changePage(`/publication/${postId}/documents`)}} className="flex cursor-pointer items-center p-3 hover:bg-gray-100 tran text-gray-700 rounded-md gap-2">
                 <DocumentIcon className='w-8' /> 
                 <span className='text-md font-bold'>Documents</span>
             </div>
