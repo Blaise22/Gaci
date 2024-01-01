@@ -73,7 +73,7 @@ const PostDetails = () => {
                         {
                         data?.image ?
                         <img src={data?.image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
-                        <img src={Thumbail} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+                        null
 
                         }
                         <div className="flex items-center justify-between mt-2">
