@@ -96,7 +96,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
                     </div>
                   </Dialog.Title>
                   <div className="mt-2">
-                    { <p className='text-red-600'>{error?'Une erreur est survenue lors de la suppression':''}</p> }
+                    { <p className='text-red-600 text-sm font-bold'>{error?'Une erreur est survenue lors de la suppression':''}</p> }
                     <p className="text-sm text-gray-500">
                        Voulez-vous vraiment supprimer cet element ? il vous sera impossible de le recuperer.
                     </p>
