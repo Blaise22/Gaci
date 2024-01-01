@@ -50,7 +50,7 @@ const PostDetails = () => {
                           </div>
                           <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-44">
                                 <DeletModale 
-                                  buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-2 hover:bg-red-100 rounded-lg'>Supprimer</span> }
+                                  buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-4 hover:bg-red-100 rounded-md'>Supprimer</span> }
                                   redirectUrl={null}
                                   title={'Supprimer une publication'}
                                   url={`/pub/post-delete/${data?.pk}/`}
