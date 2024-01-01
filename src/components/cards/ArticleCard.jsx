@@ -50,12 +50,12 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                           <EllipsisHorizontalIcon className='w-5 text-gray-600' />
                             
                           </div>
-                          <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-44">
-                          <span onClick={()=>{addToFavorites(pk)}} className='text-gray-600 cursor-pointer block w-full text-xs font-bold p-3 hover:bg-gray-100 rounded-lg'>Ajouter aux favrories</span>
+                          <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-56">
+                          <span onClick={()=>{addToFavorites(pk)}} className='text-gray-600 cursor-pointer block w-full text-xs font-bold p-4 hover:bg-gray-100 rounded-md'>Ajouter aux favrories</span>
                             {
                               user?.user?.pk==userPk &&
                                 <DeletModale 
-                                  buttonContent={ <span className='text-red-600 text-xs font-bold cursor-pointer block w-full p-3 hover:bg-red-100 rounded-lg'>Supprimer</span> }
+                                  buttonContent={ <span className='text-red-600 text-xs font-bold cursor-pointer block w-full p-4 hover:bg-red-100 rounded-md'>Supprimer</span> }
                                   redirectUrl={null}
                                   title={'Supprimer une publication'}
                                   url={`/pub/post-delete/${pk}/`}
