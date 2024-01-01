@@ -38,7 +38,7 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
             {
               image ?
               <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
-              <img src={Thumbail} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+              null
 
             }
              
