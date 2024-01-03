@@ -53,9 +53,17 @@ const Responses = () => {
                     </div>
                     <span className='font-bold py-2 block text-md'>Posée par { question?.user?.names }</span>
                     { question?.wording ?
-                      <span className="text-blue-600 block w-full bg-blue-100 p-2 rounded-lg font-semibold">
+                    <>
+                      <span className="text-blue-600 block w-full pb-4 p-2 rounded-lg font-semibold">
                         {question?.wording} 
                       </span>
+                      {
+                      question?.image ?
+                      <img src={question?.image} className=' w-full h-56 object-cover rounded-lg' alt="logo" />:
+                      null
+
+                    }
+                    </>
                     : <p className='block text-center w-full'>En attente de la question</p> }
                 
                 <Spinner load={questionLoad}  className={'spinner mt-2'}/>
@@ -64,10 +72,7 @@ const Responses = () => {
                             question?.doc &&
                             <button className='p-1 rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200'>Lire le document</button>
                         }
-                        {
-                            question?.image &&
-                            <button className='p-1 rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200'>Voir l'image</button>
-                        }
+                         
                     </div> 
                <div className="flex mt-2 justify-between">
                     {count} réponse{count>1?'s':''} 
@@ -131,6 +136,7 @@ const Responses = () => {
           <CreateResponseForm 
             questionId={question?.pk} 
             refresh={()=>{getData('/forum/reply-list/')}}
+            
           />
         </div>
         </div>
