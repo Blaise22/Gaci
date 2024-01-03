@@ -21,23 +21,26 @@ const MyProfil = () => {
   const profil= user?.profil  
   return (
     <div className=" w-[100%] flex items-center justify-center">
-      <div className="bg-white w-full rounded-lg  px-4">
+      <div className="bg-white w-full rounded-lg  ">
          
-        <div className="mb-4">
+        <div className="block">
           <div className="flex  z-0 relative items-center">
+            <div className="absolute h-28 top-0 w-full bg-gray-200 rounded-lg 00 z-0">
+
+            </div>
              
             {
                
               profil?.picture ?
-              <img src={profil?.picture} alt="" className="w-44 h-44 rounded-full object-cover border" />:
-              <UserCircleIcon className="mr-2 text-gray-600 w-44 " />
+              <img src={profil?.picture} alt="" className="w-44 h-44 z-30 rounded-full object-cover border" />:
+              <UserCircleIcon className="mr-2 z-30  rounded-full p-0 text-gray-600 w-44 " />
             }
-            <div className="absolute z-0 left-0 md:left-2 top-6">
+            <div className="absolute z-40 left-0 md:left-2 top-6">
                 {
                   profil?.user ?
                   
                   <div className="w-10 p-2 group relative rounded-full ">
-                      <Bars3BottomLeftIcon className="w-10 p-1 absolute top-[-100%] rounded-full border hover:bg-gray-200 active:border-blue-600 bg-white text-gray-600" />
+                      <Bars3BottomLeftIcon className="w-10 z-40 p-1 absolute top-[-100%] rounded-full border hover:bg-gray-200 active:border-blue-600 bg-white text-gray-600" />
                       <div className="hidden gap-2  p-4 text-sm group-hover:block absolute top-[100%] bg-white z-50 card flex flex-col">
                         <div className="flex  block w-full gap-2 items-center">
                           <span className="text-blue-600 w-56  block cursor-pointer tran hover:font-bold p-2 rounded-lg hover:bg-blue-100" onClick={()=>{setOpenUpdateProf(!openUpdateProf)}}>
@@ -58,7 +61,7 @@ const MyProfil = () => {
                       </div>
                   </div>
                   :
-                  <CameraIcon onClick={()=>{setOpenCreateProf(!openCreateProf)}} className="w-10 p-1 rounded-full border hover:bg-gray-200 active:border-blue-600 bg-white text-gray-600" />
+                  <CameraIcon onClick={()=>{setOpenCreateProf(!openCreateProf)}} className="w-10 p-1 rounded-full border z-40 hover:bg-gray-200 active:border-blue-600 bg-white text-gray-600" />
                 }
             </div>
             {
