@@ -8,7 +8,7 @@ import {DocumentIcon} from '@heroicons/react/24/outline'
 import Spinner from '../../components/extra/Spinner' 
 import PubSidebar from '../../components/partials/PubSidebar' 
 import useFetch from '../../hooks/useFetch'
-import {useParams,useNavigate} from 'react-router-dom'
+import {useParams,useNavigate, Link} from 'react-router-dom'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import NavigationPageCard from '../../components/cards/NavigationPageCard'
 import DataInfo from '../../components/extra/DataInfo'
@@ -71,7 +71,9 @@ const PostsPhotos = () => {
                         <span className="text-lg font-bold ">{data?.title}</span>
                         {
                         data?.image ?
-                        <img src={data?.image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
+                        <Link to={data?.image}>
+                            <img src={data?.image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+                        </Link>:
                         null
 
                         }

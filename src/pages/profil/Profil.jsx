@@ -24,13 +24,9 @@ const Profil = () => {
         <PubSidebar />
         <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
           <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  pt-6  gap-4">
-              <MainCard 
-                  className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'}
-                  mainIcon={null}
-                  mainTitle={'Mon profil'}
-              >
+              <div className={'bg-white rounded-lg w-full md:w-96 lg:w-[80%]'} > 
                 <MyProfil />
-              </MainCard>
+              </div>
               <div className="flex gap-2">
                 <button onClick={()=>{setShowPub(true)}} className={`p-3  font-bold rounded-full hover:text-blue-600 hover:bg-blue-100 tran ${showPub?'bg-blue-100 text-blue-600':'bg-blue-600 text-white'}`}>Publications</button>
                 <button onClick={()=>{setShowPub(false)}} className={`p-3  font-bold rounded-full hover:text-blue-600 hover:bg-blue-100 tran ${!showPub?'bg-blue-100 text-blue-600':'bg-blue-600 text-white'}`}>Projets</button>

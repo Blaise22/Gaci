@@ -68,7 +68,11 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                   </div>
                   {
                     image ?
-                    <img src={image} className=' w-full h-56 object-cover ' alt="logo" />:
+                    <Link to={image}>
+                      <img src={image} className=' w-full h-56 object-cover ' alt="logo" />
+                    </Link>
+                    
+                    :
                     null
 
                   }

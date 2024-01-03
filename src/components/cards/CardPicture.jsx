@@ -3,6 +3,7 @@ import Thumbail from '../../assets/img.jpg'
 import useUser from '../../hooks/useUser'
 import DeletModale from '../modals/DeletModale'
 import getPeriode from '../../helpers/utils/getPeriode'
+import { Link } from 'react-router-dom'
 const CardPicture = ({image,date,pk,user:owner,wording,refresh}) => {
     const user=useUser()
   return (
@@ -10,8 +11,11 @@ const CardPicture = ({image,date,pk,user:owner,wording,refresh}) => {
         <div className="w-full h-auto shadow-md rounded-lg">
             {
               image ?
-              <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
-              <img src={Thumbail} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+              <Link to={image}>
+                             
+              <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+                </Link>:
+              null
 
             }
             <div className="p-4">

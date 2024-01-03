@@ -3,9 +3,7 @@
 @tailwind utilities; 
 
 
-.giga-text{
-  font-size: 50px;
-}
+ 
 .card{
   @apply bg-white rounded-2xl shadow-xl
 }

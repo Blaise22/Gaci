@@ -59,7 +59,7 @@ const FormCreateProf = ({close}) => {
       }
   return (
 
-    <div className="w-[100%] absolute top-4 bg-white border rounded-lg p-4 ">
+    <div className="w-[100%] z-40 absolute top-0 bg-white border rounded-lg p-4 ">
         
         <div className="flex  items-center justify-between">
             <span className="text-secondary">Ajouter un profil</span>

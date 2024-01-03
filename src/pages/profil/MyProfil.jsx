@@ -21,21 +21,24 @@ const MyProfil = () => {
   const profil= user?.profil  
   return (
     <div className=" w-[100%] flex items-center justify-center">
-      <div className="bg-white w-full rounded-lg  ">
-         
+      <div className="bg-white w-full rounded-lg">
         <div className="block">
           <div className="flex  z-0 relative items-center">
-            <div className="absolute h-28 top-0 w-full bg-gray-200 rounded-lg 00 z-0">
-
-            </div>
-             
-            {
-               
+            <div className="absolute h-28 w-full top-[-5%] opacity-40  rounded-lg  z-0" style={!profil?.picture?{'background':'#9b9a99'}:{
+                "backgroundImage":`url(${profil?.picture})`,
+                "backgroundSize": "cover",
+                "backgroundRepeat": "no-repeat",
+                "backgroundPosition":"center"
+            }}> 
+            </div> 
+            { 
               profil?.picture ?
-              <img src={profil?.picture} alt="" className="w-44 h-44 z-30 rounded-full object-cover border" />:
-              <UserCircleIcon className="mr-2 z-30  rounded-full p-0 text-gray-600 w-44 " />
+              <div className="w-40 h-40  z-30 ml-2">
+                <img src={profil?.picture} alt="" className="w-40 h-40 shadow-lg rounded-full object-cover " />
+              </div>:
+              <UserCircleIcon className="mr-2 z-30 shadow-md rounded-full p-0 text-gray-600 w-44 " />
             }
-            <div className="absolute z-40 left-0 md:left-2 top-6">
+            <div className="absolute z-40  left-1 md:left-2 top-6">
                 {
                   profil?.user ?
                   
