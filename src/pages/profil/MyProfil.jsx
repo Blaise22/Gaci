@@ -5,7 +5,7 @@ import { CameraIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import FormCreateProf from "./FormCreateProf"; 
 import { Bars3CenterLeftIcon, PencilSquareIcon } from "@heroicons/react/20/solid";
 import FormUpdateProf from "./FormUpdateProf"; 
-import { useNavigate } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom"; 
 import useUser from "../../hooks/useUser";
 import DeletModale from "../../components/modals/DeletModale";
 import useFetch from "../../hooks/useFetch";
@@ -34,8 +34,11 @@ const MyProfil = () => {
             { 
               profil?.picture ?
               <div className="w-40 h-40  z-30 ml-2">
+              <Link to={profil?.picture}>
                 <img src={profil?.picture} alt="" className="w-40 h-40 shadow-lg rounded-full object-cover " />
-              </div>:
+              </Link>
+              </div>
+              :
               <UserCircleIcon className="mr-2 z-30 shadow-md rounded-full p-0 text-gray-600 w-44 " />
             }
             <div className="absolute z-40  left-1 md:left-2 top-6">

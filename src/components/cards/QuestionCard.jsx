@@ -1,5 +1,5 @@
 import React from 'react'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {EyeIcon, QuestionMarkCircleIcon} from '@heroicons/react/24/outline' 
 import useUser from '../../hooks/useUser'
 import useFetch from '../../hooks/useFetch'
@@ -11,9 +11,9 @@ const QuestionCard = ({refresh,owner,message,dateAdd,dateUpdate,image,doc,pk}) =
     const {data,load}=useFetch(`forum/reply-list/${pk}`)
      
     return (
-    <div className='shadow-md  p-4 rounded-lg'>
+    <div className='shadow-md   rounded-lg'>
         <div className="flex flex-col   gap-1">
-            <div className="flex flex-col items-start gap-2">
+            <div className="flex p-4 flex-col items-start gap-2">
                 <p className='text-gray-600 font-bold'>Publiée par  {  owner?.names }</p>
                 <span className="text-secondary-2 pb-4">{message}</span>
 
@@ -22,11 +22,13 @@ const QuestionCard = ({refresh,owner,message,dateAdd,dateUpdate,image,doc,pk}) =
             </div>
             {
               image ?
-              <img src={image} className=' w-full h-56 object-cover rounded-lg' alt="logo" />:
+              <Link to={image}>
+              <img src={image} className=' w-full h-56 object-cover \' alt="logo" />
+              </Link>:
               null
 
             }
-            <div className={`flex gap-2 items-center justify-between  pt-2 mt-2 `}> 
+            <div className={`flex gap-2 items-center justify-between p-4  pt-2 mt-2 `}> 
                 <div className='flex flex-col'>
                     <span className='text-blue-600 font-bold'>{data?.count} reponse {data?.count>1?'s':''} </span>
                     <span className='text-xs text-gray-600 '>Publiée {getPeriod(dateAdd)}</span>

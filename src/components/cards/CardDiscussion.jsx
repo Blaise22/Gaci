@@ -14,7 +14,9 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
   return (
     <div className="block shadow-md p-2 md:p-4 rounded-lg md:text-sm w-auto mt-1 border-b pb-3 text-xs">
                 <div className="flex group ">
-                    <div className="flex w-full items-center gap-2">
+                    {
+                        user?.user?.pk!=owner?.pk ?
+                        <div className="flex w-full items-center gap-2">
                         {
                             profil ? 
                             <div className='w-10  h-10'>
@@ -26,7 +28,21 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
  
                         
                         <span className="text-secondary-2 font-bold capitalize">{owner?.names} </span>
+                    </div>:<div className="flex w-full justify-end items-center gap-2">
+                        <span className="text-secondary-2 font-bold capitalize">Moi</span>
+                        {
+                            profil ? 
+                            <div className='w-10  h-10'>
+                                <img src={profil?.picture} className='w-10 h-10 object-cover border rounded-full' alt="" />
+                            </div>
+                            :
+                            <UserCircleIcon className='w-10 text-gray-600' />
+                        }
+ 
+                        
+                        
                     </div>
+                    }
                      
                 </div>
                 <div className={"text-gray-700 p-1 border-b mt-1 "}>

@@ -148,7 +148,7 @@ const PostDetails = () => {
                   className='w-14 h-14 lg:w-20 lg:w-24' 
                 />
                 <span className="text-lg font-bold block">Commentaires {!loadComments &&`- ${count}`}</span>
-                <div className="mt-2">
+                <div className="mt-2 pb-16">
                     {
                         comments?.map((item,index)=>(
                             <CardDiscussion 
@@ -167,7 +167,6 @@ const PostDetails = () => {
                             />
                         ))
                     }
-                </div>
                 <DataInfo 
                     errorStatus={commentErrors}
                     len={comments?.length} 
@@ -181,6 +180,7 @@ const PostDetails = () => {
                   nextPage={nextPage}
                   prevPage={prevPage}
                 />
+                </div>
                  
                  
 
