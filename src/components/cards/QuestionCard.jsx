@@ -11,15 +11,21 @@ const QuestionCard = ({refresh,owner,message,dateAdd,dateUpdate,image,doc,pk}) =
     const {data,load}=useFetch(`forum/reply-list/${pk}`)
      
     return (
-    <div className='shadow-md  p-2 md:p-4 rounded-lg'>
+    <div className='shadow-md  p-4 rounded-lg'>
         <div className="flex flex-col   gap-1">
             <div className="flex flex-col items-start gap-2">
                 <p className='text-gray-600 font-bold'>Publiée par  {  owner?.names }</p>
-                <span className="text-secondary-2">{message}</span>
+                <span className="text-secondary-2 pb-4">{message}</span>
 
             </div>
             
             </div>
+            {
+              image ?
+              <img src={image} className=' w-full h-56 object-cover rounded-lg' alt="logo" />:
+              null
+
+            }
             <div className={`flex gap-2 items-center justify-between  pt-2 mt-2 `}> 
                 <div className='flex flex-col'>
                     <span className='text-blue-600 font-bold'>{data?.count} reponse {data?.count>1?'s':''} </span>
