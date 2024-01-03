@@ -4,8 +4,7 @@ import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import Home from './pages/home/Home'
 import Connexion from './pages/auth/connection/Connection'
 import Inscription from './pages/auth/inscription/Inscription'
-import ProtectedRoutes from './protected/ProtectedRoutes'
-import Forum from './pages/forum/Forum'
+import ProtectedRoutes from './protected/ProtectedRoutes' 
 import Profil from './pages/profil/Profil'
 import Publications from './pages/publication/Publications'
 import Questions from './pages/forum/Questions'
@@ -27,8 +26,8 @@ function App() {
             <Route element={<ProtectedRoutes/>}> 
               <Route path='/profil' element={<Profil/>}/> 
 
-              <Route path='/forum' element={<Forum/>}/> 
-              <Route path='/forum/questions' element={<Questions/>}/> 
+               
+              <Route path='/forum' element={<Questions/>}/> 
               <Route path='/forum/question/:id/reponses' element={<Responses/>}/> 
 
               <Route path='/profil' element={<Profil/>}/> 

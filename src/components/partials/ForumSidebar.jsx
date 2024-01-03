@@ -15,7 +15,7 @@ const ForumSidebar = () => {
                     <XMarkIcon onClick={()=>{setIsOpen(false)}} className={'icon-danger'}/> 
                 </div>
                 <div className="flex flex-col gap-4">
-                    <Link to={'/forum/questions'} className='group' >
+                    <Link to={'/forum'} className='group' >
                         <span className="text-lg text-gray-700 font-bold group-hover:bg-blue-600 group-hover:text-white tran p-2 rounded-lg flex gap-1 items-center block">
                             <QuestionMarkCircleIcon className='w-10'/>
                             Questions
