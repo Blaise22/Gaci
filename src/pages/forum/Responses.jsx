@@ -18,7 +18,7 @@ const Responses = () => {
   const {id}=useParams()
   const nav=useNavigate()
   const {data:question,load:questionLoad,error:questionError,getData:getQuestionsData}=useFetch(`/forum/question-detail/${id}/`)
-  const {data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list/`)
+  const {data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list/${id}`)
   const user=useUser()
   return (
     <>

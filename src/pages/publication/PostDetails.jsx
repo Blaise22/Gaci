@@ -48,7 +48,7 @@ const PostDetails = () => {
                           <EllipsisHorizontalIcon className='w-5 text-gray-600' />
                             
                           </div>
-                          <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-44">
+                          <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-56">
                                 <DeletModale 
                                   buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-4 hover:bg-red-100 rounded-md'>Supprimer</span> }
                                   redirectUrl={null}

@@ -15,6 +15,7 @@ import NavigationPageCard from '../../components/cards/NavigationPageCard'
 
 const Forum = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list/`)
+  
   return (
     <>
         <Header/>

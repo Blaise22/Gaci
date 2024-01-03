@@ -22,6 +22,7 @@ const useFetchPaginate = (url) => {
       setData(res.data.results);
       setLoad(false);
     } catch (error) {
+      console.log(error);
       setError(error);
       setLoad(false);
     }

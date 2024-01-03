@@ -10,11 +10,17 @@ import useFetch from '../../hooks/useFetch'
 import useFetchPaginate from '../../hooks/useFetchPaginate'
 import abbreviateNumber from '../../helpers/utils/abbreviateNumber'
 import useDelete from '../../hooks/useDelete'
+import { useEffect } from 'react'
 const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:owner,refresh}) => {
     const {data:likes,load,error,getData:getLikes}=useFetchPaginate(`/pub/like-project-project-list/${pk}`)
     const {create:likeProject,res,success,error:errorCreateLik}=useCreate()
     const {del:disLikeProject, load:deleteLoading, error:deleteError, success:deleteSucess}=useDelete()
     const user=useUser()
+    useEffect(() => {
+      console.log(likes);
+    
+       
+    }, [likes])
     
     
     const handleLike=(pk)=>{
