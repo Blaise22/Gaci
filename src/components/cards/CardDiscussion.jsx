@@ -5,11 +5,12 @@ import useUser from '../../hooks/useUser'
 import DeleteItem from '../containers/DeleteItem'
 import useFetch from '../../hooks/useFetch'
 import sliceString from '../../helpers/utils/sliceString'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import getPeriode from '../../helpers/utils/getPeriode'
 const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status,isResPage,deleteUrl}) => {
      const user=useUser()
      const {data:profil}=useFetch(`auth/profile-user-id-detail/${owner?.pk}/`)  
+     const nav=useNavigate()
   return (
     <div className="block shadow-md p-2 md:p-4 rounded-lg md:text-sm w-auto mt-1 border-b pb-3 text-xs">
                 <div className="flex group ">
@@ -29,18 +30,24 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
                      
                 </div>
                 <div className={"text-gray-700 p-1 border-b mt-1 "}>
-                    <div className={`block w-auto  my-2 p-2 rounded-lg ${user?.user?.pk==owner?.pk ?'bg-blue-100 text-blue-600':'bg-gray-100 text-gray-600'}`}>
+                    <div className={`block w-auto  my-2 p-2 rounded-lg ${user?.user?.pk==owner?.pk ?' text-blue-600':' text-gray-600'}`}>
                         {message} 
-                    </div>   
+                    </div> 
+                    {
+                    image ?
+                    <Link to={image}>
+                        <img src={image} className=' w-auto h-28 object-cover rounded-lg' alt="logo" />
+                    </Link>
+                    :
+                    null
+
+                    }  
                     <div className="flex justify-between mt-1 gap-2">
                         {
                             doc &&
                             <button className='p-1 rounded-md text-blue-600  hover:bg-blue-200'>Lire le document</button>
                         }
-                        {
-                            image &&
-                            <button className='p-1 rounded-md text-blue-600  hover:bg-blue-200'>Voir l'image</button>
-                        }
+                         
                     </div>                  
                 </div>
                 {

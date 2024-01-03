@@ -44,15 +44,15 @@ const CreateResponseForm = ({questionId,refresh}) => {
       }; 
       const submit=()=>{
         const formData={
-          wording:response,
-          dte:'2023-12-05',
+          wording:response, 
           image64:image, 
+          dte:'2023-10-01',
           doc64:doc,
           question_id:questionId,
           status:false
         }
         if(response){
-          create(`forum/reply-list-create/`,formData)
+          create(`forum/reply-list-create/${questionId}/`,formData)
         }else{
           setFormError('Veuillez decrire votre reponse')
           setTimeout(() => {

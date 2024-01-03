@@ -44,22 +44,17 @@ const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:
     <>
         <div className="w-full flex shadow-md rounded-lg flex-col">
           
-          {
-            image ?
-            <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
-            null
-
-          }
+          
            
-          <div className="flex px-4 pb-4 flex-col">
-              <div className="flex items-center pt-4 justify-between">
+          <div className="flex  pb-4 flex-col">
+              <div className="flex px-4 items-center pt-4 justify-between">
                 <div className="flex flex-col gap-2">
                     <h1 className='text-gray-700 block py-2 text-md font-semibold'>Publié par {owner?.names}</h1> 
                 </div>
                          
                           {
                             user?.user?.pk==owner?.pk &&
-                            <div className="relative z-0 group py-2">
+                            <div className="relative z-0 group py-2 ">
                             <div className="flex p-2 rounded-lg hover:bg-gray-100 items-center gap-1">
                             <EllipsisHorizontalIcon className='w-5 text-gray-600' />
                             
@@ -78,18 +73,18 @@ const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:
                                 }
                                 
                             </div>
-              <h1 className='text-gray-700 block pt-4 px-1.5 pb-2 block border-t text-md font-semibold flex flex-col'>Développeur <span className='text-sm font-normal'>{dev}</span></h1>
+              <div className="px-4">
+              <h1 className='text-gray-700  pt-4 px-1.5 pb-2   text-md font-semibold flex flex-col'>Développeur <span className='text-sm font-normal'>{dev}</span></h1>
                 <h1 className='text-blue-600 px-1.5 text-lg font-semibold '>{designation}</h1> 
                 <h1 className='text-gray-700 px-1.5 text-md flex flex-col font-semibold blck mt-2'>Prix unitaire<span className='text-sm font-normal'>{pu}</span></h1> 
-                      
-                      <div className={`mt-2 rounded-full inline  p-1.5 flex items-center gap-2 ${likes.filter(item=> item.user.pk==user?.user.pk)?.length>0?'text-blue-600 ':'text-gray-600 '} `}>
-                          <HandThumbUpIcon onClick={()=>{handleLike(pk)}} className='w-8 p-0.5 active:border rounded-full tran cursor-pointer' />
-                          {
-                              !load &&
-                              <span>{abbreviateNumber(likes?.length)} j'aimes</span>
-                          }
-                      </div>
-                <div className="flex w-full items-center mt-2 justify-between">
+              </div>
+                {
+                    image ?
+                    <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
+                    null
+
+                }
+                <div className="flex px-4 w-full items-center mt-2 justify-between">
 
                   <div className="flex gap-2 items-center"> 
                       <Link to={'/projet/'+pk} className='hover:bg-blue-100 rounded-lg tran hover:text-blue-600 p-1.5 text-gray-700 group flex items-center gap-2'>
@@ -98,8 +93,15 @@ const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:
                       </Link>
                     
                   </div>
-                  <span className="text-xs block flex justify-end">Publié {getPeriode(date)}</span>
+                  <span className="text-xs  flex justify-end">Publié {getPeriode(date)}</span>
                 </div>
+                      <div className={`mt-2 px-4 rounded-full   p-1.5 flex items-center gap-2 ${likes.filter(item=> item.user.pk==user?.user.pk)?.length>0?'text-blue-600 ':'text-gray-600 '} `}>
+                          <HandThumbUpIcon onClick={()=>{handleLike(pk)}} className='w-8 p-0.5 active:border rounded-full tran cursor-pointer' />
+                          {
+                              !load &&
+                              <span>{abbreviateNumber(likes?.length)} j'aimes</span>
+                          }
+                      </div>
           </div>
 
       </div>

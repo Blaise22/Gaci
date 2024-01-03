@@ -3,7 +3,7 @@ import Header from '../../components/partials/Header'
 import {QuestionMarkCircleIcon,EllipsisHorizontalIcon} from '@heroicons/react/20/solid'
 import MainCard from '../../components/cards/MainCard'
 import CardDiscussion from '../../components/cards/CardDiscussion'
-import {useParams,useNavigate} from 'react-router-dom'
+import {useParams,useNavigate, Link} from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Spinner from '../../components/extra/Spinner'
 import getPeriode from '../../helpers/utils/getPeriode'
@@ -15,10 +15,9 @@ import ForumSidebar from '../../components/partials/ForumSidebar'
 import DeletModale from '../../components/modals/DeletModale'
 import useUser from '../../hooks/useUser'
 const Responses = () => {
-  const {id}=useParams()
-  const nav=useNavigate()
+  const {id}=useParams() 
   const {data:question,load:questionLoad,error:questionError,getData:getQuestionsData}=useFetch(`/forum/question-detail/${id}/`)
-  const {data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list/${id}`)
+  const {data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/forum/reply-list-create/${id}/`)
   const user=useUser()
   return (
     <>
@@ -42,7 +41,7 @@ const Responses = () => {
                                 user?.user.pk==question?.user.pk &&
                                 <DeletModale 
                                   buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-2 hover:bg-red-100 rounded-md'>Supprimer ma question</span> }
-                                  redirectUrl={'/forum/questions'}
+                                  redirectUrl={'/forum'}
                                   title={'Supprimer une question'}
                                   url={`/forum/question-delete/${id}/`}
                                   refresh={()=>{}}
@@ -54,12 +53,16 @@ const Responses = () => {
                     <span className='font-bold py-2 block text-md'>Posée par { question?.user?.names }</span>
                     { question?.wording ?
                     <>
-                      <span className="text-blue-600 block w-full pb-4 p-2 rounded-lg font-semibold">
+                      <span className="text-blue-600 block w-full pb-4 rounded-lg font-semibold">
                         {question?.wording} 
                       </span>
                       {
                       question?.image ?
-                      <img src={question?.image} className=' w-full h-56 object-cover rounded-lg' alt="logo" />:
+                      <Link to={question?.image}>
+                        <img src={question?.image} className=' w-full h-56 object-cover rounded-lg' alt="logo" />
+                      </Link>
+                      
+                      :
                       null
 
                     }
@@ -102,7 +105,7 @@ const Responses = () => {
                         image={item?.image}
                         owner={item?.user}
                         question={item?.question}
-                        refresh={()=>{getData(`/forum/reply-list/`)}}
+                        refresh={()=>{getData(`/forum/reply-list-create/${id}/`)}}
                         pk={item.pk}
                         status={item.status}
                         isResPage={true}
@@ -135,8 +138,8 @@ const Responses = () => {
         </div>
           <CreateResponseForm 
             questionId={question?.pk} 
-            refresh={()=>{getData('/forum/reply-list/')}}
-            
+            refresh={()=>{getData(`/forum/reply-list-create/${id}/`)}}
+
           />
         </div>
         </div>

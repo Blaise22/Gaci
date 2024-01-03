@@ -35,15 +35,10 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
         />
         <div className="w-full flex shadow-md rounded-lg flex-col">
           
-            {
-              image ?
-              <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
-              null
-
-            }
+            
              
-            <div className="flex px-4 pb-4 flex-col">
-                <div className="flex items-center pt-4 justify-between">
+            <div className="flex  pb-4 flex-col">
+                <div className="flex items-center pt-4 px-4 justify-between">
                   <h1 className='text-gray-700 block text-md font-semibold'>Publié par {names}</h1>
                   <div className="relative z-0 group py-2">
                           <div className="flex p-2 rounded-lg hover:bg-gray-100 items-center gap-1">
@@ -67,9 +62,17 @@ const ArticleCard = ({date,image,synthesis,title,user:names,userPk,pk,refresh}) 
                           </div>
                         </div>
                 </div>
-                  <h1 className='text-blue-600 text-lg font-semibold'>{title}</h1>
-                  <h1 className='text-sm text-gray-600'>{synthesis}</h1>
-                  <div className="flex w-full items-center mt-2 justify-between">
+                  <div className="px-4">
+                    <h1 className='text-blue-600 text-lg font-semibold'>{title}</h1>
+                    <h1 className='text-sm text-gray-600 pb-2'>{synthesis}</h1>
+                  </div>
+                  {
+                    image ?
+                    <img src={image} className=' w-full h-56 object-cover ' alt="logo" />:
+                    null
+
+                  }
+                  <div className="flex w-full items-center mt-2 px-4 justify-between">
                     <div className="flex gap-2 items-center"> 
                         <Link to={'/publication/'+pk} className='hover:bg-blue-100 rounded-lg tran hover:text-blue-600 p-1.5 text-gray-700 group flex items-center gap-2'>
                             <EyeIcon className='w-6' />

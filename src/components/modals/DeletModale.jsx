@@ -29,6 +29,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
       }, 4000);
       closeModal()
       refresh()
+      redirectUrl && navigate(redirectUrl)
        
     }).catch(err=>{ 
       console.log(err);
@@ -41,7 +42,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
     
     }).finally(()=>{ 
       setDeleting(false)
-      redirectUrl && navigate(redirectUrl)
+     
       
 
      })

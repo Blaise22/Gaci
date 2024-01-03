@@ -46,11 +46,11 @@ const CreateQuestionForm = ({onClose}) => {
       wording:quest,
       dte:'2023-12-05',
       image64:image, 
-      doc64:doc
+      doc64:image
     }
      
     if(quest){
-      create(`forum/question-list-create/`,formData)
+      create(`/forum/question-list-create/`,formData)
     }else{
       setFormError('Veuillez decrire votre question')
       setTimeout(() => {
