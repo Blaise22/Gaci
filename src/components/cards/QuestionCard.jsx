@@ -30,7 +30,7 @@ const QuestionCard = ({refresh,owner,message,dateAdd,dateUpdate,image,doc,pk}) =
             }
             <div className={`flex gap-2 items-center justify-between p-4  pt-2 mt-2 `}> 
                 <div className='flex flex-col'>
-                    <span className='text-blue-600 font-bold'>{data?.count} reponse {data?.count>1?'s':''} </span>
+                    <span className='text-blue-600 font-bold'>{data?.count} reponse{data?.count>1?'s':''} </span>
                     <span className='text-xs text-gray-600 '>Publiée {getPeriod(dateAdd)}</span>
                 </div>
                 <button onClick={()=>{navigate('/forum/question/'+pk+'/reponses/')}} className='btn-primary flex items-center gap-2'>

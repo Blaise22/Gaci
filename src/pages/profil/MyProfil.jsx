@@ -46,7 +46,7 @@ const MyProfil = () => {
                   profil?.user ?
                   
                   <div className="w-10 p-2 group relative rounded-full ">
-                      <Bars3BottomLeftIcon className="w-10 z-40 p-1 absolute top-[-100%] rounded-full border hover:bg-gray-200 active:border-blue-600 bg-white text-gray-600" />
+                      <Bars3BottomLeftIcon className="w-10 z-40 p-1 absolute top-[-100%] rounded-full  hover:bg-gray-200 active:border-blue-600 bg-white text-gray-600" />
                       <div className="hidden gap-2  p-4 text-sm group-hover:block absolute top-[100%] bg-white z-50 card flex flex-col">
                         <div className="flex  block w-full gap-2 items-center">
                           <span className="text-blue-600 w-56  block cursor-pointer tran hover:font-bold p-2 rounded-lg hover:bg-blue-100" onClick={()=>{setOpenUpdateProf(!openUpdateProf)}}>
@@ -67,7 +67,7 @@ const MyProfil = () => {
                       </div>
                   </div>
                   :
-                  <CameraIcon onClick={()=>{setOpenCreateProf(!openCreateProf)}} className="w-10 p-1 rounded-full border z-40 hover:bg-gray-200 active:border-blue-600 bg-white text-gray-600" />
+                  <CameraIcon onClick={()=>{setOpenCreateProf(!openCreateProf)}} className="w-10 p-1 rounded-full  z-40 hover:bg-gray-200 active:border-blue-600 bg-white text-gray-600" />
                 }
             </div>
             {

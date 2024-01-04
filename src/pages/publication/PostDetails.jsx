@@ -17,7 +17,7 @@ import useUser from '../../hooks/useUser'
 import Thumbail from '../../assets/img.jpg'
 import getPeriode from '../../helpers/utils/getPeriode'
 import DeletModale from '../../components/modals/DeletModale'
-import ArticleSidebar from '../../components/partials/ArticleSidebar'
+import PubOptionsLinks from '../../components/partials/PubOptionsLinks'
 const PostDetails = () => {
     const {id}=useParams()
     const navigate=useNavigate()
@@ -33,7 +33,7 @@ const PostDetails = () => {
         <PubSidebar />
         <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
           <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  ">
-            <ArticleSidebar postId={id} />
+            
                
              <MainCard
                 className={'bg-white rounded-lg mt-8 w-full md:w-96 lg:w-[80%]'}
@@ -64,6 +64,7 @@ const PostDetails = () => {
                     </>
                  }
              >
+                <PubOptionsLinks postId={id} />
               <div className="flex gap-4 flex-col text-gray-700">
                 {
                     // for only staff (post details)
@@ -145,7 +146,7 @@ const PostDetails = () => {
                  
                 <Spinner 
                   load={load} 
-                  className='w-14 h-14 lg:w-20 lg:w-24' 
+                  className='w-14 h-14 md:w-20 lg:w-24' 
                 />
                 <span className="text-lg font-bold block">Commentaires {!loadComments &&`- ${count}`}</span>
                 <div className="mt-2 pb-16">

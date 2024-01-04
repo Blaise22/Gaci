@@ -16,11 +16,10 @@ import CardDiscussion from '../../components/cards/CardDiscussion'
 import CreateCommentForm from '../../components/form/CreateCommentForm' 
 import useUser from '../../hooks/useUser'
 import Thumbail from '../../assets/img.jpg'
-import getPeriode from '../../helpers/utils/getPeriode'
-import DeletModale from '../../components/modals/DeletModale'
-import ArticleSidebar from '../../components/partials/ArticleSidebar'
+import getPeriode from '../../helpers/utils/getPeriode' 
 import DocumentModal from '../../components/modals/DocumentModal'
 import CardDocument from '../../components/cards/CardDocument'
+import PubOptionsLinks from '../../components/partials/PubOptionsLinks'
 const PostsDocuments = () => {
     const {id}=useParams()
     const navigate=useNavigate()
@@ -37,7 +36,7 @@ const PostsDocuments = () => {
         <PubSidebar />
         <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
           <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  ">
-            <ArticleSidebar postId={id} />
+           
                
              <MainCard
                 className={'bg-white rounded-lg mt-10  w-full md:w-96 lg:w-[80%]'}
@@ -61,6 +60,7 @@ const PostsDocuments = () => {
                         </DocumentModal>:null
                         }
              >
+                 <PubOptionsLinks postId={id} />
               <div className="flex gap-4 flex-col text-gray-700">
                 {
                     // for only staff (post details)

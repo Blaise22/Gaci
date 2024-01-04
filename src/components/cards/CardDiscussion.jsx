@@ -45,14 +45,14 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
                     }
                      
                 </div>
-                <div className={"text-gray-700 p-1 border-b mt-1 "}>
-                    <div className={`block w-auto  my-2 p-2 rounded-lg ${user?.user?.pk==owner?.pk ?' text-blue-600':' text-gray-600'}`}>
+                <div className={"text-gray-700 flex flex-col gap-1  border-b  "}>
+                    <div className={`block w-auto   px-2 rounded-lg ${user?.user?.pk==owner?.pk ?' text-blue-600':' text-gray-600'}`}>
                         {message} 
                     </div> 
                     {
                     image ?
                     <Link to={image}>
-                        <img src={image} className=' w-auto h-28 object-cover rounded-lg' alt="logo" />
+                        <img src={image} className=' w-auto h-28 object-cover shadow-md border rounded-lg' alt="logo" />
                     </Link>
                     :
                     null

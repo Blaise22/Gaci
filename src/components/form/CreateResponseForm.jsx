@@ -43,11 +43,12 @@ const CreateResponseForm = ({questionId,refresh}) => {
         reader.readAsDataURL(file);
       }; 
       const submit=()=>{
+        console.log(doc);
         const formData={
           wording:response, 
           image64:image, 
-          dte:'2023-10-01',
           doc64:doc,
+          dte:'2023-10-01',
           question_id:questionId,
           status:false
         }

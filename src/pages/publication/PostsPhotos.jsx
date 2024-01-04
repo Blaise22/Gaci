@@ -18,7 +18,7 @@ import useUser from '../../hooks/useUser'
 import Thumbail from '../../assets/img.jpg'
 import getPeriode from '../../helpers/utils/getPeriode'
 import DeletModale from '../../components/modals/DeletModale'
-import ArticleSidebar from '../../components/partials/ArticleSidebar'
+import PubOptionsLinks from '../../components/partials/PubOptionsLinks'
 import DocumentModal from '../../components/modals/DocumentModal'
 import CardDocument from '../../components/cards/CardDocument'
 import ImageModal from '../../components/modals/ImageModal'
@@ -39,7 +39,7 @@ const PostsPhotos = () => {
         <PubSidebar />
         <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
           <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  ">
-            <ArticleSidebar postId={id} />
+            
                
              <MainCard
                 className={'bg-white rounded-lg mt-10  w-full md:w-96 lg:w-[80%]'}
@@ -63,6 +63,7 @@ const PostsPhotos = () => {
                         </ImageModal>:null
                         }
              >
+                <PubOptionsLinks postId={id} />
               <div className="flex gap-4 flex-col text-gray-700">
                 {
                     // for only staff (post details)
