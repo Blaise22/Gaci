@@ -3,7 +3,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { Bars3BottomLeftIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { CameraIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import FormCreateProf from "./FormCreateProf"; 
-import { Bars3CenterLeftIcon, PencilSquareIcon } from "@heroicons/react/20/solid";
+import { Bars3CenterLeftIcon, PencilSquareIcon,ChevronDownIcon,ChevronUpIcon } from "@heroicons/react/20/solid";
 import FormUpdateProf from "./FormUpdateProf"; 
 import { Link, useNavigate } from "react-router-dom"; 
 import useUser from "../../hooks/useUser";
@@ -124,8 +124,18 @@ const MyProfil = () => {
                 </Disclosure.Panel>
 
                 {/* Flèche d'ouverture/fermeture du modal */}
-                <Disclosure.Button className="btn-secondary">
-                  {open ? "Fermer les informations" : "Afficher les informations"}
+                <Disclosure.Button className="block ">
+                  {open ? 
+                  <div className="py-2 flex text-sm group text-gray-700 gap-2 items-center">
+                    <ChevronUpIcon className='w-6 group-hover:text-blue-600' />
+                    <span className="group-hover:text-blue-600">Fermer les informations</span> 
+                  </div>
+                  : 
+                  <div className="py-2 flex text-sm group text-gray-700 gap-2 items-center">
+                    <ChevronDownIcon className='w-6 group-hover:text-blue-600' />
+                    <span className="group-hover:text-blue-600">Afficher les informations</span> 
+                  </div>  
+                 }
                 </Disclosure.Button>
                 
               </>
