@@ -100,22 +100,44 @@ const MyProfil = () => {
               <>
                 {/* Contenu du modal */}
                 <Disclosure.Panel>
-                  <div className="bg-white text-md rounded-lg mt-4 mb-4">
-                    
-                     
-                    <p>Email: {data?.email}</p>
-                    <p>Téléphone: {data?.phone_number}</p>
-                    <p>Staff: {data?.staff ? "Oui":"Non"} </p>
+                  <div className="bg-white  text-md rounded-lg mt-4 mb-4">
+                    <table >
+                      <tbody>
+                        <tr className=" px-2 rounded-t-lg">
+                          <td  >Email</td>
+                          <td className="py-1 font-bold pl-2 text-gray-700">{data?.email}</td>
+                        </tr>
+                        <tr>
+                          <td  >Téléphone</td>
+                          <td className="py-1 font-bold pl-2 text-gray-700">{data?.phone_number}</td>
+                        </tr>
+                        <tr className=" px-2" >
+                          <td  >Staff</td>
+                          <td className="py-1 font-bold pl-2 text-gray-700"> {data?.staff ? "Oui":"Non"}</td>
+                        </tr>
+                        { 
+                          profil?.user&&
+                          <tr>
+                            <td  >Genre</td>
+                            <td className="py-1 font-bold pl-2 text-gray-700"> {profil?.kind}</td>
+                          </tr>
+                        }
+                        { 
+                          profil?.user&&
+                          <tr className=" px-2">
+                            <td  >Adress</td>
+                            <td className="py-1 font-bold pl-2 text-gray-700">{profil?.adress}</td>
+                          </tr>
+                        }
+                      </tbody>
+                    </table> 
                     {
                       profil?
                       profil.user&&
-                      <>
-
-                        <p>Genre: {profil?.kind}</p>
-                        <p>Adress: {profil?.adress}</p>
-                        <div className="flex  flex-col ">
-                            <p className="text-gray-700 font-semibold">Bio</p>
-                            <p>{profil?.bio}</p>
+                      <> 
+                        <div className="flex mt-1 flex-col ">
+                            <span className="text-gray-700 font-semibold">Bio</span>
+                            <span>{profil?.bio}</span>
                         </div>
                       </>
                       :null
