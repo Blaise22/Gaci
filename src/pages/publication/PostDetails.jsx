@@ -70,7 +70,7 @@ const PostDetails = () => {
                     // for only staff (post details)
                     data && 
                     <div className="block">
-                        <span className="text-lg font-bold ">{data?.title}</span>
+                        <span className="text-lg font-bold block text-blue-600 mb-2 ">{data?.title}</span>
                         {
                         data?.image ?
                         <Link to={data?.image}>
@@ -172,6 +172,7 @@ const PostDetails = () => {
                     errorStatus={commentErrors}
                     len={comments?.length} 
                     load={loadComments}
+                    message={'Aucun commentaire pour l\'instant.'}
                 />
                 <NavigationPageCard
                   load={loadComments}

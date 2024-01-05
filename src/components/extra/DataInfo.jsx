@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DataInfo = ({errorStatus,len,load}) => {
+const DataInfo = ({errorStatus,len,load,message}) => {
   return (
     <>
         {
@@ -13,7 +13,7 @@ const DataInfo = ({errorStatus,len,load}) => {
             !load &&
             len==0?
                 <div className="flex justify-center py-12 w-full border rounded lg bg-gray-100">
-                    Aucun resultat
+                    {message?message:"Aucun resultat"}
                 </div>
             :null
         }

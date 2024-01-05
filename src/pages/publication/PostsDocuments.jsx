@@ -29,7 +29,7 @@ const PostsDocuments = () => {
     const { data,load,error}=useFetch(!isStaff?`/pub/post-no-staff-detail/${id}`:`/pub/post-no-staff-detail/${id}`)
     const { data:documents,load:loadDocuments,count,prev,next, error:documentsErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-docs-post-list/${id}/`)
     const {data:profil}=useFetch(`auth/profile-user-id-detail/${data?.user?.pk}/`) 
-    console.log(documents);
+    
     return (
     <>
         <Header/>
@@ -41,7 +41,7 @@ const PostsDocuments = () => {
              <MainCard
                 className={'bg-white rounded-lg mt-10  w-full md:w-96 lg:w-[80%]'}
                 mainIcon={<DocumentIcon className='w-8 text-gray-700' />}
-                mainTitle={'Documents de la publication'}
+                mainTitle={'Documents'}
                 sideHeaderContent={
                     user?.user.pk==data?.user.pk ?
                     <DocumentModal
@@ -72,7 +72,7 @@ const PostsDocuments = () => {
                     // for only staff (post details)
                     data && 
                     <div className="block">
-                        <span className="text-lg font-bold ">{data?.title}</span>
+                        <span className="text-lg font-bold block text-blue-600 mb-2 ">{data?.title}</span>
                         {
                         data?.image ?
                         <Link to={data?.image}>

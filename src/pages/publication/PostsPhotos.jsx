@@ -18,9 +18,7 @@ import useUser from '../../hooks/useUser'
 import Thumbail from '../../assets/img.jpg'
 import getPeriode from '../../helpers/utils/getPeriode'
 import DeletModale from '../../components/modals/DeletModale'
-import PubOptionsLinks from '../../components/partials/PubOptionsLinks'
-import DocumentModal from '../../components/modals/DocumentModal'
-import CardDocument from '../../components/cards/CardDocument'
+import PubOptionsLinks from '../../components/partials/PubOptionsLinks' 
 import ImageModal from '../../components/modals/ImageModal'
 import CardPicture from '../../components/cards/CardPicture'
 const PostsPhotos = () => {
@@ -32,7 +30,6 @@ const PostsPhotos = () => {
     const { data,load,error}=useFetch(!isStaff?`/pub/post-no-staff-detail/${id}`:`/pub/post-no-staff-detail/${id}`)
     const { data:pictures,load:loadPictures,count,prev,next, error:picturesErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-images-post-list/${id}/`)
     const {data:profil}=useFetch(`auth/profile-user-id-detail/${data?.user?.pk}/`) 
-    console.log(pictures);
     return (
     <>
         <Header/>
@@ -44,7 +41,7 @@ const PostsPhotos = () => {
              <MainCard
                 className={'bg-white rounded-lg mt-10  w-full md:w-96 lg:w-[80%]'}
                 mainIcon={<DocumentIcon className='w-8 text-gray-700' />}
-                mainTitle={'Photos de la publication'}
+                mainTitle={'Photos'}
                 sideHeaderContent={
                     user?.user.pk==data?.user.pk ?
                     <ImageModal
@@ -75,7 +72,7 @@ const PostsPhotos = () => {
                     // for only staff (post details)
                     data && 
                     <div className="block">
-                        <span className="text-lg font-bold ">{data?.title}</span>
+                        <span className="text-lg font-bold block text-blue-600 mb-2 ">{data?.title}</span>
                         {
                         data?.image ?
                         <Link to={data?.image}>
