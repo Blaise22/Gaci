@@ -92,7 +92,7 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
                   >
                     <div className="flex relative  gap-4 items-center">
                         
-                        <QuestionMarkCircleIcon className='w-12 text-red-600'/>
+                        <QuestionMarkCircleIcon className='w-12 text-gray-600'/>
                         <span>{title}</span>
                     </div>
                   </Dialog.Title>
@@ -109,11 +109,11 @@ export default function DeletModale({url,title,refresh,buttonContent,redirectUrl
                         <>
                           { 
                             deleting ?
-                            <button type='button'  className="h-9 rounded-lg px-2  bg-red-400 w-full text-white hover:bg-red-300 transition-all duration-300  active:bg-red-400 active:shadow-lg" >  Suppression ... </button>
+                            <button type='button'  className="h-9 text-center justify-center rounded-lg px-2 flex items-center bg-red-400 w-full text-white hover:bg-red-300 transition-all duration-300 cursor-not-allowed active:bg-red-400 active:shadow-lg" >Supprimer</button>
                             :
-                            <button type='button'  className="btn-danger w-full" onClick={deletItem} >  Supprimer </button>
+                            <button type='button'  className="h-9 bg-red-200 font-bold text-center justify-center rounded-lg px-2 flex items-center  hover:bg-red-600 w-full text-red-600 hover:text-white  transition-all duration-300  active:bg-red-400 active:shadow-lg" onClick={deletItem} >  Supprimer </button>
                           }
-                          <button type="button" className="btn-secondary w-full" onClick={closeModal} > Annuler </button>
+                          <button type="button" className="h-9 bg-gray-200 font-bold text-center justify-center rounded-lg px-2 flex items-center  hover:bg-gray-600 w-full text-gray-600 hover:text-white  transition-all duration-300  active:bg-gray-400 active:shadow-lg" onClick={closeModal} > Annuler </button>
                         </>
                     }
                   </div>
