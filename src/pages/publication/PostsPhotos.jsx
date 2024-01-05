@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Header from '../../components/partials/Header' 
 import MainCard from '../../components/cards/MainCard'
-import {QuestionMarkCircleIcon,PlusIcon,UserCircleIcon,ChevronUpIcon,ChevronDownIcon,BookmarkIcon} from '@heroicons/react/20/solid' 
+import {QuestionMarkCircleIcon,PlusIcon,UserCircleIcon,ChevronUpIcon,ChevronDownIcon,ChevronLeftIcon,BookmarkIcon} from '@heroicons/react/20/solid' 
 import {DocumentIcon} from '@heroicons/react/24/outline' 
 import Spinner from '../../components/extra/Spinner' 
 import PubSidebar from '../../components/partials/PubSidebar' 
@@ -63,7 +63,13 @@ const PostsPhotos = () => {
                         </ImageModal>:null
                         }
              >
-                <PubOptionsLinks postId={id} />
+                <div className="flex">
+                    <Link to={`/publication/${id}`}  className="flex cursor-pointer items-center p-2 hover:bg-blue-100  tran hover:text-blue-700 rounded-full gap-2">
+                        <ChevronLeftIcon className='w-5' /> 
+                 
+                    </Link>
+                 <PubOptionsLinks postId={id} />
+                 </div>
               <div className="flex gap-4 flex-col text-gray-700">
                 {
                     // for only staff (post details)
