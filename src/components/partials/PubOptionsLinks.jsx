@@ -14,14 +14,11 @@ const PubOptionsLinks = ({postId}) => {
     <>
     
          
-        <div className='flex z-40 items-center gap-2 text-gray-700'>
+        <div className='flex   items-center gap-2 text-gray-700'>
             
              
              
-            <div onClick={()=>{changePage(`/publication/${postId}`)}} className="flex cursor-pointer items-center p-2 hover:bg-blue-100  tran hover:text-blue-700 rounded-full gap-2">
-                <ChevronLeftIcon className='w-5' /> 
-                 
-            </div>
+            
             <div onClick={()=>{changePage(`/publication/${postId}/photos`)}} className="flex cursor-pointer items-center p-2 hover:bg-blue-100  tran hover:text-blue-700 rounded-full gap-2">
                 <PhotoIcon className='w-5' /> 
                 <span className='text-md font-bold'>Photos</span>
