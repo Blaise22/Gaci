@@ -90,9 +90,7 @@ const PostsPhotos = () => {
                             </div>
                             :
                             <UserCircleIcon className='w-10 text-gray-600' />
-                        }
- 
-                        
+                        } 
                         <span className="text-secondary-2 font-bold capitalize">{data?.user?.names} </span>
                     </div>
                             <span className="block w-full flex justify-end">

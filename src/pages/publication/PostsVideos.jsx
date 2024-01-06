@@ -30,6 +30,7 @@ const PostsVideos = () => {
     const { data,load,error}=useFetch(!isStaff?`/pub/post-no-staff-detail/${id}`:`/pub/post-no-staff-detail/${id}`)
     const { data:videos,load:loadvideos,count,prev,next, error:errorvideos,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-video-post-list/${id}/`)
     const {data:profil}=useFetch(`auth/profile-user-id-detail/${data?.user?.pk}/`) 
+    console.log(videos);
     return (
     <>
         <Header/>
@@ -147,7 +148,7 @@ const PostsVideos = () => {
                   load={load} 
                   className='w-14 h-14 lg:w-20 lg:w-24' 
                 />
-                <span className="text-lg font-bold block">Photo {!loadvideos &&`- ${count}`}</span>
+                <span className="text-lg font-bold block">Videos {!loadvideos &&`- ${count}`}</span>
                 <div className="mt-2 flex flex-col gap-4">
                     {
                         videos?.map((item,index)=>(
