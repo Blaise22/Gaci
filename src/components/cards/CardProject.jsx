@@ -80,7 +80,7 @@ const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:
               </div>
                 {
                     image ?
-                    <img src={image} className=' w-full h-56 object-cover ' alt="logo" />:
+                    <img src={image} className=' w-full h-72 sm:h-80 lg:h-96 object-cover ' alt="logo" />:
                     null
 
                 }

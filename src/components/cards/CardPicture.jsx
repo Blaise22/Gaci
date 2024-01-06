@@ -13,7 +13,7 @@ const CardPicture = ({image,date,pk,user:owner,wording,refresh}) => {
               image ?
               <Link to={image}>
                              
-              <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+              <img src={image} className=' w-full h-72 sm:h-80 lg:h-96 object-cover' alt="logo" />
                 </Link>:
               null
 
