@@ -24,7 +24,7 @@ const Responses = () => {
         <Header/>
         <ForumSidebar />
         <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
-          <div className="grid md:px-4 pt-2 lg:grid-cols-2  gap-4">
+          <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72">
         <div className=" py-2  "> 
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">

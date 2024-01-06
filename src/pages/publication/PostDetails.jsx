@@ -36,7 +36,7 @@ const PostDetails = () => {
             
                
              <MainCard
-                className={'bg-white rounded-lg mt-8 w-full md:w-96 lg:w-[80%]'}
+                className={'bg-white rounded-lg mt-8 w-full '}
                 mainIcon={<InboxIcon className='w-8 text-gray-700' />}
                 mainTitle={'Publication'}
                 sideHeaderContent={  

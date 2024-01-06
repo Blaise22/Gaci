@@ -39,7 +39,7 @@ const PostsPhotos = () => {
             
                
              <MainCard
-                className={'bg-white rounded-lg mt-10  w-full md:w-96 lg:w-[80%]'}
+                className={'bg-white rounded-lg mt-10  w-full '}
                 mainIcon={<DocumentIcon className='w-8 text-gray-700' />}
                 mainTitle={'Photos'}
                 sideHeaderContent={

@@ -25,7 +25,7 @@ const Publications = () => {
           <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72">
                
              <MainCard
-                className={'rounded-lg w-full md:w-96 lg:w-[80%]'}
+                className={'rounded-lg w-full'}
                 mainIcon={null}
                 mainTitle={'Publications'}
                 sideHeaderContent={  null }
