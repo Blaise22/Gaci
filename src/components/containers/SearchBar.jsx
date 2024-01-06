@@ -16,7 +16,7 @@ const SearchBar = ({ isOpen, onClose }) => {
     <Dialog open={isOpen} onClose={onClose} initialFocus={inputRef}>
         <Dialog.Overlay className="fixed inset-0 bg-blue-800  opacity-20" />
 
-        <div className=" z-50 fixed top-6 w-full  p-8 h-full  ">
+        <div className="z-50 fixed top-6 w-full  p-8 h-full  ">
       <div className='flex  justify-center'>
           <div className="bg-white rounded-md w-full md:w-[70%] lg:w-[50%] px-4 pb-4 h-full  shadow-lg " >
             <div className="flex items-center justify-between py-2">

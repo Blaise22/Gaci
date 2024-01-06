@@ -81,8 +81,7 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
                 <div className="flex mt-2 items-center justify-between gap-2">
                     <div className=" gap-2 items-center z-0 cursor-pointer w-10 justify-center rounded-md"> 
                              { user?.user?.pk==owner?.pk ? 
-                                <DeleteItem url={deleteUrl} refresh={refresh} />
-                             
+                                <DeleteItem url={deleteUrl} refresh={refresh} />  
                              :'' }
                              
                      </div>

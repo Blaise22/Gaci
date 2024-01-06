@@ -35,7 +35,7 @@ const Input = ({type,value,label,onChange,name,placeholder}) => {
   return (
     <>
         <div className="flex flex-col items-start gap-1">
-            <label htmlFor={name}>{label}</label>
+            <label htmlFor={name} className='text-sm text-gray-700'>{label}</label>
             {  handleInput(type,value,name,placeholder) }
         </div>
     </>

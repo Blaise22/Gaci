@@ -4,6 +4,7 @@ import React,{useEffect, useState} from 'react'
 import {Link,useNavigate} from 'react-router-dom'
 import Logo from '../../../assets/full_gaci_logo.png' 
 import useAuth from '../../../hooks/useAuth'
+import Spinner from '../../../components/extra/Spinner'
 const Connexion = () => {
    
   const navigate=useNavigate()
@@ -60,7 +61,13 @@ const Connexion = () => {
                         {
                             !load ? 
                             <button className={'w-full  btn-primary'} onClick={handleLogin}>Connexion</button>:
-                            <button className={'w-full  btn-primary'}>Connexion ...</button>
+                            <button className={'w-full  btn-primary flex items-center  justify-center'}>
+                                <div className="flex gap-2 ">
+                                    <Spinner className={'w-6 h-6'} load={true} />
+                                    Connexion
+                                </div> 
+                                 
+                            </button>
                         }
                     </div>
                     <div className="mt-8 text-center">
@@ -68,7 +75,7 @@ const Connexion = () => {
                     </div>
                     <div className="mt-2 flex gap-2 items-center justify-center text-center w-full"> 
                          <div className="w-full">
-                            <span className='text-primary'>N'avez-vous pas un compte ? </span><Link to='inscription' className='text-link'>Creer un compte</Link>
+                            <span className='text-primary'>N'avez-vous pas un compte ? </span><Link to='/inscription' className='text-link'>Creer un compte</Link>
                          </div>
                     </div>
                     <div className="mt-2 text-center">

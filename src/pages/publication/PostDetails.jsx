@@ -74,7 +74,7 @@ const PostDetails = () => {
                         {
                         data?.image ?
                         <Link to={data?.image}>
-                            <img src={data?.image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+                            <img src={data?.image} className=' w-full h-72 sm:h-80 lg:h-96 object-cover' alt="logo" />
                         </Link>
                         :
                         null
