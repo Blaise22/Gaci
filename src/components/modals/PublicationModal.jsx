@@ -40,7 +40,7 @@ export default function PublicationModal({mainButton,modalTitle}) {
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex  justify-center p-4 text-center">
+            <div className="flex  justify-center  text-center   px-4 pt-4">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -50,7 +50,7 @@ export default function PublicationModal({mainButton,modalTitle}) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full md:w-[80%] lg:w-[60%] transform overflow-hidden rounded-lg bg-white  text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full md:max-w-md  transform overflow-hidden rounded-lg bg-white  text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"

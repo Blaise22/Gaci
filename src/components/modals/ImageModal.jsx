@@ -50,7 +50,7 @@ export default function ImageModal({mainButton,modalTitle,postId,onCreate}) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full md:w-[80%] lg:w-[60%] transform overflow-hidden rounded-lg bg-white  text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full md:max-w-md  transform overflow-hidden rounded-lg bg-white  text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
