@@ -161,6 +161,7 @@ const PostsVideos = () => {
                                 user={item.user}
                                 wording={item.wording}
                                 refresh={()=>{getData(`/pub/post-images-post-list/${id}/`)}}
+                                thumbnail={data?.image}
 
                              />
                         ))

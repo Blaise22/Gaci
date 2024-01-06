@@ -5,7 +5,7 @@ import DeletModale from '../modals/DeletModale'
 import getPeriode from '../../helpers/utils/getPeriode'
 import { Link } from 'react-router-dom'
 import ReactPlayer from 'react-player'
-const CardVideo = ({url,date,pk,user:owner,wording,refresh}) => {
+const CardVideo = ({url,date,pk,user:owner,wording,refresh,thumbnail}) => {
     const user=useUser()
   return (
     <>
@@ -17,6 +17,7 @@ const CardVideo = ({url,date,pk,user:owner,wording,refresh}) => {
                       url={url}
                       height={500}
                       width={500}
+                      
                      />
                
                 </Link>:
