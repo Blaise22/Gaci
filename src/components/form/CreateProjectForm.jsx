@@ -133,7 +133,7 @@ const CreateProjectForm = ({onClose}) => {
        
 
 
-      <div className="flex mt-2 items-center justify-between">
+      <div className="flex  items-center justify-between">
         <div className="flex gap-2">
         <div className="flex flex-col w-full">
                 <label htmlFor="" className='text-xs'>Image</label>
@@ -158,7 +158,7 @@ const CreateProjectForm = ({onClose}) => {
             </div>
         </div>
         <Button
-        className={'btn-primary mt-4'}
+        className={'btn-primary mt-2 font-bold'}
         click={submit}
         icon={null}
         load={load}

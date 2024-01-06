@@ -68,7 +68,7 @@ const CreateDocumentForm = ({onClose,postId,onCreate}) => {
        
 
 
-      <div className="flex mt-2 items-center justify-between">
+      <div className="flex  items-center justify-between">
         <div className="flex gap-2"> 
             <div className="flex flex-col w-full">
                 <label htmlFor="" className='text-xs text-blue-600'>{filename}</label>
@@ -84,7 +84,7 @@ const CreateDocumentForm = ({onClose,postId,onCreate}) => {
             </div>
         </div>
         <Button
-        className={'btn-primary mt-4'}
+        className={'btn-primary font-bold mt-2'}
         click={submit}
         icon={null}
         load={load}
