@@ -28,7 +28,7 @@ const PostsVideos = () => {
     const user=useUser()
     const isStaff=user?.user?.staff; 
     const { data,load,error}=useFetch(!isStaff?`/pub/post-no-staff-detail/${id}`:`/pub/post-no-staff-detail/${id}`)
-    const { data:pictures,load:loadPictures,count,prev,next, error:picturesErrors,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-images-post-list/${id}/`)
+    const { data:videos,load:loadvideos,count,prev,next, error:errorvideos,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-video-post-list/${id}/`)
     const {data:profil}=useFetch(`auth/profile-user-id-detail/${data?.user?.pk}/`) 
     return (
     <>
@@ -47,7 +47,7 @@ const PostsVideos = () => {
                     <ImageModal
                         onCreate={()=>{getData(`/pub/post-images-post-list/${id}/`)}} 
                         postId={id}
-                        modalTitle={'Photo'}
+                        modalTitle={'Video'}
                         mainButton={
                             <button className='flex gap-0 text-md bg-gray-200 p-2 font-bold hover:bg-gray-300 active:shadow tran rounded-lg group items-center'>
                             <PlusIcon className='w-6 text-gray-700' />
@@ -147,31 +147,21 @@ const PostsVideos = () => {
                   load={load} 
                   className='w-14 h-14 lg:w-20 lg:w-24' 
                 />
-                <span className="text-lg font-bold block">Photo {!loadPictures &&`- ${count}`}</span>
+                <span className="text-lg font-bold block">Photo {!loadvideos &&`- ${count}`}</span>
                 <div className="mt-2 flex flex-col gap-4">
                     {
-                        pictures?.map((item,index)=>(
-                             <CardPicture 
-                                key={index}
-                                image={item.images}
-                                date={item.date_add}
-                                pk={item.pk}
-                                user={item.user}
-                                wording={item.wording}
-                                refresh={()=>{getData(`/pub/post-images-post-list/${id}/`)}}
-
-                             
-                             />
+                        videos?.map((item,index)=>(
+                             <>Hello</>
                         ))
                     }
                 </div>
                 <DataInfo 
-                    errorStatus={picturesErrors}
-                    len={pictures?.length} 
-                    load={loadPictures}
+                    errorStatus={errorvideos}
+                    len={videos?.length} 
+                    load={loadvideos}
                 />
                 <NavigationPageCard
-                  load={loadPictures}
+                  load={loadvideos}
                   count={count} 
                   next={next}
                   prev={prev}
