@@ -80,7 +80,7 @@
   @apply w-full text-sm border px-2 outline-none ring-0  h-9 rounded-lg
 }
 .form-control-textarea {
-  @apply h-24 text-sm outline-none focus:ring-blue-700 hover:ring-blue-700 focus:ring-1 border rounded px-2 hover:transition-all 
+  @apply h-24 text-sm outline-none focus:ring-blue-700 hover:ring-blue-700 focus:ring-1 border rounded-lg px-2 hover:transition-all 
 }
 .form-control-x{
   @apply w-full bg-gray-100 px-2 outline-none ring-0  h-9 rounded-lg
