@@ -41,7 +41,7 @@ const PostsVideos = () => {
              <MainCard
                 className={'bg-white rounded-lg mt-10  w-full '}
                 mainIcon={<DocumentIcon className='w-8 text-gray-700' />}
-                mainTitle={'Photos'}
+                mainTitle={'Videos'}
                 sideHeaderContent={
                     user?.user.pk==data?.user.pk ?
                     <ImageModal
