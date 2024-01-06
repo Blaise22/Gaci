@@ -21,6 +21,7 @@ import DeletModale from '../../components/modals/DeletModale'
 import PubOptionsLinks from '../../components/partials/PubOptionsLinks' 
 import ImageModal from '../../components/modals/ImageModal'
 import CardPicture from '../../components/cards/CardPicture'
+import CardVideo from '../../components/cards/CardVideo'
 const PostsVideos = () => {
     const {id}=useParams()
     const navigate=useNavigate()
@@ -152,7 +153,16 @@ const PostsVideos = () => {
                 <div className="mt-2 flex flex-col gap-4">
                     {
                         videos?.map((item,index)=>(
-                             <>Hello</>
+                             <CardVideo 
+                                key={index}
+                                url={item.url}
+                                date={item.date_add}
+                                pk={item.pk}
+                                user={item.user}
+                                wording={item.wording}
+                                refresh={()=>{getData(`/pub/post-images-post-list/${id}/`)}}
+
+                             />
                         ))
                     }
                 </div>
