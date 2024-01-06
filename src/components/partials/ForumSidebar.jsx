@@ -9,7 +9,7 @@ const ForumSidebar = () => {
             {
                 !isOpen && <ChevronRightIcon onClick={()=>{setIsOpen(true)}} className={'w-8 p-1 rounded-full hover:bg-blue-400 tran bg-blue-600 text-white  fixed md:left-4 left-2 z-50  sm:left-4 top-16'}/>
             }
-            <div className={`w-64 border-r md:border-0 bg-white md:bg-none h-full bottom-0 p-2 fixed z-50 lelft-0 top-14 ${!isOpen?'left-[-100%] tran':'left-0 tran'}`}>
+            <div className={`w-64 border-r  bg-white md:bg-none h-full bottom-0 p-2 fixed z-50 lelft-0 top-14 ${!isOpen?'left-[-100%] tran':'left-0 tran'}`}>
                 <div className="flex justify-end">
                     
                     <XMarkIcon onClick={()=>{setIsOpen(false)}} className={'icon-danger'}/> 
