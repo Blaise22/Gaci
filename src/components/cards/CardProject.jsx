@@ -73,14 +73,14 @@ const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:
                                 }
                                 
                             </div>
-              <div className="px-4">
+              <div className="px-4 mb-2">
               <h1 className='text-gray-700  pt-4 px-1.5 pb-2   text-md font-semibold flex flex-col'>Développeur <span className='text-sm font-normal'>{dev}</span></h1>
                 <h1 className='text-blue-600 px-1.5 text-lg font-semibold '>{designation}</h1> 
                 <h1 className='text-gray-700 px-1.5 text-md flex flex-col font-semibold blck mt-2'>Prix unitaire<span className='text-sm font-normal'>{pu}</span></h1> 
               </div>
                 {
                     image ?
-                    <img src={image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />:
+                    <img src={image} className=' w-full h-56 object-cover ' alt="logo" />:
                     null
 
                 }
