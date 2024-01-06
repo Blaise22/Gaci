@@ -65,13 +65,16 @@ const CreateResponseForm = ({questionId,refresh}) => {
     return (
         <>
         {!isExtended && 
-        <button onClick={()=>{setIsextended(true)}} className=' fixed bottom-4 right-4 flex font-bold   p-2 bg-blue-600 text-lg group text-white rounded-lg gap-2 items-center'>
-            <ChevronUpIcon  className='w-7' />
-            Repondre
-        </button> 
+        <div className=" fixed bottom-4 right-4 xl:right-8  md:pl-64 lg:pr-44 xl:pr-80  md:pr-12 pt-16 ">
+          <button onClick={()=>{setIsextended(true)}} className=' flex font-bold   p-2 bg-blue-600 text-lg group text-white rounded-lg gap-2 items-center'>
+              <ChevronUpIcon  className='w-7' />
+              Repondre
+          </button> 
+        </div>
         }
-        <div className={`fixed w-full z-40   md:pl-64  px-2   border-t bg-white  bottom-0 right-0 left-0 ${!isExtended?'bottom-[-200%] tran ':' tran bottom-0'} `}>
-            <div className=" rounded-t-lg h-full w-full md:pl-4 ">
+        <div className={`fixed w-full z-40   md:pl-64  md:pr-12 pt-16 lg:pr-16  p-4      bottom-0 right-0 left-0 ${!isExtended?'bottom-[-200%] tran ':' tran bottom-0'} `}>
+        <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72">
+            <div className=" rounded-lg border h-full w-full md:pl- bg-white">
                 <div className="flex  items-center p-1 justify-between text-md text-gray-700">
                     <span className="px-1 font-bold">Repondre à cette question</span>
                     {isExtended && <XMarkIcon onClick={()=>{setIsextended(false)}} className='icon-danger' />}
@@ -131,6 +134,7 @@ const CreateResponseForm = ({questionId,refresh}) => {
       </div>
       </div>
       </div>
+            </div>
             </div>
          
         </>
