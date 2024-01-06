@@ -62,7 +62,7 @@ const FormCreateProf = ({close}) => {
     <div className="w-[100%] z-40 absolute top-0 bg-white border rounded-lg p-4 ">
         
         <div className="flex  items-center justify-between">
-            <span className="text-secondary">Ajouter un profil</span>
+            <span className="text-secondary font-bold">Ajouter un profil</span>
             <XMarkIcon className='icon-danger z-0' onClick={close} />
         </div>
         <div className="mt-2">
