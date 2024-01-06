@@ -49,7 +49,7 @@ const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:
           <div className="flex  pb-4 flex-col">
               <div className="flex px-4 items-center pt-4 justify-between">
                 <div className="flex flex-col gap-2">
-                    <h1 className='text-gray-700 block py-2 text-md font-semibold'>Publié par {owner?.names}</h1> 
+                    <h1 className='text-gray-700 block py-2 px-2 text-md font-semibold'>Publié par {owner?.names}</h1> 
                 </div>
                          
                           {
@@ -80,7 +80,7 @@ const CardProject = ({date,description,designation,dev,doc,image,pu,pk,pub,user:
               </div>
                 {
                     image ?
-                    <img src={image} className=' w-full h-72 sm:h-80 lg:h-96 object-cover ' alt="logo" />:
+                    <Link to={image}><img src={image} className=' w-full h-72 sm:h-80 lg:h-96 object-cover ' alt="logo" /></Link>:
                     null
 
                 }
