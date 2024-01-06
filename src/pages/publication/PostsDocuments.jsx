@@ -34,7 +34,7 @@ const PostsDocuments = () => {
     <>
         <Header/>
         <PubSidebar />
-        <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-12 pt-16 lg:pr-16 w-full'>
+        <div className='px-4 text-xs md:text-sm md:pl-64  md:pr-32 pt-16 w-full'>
           <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72  ">
            
                
