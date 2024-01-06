@@ -50,7 +50,7 @@ const CreateCommentForm = ({postId,refresh}) => {
         }
         <div className={`fixed w-full z-40   md:pl-64  md:pr-12 pt-16 lg:pr-16  p-4      bottom-0 right-0 left-0 ${!isExtended?'bottom-[-200%] tran ':' tran bottom-0'} `}>
         <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72">
-            <div className=" rounded-lg border h-full w-full md:pl- bg-white">
+            <div className=" rounded-lg border h-full w-full  bg-white">
                 <div className="flex  items-center p-1 justify-between text-md text-gray-700">
                     <span className="px-1 font-bold">Repondre à cette question</span>
                     {isExtended && <XMarkIcon onClick={()=>{setIsextended(false)}} className='icon-danger' />}
@@ -75,10 +75,10 @@ const CreateCommentForm = ({postId,refresh}) => {
              
 
 
-             <div className="flex mt-2 items-center justify-end">
+             <div className="flex  items-center justify-end">
          
         <Button
-        className={'btn-primary mt-4'}
+        className={'btn-primary mt-2 font-bold'}
         click={submit}
         icon={null}
         load={load}
