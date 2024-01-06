@@ -18,6 +18,7 @@ const CreateCommentForm = ({postId,refresh}) => {
         setTimeout(() => {
             setIsextended(false)
         }, 1000);
+        success && setResponse(null)
     }, [success])
     
      
@@ -30,6 +31,7 @@ const CreateCommentForm = ({postId,refresh}) => {
         }
         if(response){
           create(`pub/coment-list-create/`,formData)
+          setResponse(null)
         }else{
           setFormError('Veuillez decrire votre commentaire')
           setTimeout(() => {
@@ -43,8 +45,8 @@ const CreateCommentForm = ({postId,refresh}) => {
         {!isExtended && 
         <div className=" fixed bottom-4 right-4 xl:right-8  md:pl-64 lg:pr-44 xl:pr-80  md:pr-12 pt-16 ">
           <button onClick={()=>{setIsextended(true)}} className=' flex font-bold   p-2 bg-blue-600 text-lg group text-white rounded-lg gap-2 items-center'>
-              <ChevronUpIcon  className='w-7' />
-              Repondre
+              <ChatBubbleLeftIcon  className='w-7' />
+              Commenter
           </button> 
         </div>
         }
@@ -52,7 +54,7 @@ const CreateCommentForm = ({postId,refresh}) => {
         <div className="grid md:px-4 lg:pl-12 lg:pr-32 xl:pr-72">
             <div className=" rounded-lg border h-full w-full  bg-white">
                 <div className="flex  items-center p-1 justify-between text-md text-gray-700">
-                    <span className="px-1 font-bold">Repondre à cette question</span>
+                    <span className="px-1 font-bold">Votre commentaire</span>
                     {isExtended && <XMarkIcon onClick={()=>{setIsextended(false)}} className='icon-danger' />}
                     
                 </div>
@@ -66,7 +68,7 @@ const CreateCommentForm = ({postId,refresh}) => {
             <div className="text-red-600 text-sm">{formError}</div>
             <Input 
                 type={'textarea'}
-                placeholder={'Entrez votre reponse ici ...'}
+                placeholder={'Entrez votre commentaire ici ...'}
                 name={'response'}
                 onChange={setResponse}
                 value={response}
