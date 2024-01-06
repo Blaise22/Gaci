@@ -30,7 +30,7 @@ const Inscription = () => {
       setTimeout(() => {
         setGlobalError(null)
         setEmailError(null)
-      }, 4000);   
+      }, 10000);   
     }
     if(success){
       const credentials={
@@ -68,7 +68,7 @@ const Inscription = () => {
             setPasswordError('Les mots de passe ne correspondent pas.')
             setTimeout(() => {
               setPasswordError(null) 
-            }, 5000);
+            }, 10000);
           }
         }else{
           setEmailError('cette adresse n\'est pas valide')
@@ -80,7 +80,7 @@ const Inscription = () => {
       setGlobalError('Veuillez renseigner votre nom complet.')
       setTimeout(() => {
         setGlobalError(null)
-      }, 4000);
+      }, 10000);
     }
   }
   return (

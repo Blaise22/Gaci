@@ -12,12 +12,13 @@ import PublicationModal from '../../components/modals/PublicationModal'
 import MyProfil from './MyProfil'
 import ProjectModal from '../../components/modals/ProjectModal'
 import CardProject from '../../components/cards/CardProject'
+import useUser from '../../hooks/useUser'
 
 const Profil = () => {
   const { data,load,count,prev,next, error,getData,nextPage,prevPage}=useFetchPaginate(`/pub/post-list-create/`)
   const { data:projects,load:loadProject,count:countProjects,prev:prevProject,next:nextProject, error:errorProject,getData:getProjects,nextPage:nextPageProject,prevPage:prevPageProject}=useFetchPaginate(`/pub/project-list-create/`)
   const [showPub,setShowPub]=useState(true)
-  console.log(projects);
+  const user=useUser()
   return (
     <>
         <Header/>
@@ -27,12 +28,17 @@ const Profil = () => {
               <div className={'bg-white rounded-lg '} > 
                 <MyProfil />
               </div>
-              <div className="flex gap-2">
-                <button onClick={()=>{setShowPub(true)}} className={`p-3  font-bold rounded-full hover:text-blue-600 hover:bg-blue-100 tran ${showPub?'bg-blue-100 text-blue-600':'bg-blue-600 text-white'}`}>Publications</button>
-                <button onClick={()=>{setShowPub(false)}} className={`p-3  font-bold rounded-full hover:text-blue-600 hover:bg-blue-100 tran ${!showPub?'bg-blue-100 text-blue-600':'bg-blue-600 text-white'}`}>Projets</button>
-              </div>
               {
+                user?.user?.staff &&
+                <div className="flex gap-2">
+                  <button onClick={()=>{setShowPub(true)}} className={`p-3  font-bold rounded-full hover:text-blue-600 hover:bg-blue-100 tran ${showPub?'bg-blue-100 text-blue-600':'bg-blue-600 text-white'}`}>Publications</button>
+                  <button onClick={()=>{setShowPub(false)}} className={`p-3  font-bold rounded-full hover:text-blue-600 hover:bg-blue-100 tran ${!showPub?'bg-blue-100 text-blue-600':'bg-blue-600 text-white'}`}>Projets</button>
+                </div>
+              }
+              {
+
                 showPub ?
+                user?.user?.staff &&
                 <MainCard
                 className={'bg-white rounded-lg '}
                 mainIcon={null}
@@ -88,6 +94,7 @@ const Profil = () => {
 
               </div> 
              </MainCard>:
+                  user?.user?.staff &&
                  <MainCard
                  className={'bg-white rounded-lg w-full'}
                  mainIcon={null}

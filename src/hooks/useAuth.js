@@ -13,7 +13,7 @@ const useAuth = () => {
                 localStorage.setItem('accessToken',result?.data.token.access); 
                 localStorage.setItem('refreshToken',result?.data.token.refresh); 
                 localStorage.setItem('user',JSON.stringify(result?.data.data.user_auth))
-                AxiosInstance.get(`/auth/profile-user-id-detail/${result?.data.data.user_auth.pk}/`).then(profilResult=>{  profilResult.data && localStorage.setItem('profil',JSON.stringify(profilResult.data)) })
+                AxiosInstance.get(`/auth/profile-user-id-detail/${result?.data.data.user_auth.pk}/`).then(profilResult=>{  profilResult.data && localStorage.setItem('profil',JSON.stringify(profilResult.data)) }).catch(err=>{})
                 
                 
                 navigate('/')

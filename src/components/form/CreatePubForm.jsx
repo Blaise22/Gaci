@@ -12,12 +12,15 @@ const CreatePubForm = ({onClose}) => {
   const [text,settext]=useState(null)
   const [conclusion,setconclusion]=useState(null)
   const [image,setImage]=useState(null) 
-  const {create,res,load, error, success}=useCreate()
+  const {create,res,load, error, success,errorDetails}=useCreate()
   const navigate=useNavigate()
   useEffect(() => {
     res?.pk && navigate('/publications')
     if(success){
       onClose()
+    }
+    if(error){
+      console.log(errorDetails);
     }
   }, [error, success,res]) 
   

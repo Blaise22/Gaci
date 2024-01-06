@@ -39,7 +39,7 @@ const MyProfil = () => {
               </Link>
               </div>
               :
-              <UserCircleIcon className="mr-2 z-30 shadow-md rounded-full p-0 text-gray-600 w-44 " />
+              <UserCircleIcon className="mr-2 z-30  rounded-full p-0 text-gray-600 w-44 " />
             }
             <div className="absolute z-40  left-1 md:left-2 top-6">
                 {
