@@ -6,6 +6,7 @@ const useCreate =  () => {
     const [load,setLoad]=useState(false) 
     const [res,setRes]=useState(null) 
     const [error,setError]=useState(false)  
+    const [errorDetails,setErrorDetails]=useState(null)  
     const [success,setSuccess]=useState(false)
     const create=(url,data)=>{
         setLoad(true)
@@ -15,7 +16,7 @@ const useCreate =  () => {
                 setSuccess(true)
             }
         }).catch((err) => {
-            console.log(err);
+            setErrorDetails(err.response.data);
             if(err){
                 setError(true)
             }
@@ -30,7 +31,7 @@ const useCreate =  () => {
     }
    
 
-    return { create,res, load, error, success };
+    return { create,res, load, error, success,errorDetails };
 };
 
 export default useCreate;

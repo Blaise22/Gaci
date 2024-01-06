@@ -1,30 +1,87 @@
-import React,{useState} from 'react' 
+import React,{useEffect, useState} from 'react' 
 import Logo from '../../../assets/full_gaci_logo.png' 
 import { Link } from 'react-router-dom'
 import useCreate from '../../../hooks/useCreate'
 import Spinner from '../../../components/extra/Spinner'
 import useAuth from '../../../hooks/useAuth'
 import Input from '../../../components/form/Input'
+import PhoneInput from 'react-phone-number-input'
+import ReactPhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 const Inscription = () => {  
-  const {create,res, load, error, success}=useCreate() 
+  const {create,res, load, error, success,errorDetails}=useCreate() 
   const { login,logout,load:loadLogin,error:errorLogin}=useAuth() 
-  const [mailError,setEmailError]=useState("paln")
-  const [passwordError,setPasswordError]=useState("paln")
+  const [mailError,setEmailError]=useState(null)
+  const [passwordError,setPasswordError]=useState(null)
+  const [globalError,setGlobalError]=useState(null)
   const [email,setEmail]=useState(null)  
   const [names,setNames]=useState(null) 
-  const [phone_number,setphone_number]=useState(null) 
+  const [phoneNumber, setPhoneNumber] = useState(null) 
   const [password,setPassword]=useState(null)
   const [password2,setPassword2]=useState(null)
+  useEffect(() => {
+    if(error){
+      if(errorDetails?.errors?.email){
+        setEmailError("Cette adresse mail est deja utilisée.");
+      }
+      if(errorDetails?.errors?.phone_number){
+        setGlobalError("Cet numéro de telephone est deja utilisé ou est invalide");
+      }
+      setTimeout(() => {
+        setGlobalError(null)
+        setEmailError(null)
+      }, 4000);   
+    }
+    if(success){
+      const credentials={
+        email:email,
+        password:password
+      }
+      login(credentials)
+    }
+  
+     
+  }, [error,success])
+  
+  const handlePhoneChange = (value) => {
+    setPhoneNumber(value);
+  };
   const submit=()=>{
     const formData={
       email:email,
       names:names,
-      phone_number:phone_number,
+      phone_number:phoneNumber,
       password:password,
       password2:password2,
       staff:false
     }
-    create(`/auth/no-staff-register/`,formData)
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    } 
+    if(names){
+      if(email){
+        if(validateEmail(email)){
+          if(password==password2){
+            create(`/auth/no-staff-register/`,formData)
+          }else{
+            setPasswordError('Les mots de passe ne correspondent pas.')
+            setTimeout(() => {
+              setPasswordError(null) 
+            }, 5000);
+          }
+        }else{
+          setEmailError('cette adresse n\'est pas valide')
+        }
+      }else{
+        setEmailError('Veuillez completez votre adresse mail')
+      }
+    }else{
+      setGlobalError('Veuillez renseigner votre nom complet.')
+      setTimeout(() => {
+        setGlobalError(null)
+      }, 4000);
+    }
   }
   return (
     <>
@@ -37,7 +94,8 @@ const Inscription = () => {
                 <div className="w-full flex justify-center md:w-[50%]">
                     
                   <div className="w-96 card p-4">
-                    <span className='text-danger'>{error ? 'Une Erreur s\'est produite, veuillez recommencer l\'inscription.':''}</span>
+                    <p className='text-danger'>{error ? 'Une Erreur s\'est produite, veuillez recommencer l\'inscription.':''}</p>
+                    <p className='text-danger'>{globalError ? globalError:''}</p>
                     <Input 
                         label={"Entrez votre nom complet"}
                         name={'names'}
@@ -45,9 +103,18 @@ const Inscription = () => {
                         type={'text'}
                         value={names} 
                     />
+                    <label htmlFor="" className='text-sm text-gray-700'>Entrez votre numéro de telephone</label>
+                    <ReactPhoneInput
+                          international
+                          defaultCountry="CD"
+                          value={phoneNumber}
+
+                          onChange={handlePhoneChange}
+                          className="py-2 px-4 border outline-none right-0 z-0 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      />
                     <Input 
                         label={"Entrez votre adresse mail"}
-                        name={'text'}
+                        name={'email'}
                         onChange={setEmail}
                         type={'email'}
                         value={email} 
@@ -69,7 +136,7 @@ const Inscription = () => {
                     />
                     {passwordError ? <span className='text-red-600 text-xs'> * {passwordError} </span>:'*'}
 
-                    <div className="mt-8 flex items-center">
+                    <div className="flex items-center">
                         {
                             !load ? 
                               loadLogin?
