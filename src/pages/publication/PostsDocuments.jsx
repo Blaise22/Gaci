@@ -167,6 +167,7 @@ const PostsDocuments = () => {
                     errorStatus={documentsErrors}
                     len={documents?.length} 
                     load={loadDocuments}
+                    message={'Auccun document pour l\'instant'}
                 />
                 <NavigationPageCard
                   load={loadDocuments}
