@@ -14,7 +14,7 @@ const QuestionCard = ({refresh,owner,message,dateAdd,dateUpdate,image,doc,pk}) =
     <div className='shadow-md   rounded-lg'>
         <div className="flex flex-col   gap-1">
             <div className="flex p-4 flex-col items-start gap-2">
-                <p className='text-gray-600 font-bold'>Publiée par  {  owner?.names }</p>
+                <p className='text-gray-600 font-bold'>Posée par  {  owner?.names }</p>
                 <span className="text-secondary-2 pb-4">{message}</span>
 
             </div>
