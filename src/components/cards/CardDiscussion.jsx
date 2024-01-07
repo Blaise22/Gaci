@@ -7,6 +7,7 @@ import useFetch from '../../hooks/useFetch'
 import sliceString from '../../helpers/utils/sliceString'
 import { Link,useNavigate } from 'react-router-dom'
 import getPeriode from '../../helpers/utils/getPeriode'
+import DeletModale from '../modals/DeletModale'
 const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status,isResPage,deleteUrl}) => {
      const user=useUser()
      const {data:profil}=useFetch(`auth/profile-user-id-detail/${owner?.pk}/`)  
@@ -79,9 +80,16 @@ const CardDiscussion = ({message,date,owner,pk,question,refresh,doc,image,status
                     </div>
                 }
                 <div className="flex mt-2 items-center justify-between gap-2">
-                    <div className=" gap-2 items-center z-0 cursor-pointer w-10 justify-center rounded-md"> 
+                    <div className=" gap-2 items-center z-0 cursor-pointer  justify-center rounded-md"> 
                              { user?.user?.pk==owner?.pk ? 
-                                <DeleteItem url={deleteUrl} refresh={refresh} />  
+                                <DeletModale 
+                                  buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-3 hover:bg-red-100 rounded-md'>Retirer</span> }
+                                   
+                                  title={'Supprimer'}
+                                  url={deleteUrl}
+                                  refresh={refresh}
+                                  
+                                />  
                              :'' }
                              
                      </div>
