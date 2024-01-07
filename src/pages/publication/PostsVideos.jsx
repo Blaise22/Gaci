@@ -172,6 +172,7 @@ const PostsVideos = () => {
                     errorStatus={errorvideos}
                     len={videos?.length} 
                     load={loadvideos}
+                    message={'Aucune video pour l\'instant'}
                     
                 />
                 <NavigationPageCard
