@@ -66,7 +66,7 @@ const Questions = () => {
                     errorStatus={error}
                     len={data?.length} 
                     load={load}
-                    
+                    message={'Auccune question pour l\'instant'}
                 />
                 <NavigationPageCard
                   load={load}
