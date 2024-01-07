@@ -66,6 +66,7 @@ const Questions = () => {
                     errorStatus={error}
                     len={data?.length} 
                     load={load}
+                    
                 />
                 <NavigationPageCard
                   load={load}

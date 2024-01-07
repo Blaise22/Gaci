@@ -82,6 +82,7 @@ const Profil = () => {
                     errorStatus={error}
                     len={data?.length} 
                     load={load}
+                    message={'Vous n\'avez encore rien publier.'}
                 />
                 <NavigationPageCard
                   load={load}
