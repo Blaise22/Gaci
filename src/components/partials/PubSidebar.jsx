@@ -33,12 +33,7 @@ const PubSidebar = () => {
                             Projets
                         </span>
                     </Link>
-                    <span className="text-blue-600 text-sm p-4">
-                    {abbreviateNumber(4000)} Publications   
-                    </span>
-                    <span className="text-blue-600 text-sm p-4">
-                    {abbreviateNumber(4000)} Projets   
-                    </span>
+                     
 
                 </div>
             </div>
