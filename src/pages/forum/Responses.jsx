@@ -120,7 +120,7 @@ const Responses = () => {
                     errorStatus={error}
                     len={data?.length} 
                     load={load}
-                    message={'Aucun commentaire pour l\'instant.'}
+                    message={'Aucune reponse pour l\'instant.'}
                 />
                 <NavigationPageCard
                   load={load}
