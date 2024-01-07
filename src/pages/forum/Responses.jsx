@@ -31,14 +31,15 @@ const Responses = () => {
                           <QuestionMarkCircleIcon className='w-8 text-white' />
                           <span className="text-lg text-blue-600">Question</span>
                         </div>
+                        {
+                                user?.user.pk==question?.user.pk &&
                         <div className="relative group py-2">
                           <div className="flex p-2 rounded-lg hover:bg-gray-100 items-center gap-1">
                           <EllipsisHorizontalIcon className='w-5 text-gray-600' />
                             
                           </div>
                           <div className="absolute hidden group-hover:block top-[80%]  bg-white text-left shadow-md p-4 rounded-lg right-0 w-56">
-                              {
-                                user?.user.pk==question?.user.pk &&
+                              
                                 <DeletModale 
                                   buttonContent={ <span className='text-red-600 cursor-pointer block w-full p-3 hover:bg-red-100 rounded-md'>Supprimer ma question</span> }
                                   redirectUrl={'/forum'}
@@ -46,9 +47,10 @@ const Responses = () => {
                                   url={`/forum/question-delete/${id}/`}
                                   refresh={()=>{}}
                                 />
-                              }
+                              
                           </div>
                         </div>
+                        }
                     </div>
                     <span className='font-bold py-2 block text-md'>Posée par { question?.user?.names }</span>
                     { question?.wording ?
