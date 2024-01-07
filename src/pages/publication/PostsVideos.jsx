@@ -22,6 +22,7 @@ import PubOptionsLinks from '../../components/partials/PubOptionsLinks'
 import ImageModal from '../../components/modals/ImageModal'
 import CardPicture from '../../components/cards/CardPicture'
 import CardVideo from '../../components/cards/CardVideo'
+import VideoModal from '../../components/modals/VideoModal'
 const PostsVideos = () => {
     const {id}=useParams()
     const navigate=useNavigate()
