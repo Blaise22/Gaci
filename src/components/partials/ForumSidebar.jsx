@@ -21,9 +21,7 @@ const ForumSidebar = () => {
                             Questions
                         </span>
                     </Link>
-                    <span className="text-blue-600 text-sm p-4">
-                    {abbreviateNumber(4000)} Questions posees   
-                    </span>
+                     
 
                 </div>
             </div>
