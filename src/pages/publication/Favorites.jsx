@@ -50,6 +50,7 @@ const Favorites = () => {
                     errorStatus={error}
                     len={data?.length} 
                     load={load}
+                    message={'Pas de favoris, consulter les publications.'}
                 />
                 <NavigationPageCard
                   load={load}
