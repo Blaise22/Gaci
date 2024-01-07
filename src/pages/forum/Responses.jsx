@@ -59,7 +59,7 @@ const Responses = () => {
                       {
                       question?.image ?
                       <Link to={question?.image}>
-                        <img src={question?.image} className=' w-full h-56 object-cover rounded-t-lg' alt="logo" />
+                        <img src={question?.image} className=' w-full h-56 object-cover' alt="logo" />
                       </Link>
                       
                       :
