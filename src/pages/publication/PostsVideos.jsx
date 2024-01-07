@@ -172,6 +172,7 @@ const PostsVideos = () => {
                     errorStatus={errorvideos}
                     len={videos?.length} 
                     load={loadvideos}
+                    
                 />
                 <NavigationPageCard
                   load={loadvideos}
