@@ -46,8 +46,8 @@ const PostsVideos = () => {
                 mainTitle={'Videos'}
                 sideHeaderContent={
                     user?.user.pk==data?.user.pk ?
-                    <ImageModal
-                        onCreate={()=>{getData(`/pub/post-images-post-list/${id}/`)}} 
+                    <VideoModal
+                        onCreate={()=>{getData(`/pub/post-video-post-list/${id}/`)}} 
                         postId={id}
                         modalTitle={'Video'}
                         mainButton={
@@ -59,7 +59,7 @@ const PostsVideos = () => {
                          
                         >
                               
-                        </ImageModal>:null
+                        </VideoModal>:null
                         }
              >
                 <div className="flex">
@@ -160,7 +160,7 @@ const PostsVideos = () => {
                                 pk={item.pk}
                                 user={item.user}
                                 wording={item.wording}
-                                refresh={()=>{getData(`/pub/post-images-post-list/${id}/`)}}
+                                refresh={()=>{getData(`/pub/post-video-post-list/${id}/`)}}
                                 thumbnail={data?.image}
 
                              />
