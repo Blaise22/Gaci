@@ -54,6 +54,7 @@ const Publications = () => {
                     errorStatus={error}
                     len={data?.length} 
                     load={load}
+                    message={'Auccune publication pour l\'instant'}
                 />
                 <NavigationPageCard
                   load={load}
