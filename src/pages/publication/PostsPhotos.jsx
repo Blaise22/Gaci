@@ -167,7 +167,7 @@ const PostsPhotos = () => {
                     errorStatus={picturesErrors}
                     len={pictures?.length} 
                     load={loadPictures}
-                    message={'Auccune photo pour l\'instant'}
+                    message={'Aucune photo pour l\'instant'}
                 />
                 <NavigationPageCard
                   load={loadPictures}
