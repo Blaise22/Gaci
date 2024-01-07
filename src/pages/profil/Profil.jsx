@@ -142,6 +142,7 @@ const Profil = () => {
                      errorStatus={errorProject}
                      len={projects?.length} 
                      load={loadProject}
+                     message={'Auccun projet pour l\'instant'}
                  />
                  <NavigationPageCard
                    load={loadProject}
