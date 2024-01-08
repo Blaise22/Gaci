@@ -15,8 +15,7 @@ const CardVideo = ({url,date,pk,user:owner,wording,refresh,thumbnail}) => {
               <Link to={url}>
                      <ReactPlayer 
                       url={url}
-                      height={500}
-                      width={500}
+                       
                       
                      />
                
