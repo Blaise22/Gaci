@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
         <Header/> 
-        <div className='px-4 text-xs md:text-sm md:px-12 pt-14 lg:px-16 w-full'>
+        <div className=' text-xs md:text-sm md: pt-14  w-full'>
           <FrontImage/> 
           
           <ArticleList/> 

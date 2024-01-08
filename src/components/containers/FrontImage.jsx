@@ -6,7 +6,7 @@ const FrontImage = () => {
     
   return (
     <>
-        <div className='pt-14 w-full' style={{'height':'400px'}}>
+        <div className='pt-14 w-full bg-red-600' style={{'height':'400px'}}>
             <div className='flex  justify-start'>
                
             </div>
